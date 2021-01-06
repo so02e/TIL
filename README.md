@@ -1,4 +1,5 @@
-# TIL
-> 빅데이터 분석 서비스 개발 교육과정을 수강하면서 그날 그날 배운 것을 정리한 공간입니다.
+# TIL (
+> This is a space that summarizes what I learned on that day while taking the big data analysis service development curriculum.
+
 
  ꒰◍ˊ◡ˋ꒱੭⁾⁾ 
