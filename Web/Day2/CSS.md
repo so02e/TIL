@@ -13,7 +13,10 @@ www.daum.net : 다음 홈페이지에 들어가겠다. daum 의 웹서버는 국
 www.python.org : 외국에 있는 웹 서버
 
 
+
 국내, 외국의 웹서버 관계없이 웹 서버마다 고유의 주소(IP 주소) 숫자 기억이 어려우니까 도메인 명을 쓰는 거고 우리가 아는 주소가 도메인 명이다. 
+
+
 
 ※ 쿼리 문자열
 key = value 의 쿼리 문자열
@@ -27,6 +30,11 @@ https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&qu
 https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%EC%B9%A8%EC%B0%A9%EB%A7%A8
 ```
 
+
+
+
+
+
 ## 2. HTML 문법
 ### (1) 줄바꿈
 #### ① `<br>`
@@ -38,9 +46,28 @@ https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&qu
 단락을 표현할 때 쓰는 태그
 
 
+### (2) `class`의 지정
+태그 뒤에 class = "클래스명" 을 줄 수 있고, 그 클래스에 속한 객체에 대하여 디자인을 변경할 수 있다.(그 변경은 .클래스명 {} 에서 진행하게 된다.)
+
+전체 중 일부만 다르게 스타일을 줄 때
+
+``` html
+<head>
+<style>
+	.top {
+    	color : #cc0099;
+    	}
+</style>
+</head>
+```
+
+
 
 ## 3. CSS 적용 방법
 CSS 는 HTML 의 시각적 효과를 위해 사용된다.
+CSS 는 HTML과 완전히 다른 언어이므로, 웹 페이지에 CSS를 포함시킬 때 웹 브라우저로 하여금 어디서부터 어디까지가 CSS인지 알려주어야 한다. ▶ `<style>` 태그가 바로 그러한 역할을 함
+
+
 
 ### (1) 지역적 방법 (인라인)
 
@@ -65,6 +92,8 @@ h2 태그의 색을 다 바꾸고 싶을 떄
     <style>
         h3 {
         color:green;
+	font-size:45px;
+	text-allign:center;
     </style>
 </head>
 ```
@@ -76,8 +105,9 @@ h2 태그의 색을 다 바꾸고 싶을 떄
 
 
 
-## 4. CSS 문법
 
+
+## 4. CSS 문법
 ### (1) `hover` : 마우스가 해당영역에 가까이 가면 해당하는 명령을 수행할 수 있다. 
 → 예: 마우스가 해당 이미지에 가까이 간 경우, 이미지를 투명하게 처리한다.
 
@@ -96,20 +126,33 @@ h2 태그의 색을 다 바꾸고 싶을 떄
 
 
 
-
-
-
-
-
 ### (3) 블럭(`div`)과 인라인(`span`)
 div(블럭), span(인라인) 에 따라 스타일이 달라짐.
 행단위 / 하나의 행에 이어져서 출력
 
-#### (1) 블럭 DIV 와 인라인 span
+#### ① 블럭(`div`) 와 인라인 span
+## n번째 div이라 지정
+
+```
+	div:nth-of-type(1) {
+		background-color : yellow;
+		border : 2px solid red;
+		border-radius : 30px;
+	}
+```
+
+```
+	div:nth-of-type(2) {
+		background-color : lightgreen;
+		border : 2px dotted magenta;
+		border-radius : 20px 40px 60px 80px;
+	}
+```
 
 
 
-#### (2) 스판태크
+
+#### ② 스판태크
 
 스판 아이엠지 인풋 : 인라인
 
@@ -119,16 +162,7 @@ div(블럭), span(인라인) 에 따라 스타일이 달라짐.
 
 width height 조정을 못하는 인라인 
 
-전체 중 일부만 다르게 스타일을 줄 때
 
-```
-<head>
-<style>
-	.top {
-    	color : #cc0099;
-    	}
-</style>
-</head>
 ```
 
 top 이라는 클래스 속성을 갖는 친구들을 찾아서 색상을 바꾼다.
@@ -146,7 +180,6 @@ ID를 못 쓰는 이유는 ID는 유일해야 해서 한번 써야 한다.
 	</h1>
 </body>
 ```
-
 
 
 
@@ -231,59 +264,7 @@ h1 {
 }
 ```
 
-그림자에서 주는 px
 
-음 :우측 아래 / 양 : 좌측 위
-
-
-
-
-
-
-## n번째 div이라 지정
-
-```
-	div:nth-of-type(1) {
-		background-color : yellow;
-		border : 2px solid red;
-		border-radius : 30px;
-	}
-```
-
-```
-	div:nth-of-type(2) {
-		background-color : lightgreen;
-		border : 2px dotted magenta;
-		border-radius : 20px 40px 60px 80px;
-	}
-```
-
-```
-	div:nth-of-type(3) {
-		background-color : #000000;
-		border : 5px dashed #ffffff;
-	}
-```
-
-
-
-
-
-함수형식을 통해 그라데이션 효과 혹은 이미지의 계속 반복
-
-
-
-클래스 속성.
-
-div 태그 중 클래스 속성을 갖는 친구를 찾아서 이미지를 지정하나.
-
-top-bottom : 
-
-
-
-이미지를 한 행에 3개씩 출력하게 하는 법
-
-1번<img> <img> <img> <br>
 
 
 
