@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>실습</title>
+</head>
+<body>
+<script>
+// 배열의 생성
+var a1 = new Array(10,5,7,21,4,8,18);
+
+// 원소의 합 출력
+var sum = 0;
+for (var i = 0; i < a1.length; i++)
+    sum += a1[i];
+
+document.write("<h1> 모든 원소의 합 : " + sum + "</h1>");
+
+// 최대값과 최소값을 리스트 형식으로 출력
+var max = a1[0];
+for (var o = 0; o < a1.length; o++)
+    if (max < a1[o]) {
+    max = a1[o];
+    }
+
+document.write("<ul> 최대값 : " + max + "</ul>");
+
+var min = a1[0];
+for (var s = 0; s < a1.length; s++)
+    if (min >= a1[s]) {
+    min = a1[s];
+    }
+
+document.write("<ul> 최소값 : " + min + "</ul>");
+
+
+</script>
+</body>
+</html>
