@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+var num = Math.floor(Math.random() * 3) + 1
+var result = window.confirm("이동하시겠습니까?");
+
+if(result){
+    if (num == 1)
+        location.href = "http://www.daum.net/";
+    else if (num == 2)
+	    location.href = "http://www.naver.com/";
+    else if (num == 3)
+        location.href = "http://www.google.com/";
+}
+else {
+    location.href = "http://localhost:8000/edu/first.html";
+}
+
+</script>
+</body>
+</html>
