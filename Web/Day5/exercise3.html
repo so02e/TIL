@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 3</title>
+</head>
+<body>
+<script>
+    function calc(){
+        if (arguments.length == 0) {
+            return 0;
+        }
+        else {
+            for (var i = 0; i < arguments.length ; i++){
+		        var a = arguments[i];
+		        //숫자 이면 곱함
+
+		        if (isNaN(a) == false) {
+		            var mult = 1;
+		            mult *= a;
+		            console.log(mult)
+		            }
+		        // 숫자 아닌게 나오면
+		        else {
+		            return "숫자를 입력하세요"
+		            break;
+		        }
+            }
+    	    return mult;
+        }
+    }
+
+    document.write("<h3>" + calc() + "</h3>");
+    document.write("<h3>" + calc(10,20,'30') + "</h3>");
+    document.write("<h3>" + calc(10,'가나다',20) + "</h3>");
+    document.write("<h3>" + calc(1,2,3,4,5) + "</h3>");
+
+</script>
+</body>
+</html>
