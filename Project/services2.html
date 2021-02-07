@@ -1,0 +1,1207 @@
+{% extends 'base.html' %}
+
+{% block headcontent %}
+<title>내 주변 학원 검색</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+
+<main class="" id="main-collapse">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+        <p style="margin-top:-12px">
+            <b>내 주변 학원 찾기</b> 지도에 일단 모든 학원 출력
+
+        </p>
+        <div id="map" style="width:600px;height:900px;"></div>
+    </div>
+  </div>
+
+
+</main>
+
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1cc2187c8717ffab77eb12ceab5806ae&libraries=services"></script>
+<script>
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    mapOption = {
+        center: new kakao.maps.LatLng(38.450701, 126), // 지도의 중심좌표
+        level: 7 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+var positions = [
+ {
+   id: 1,
+   content: "광연 운전전문학원",
+   address_full: "서울 강남구 헌릉로 733",
+   fee1: 682000,
+   fee2: 682000,
+   bus: "http://kydriving.co.kr/bus_1.html",
+   phone_number: "02-481-6000",
+   url: "http://kydriving.co.kr/index.html#",
+   latlng: new kakao.maps.LatLng(37.46727612,127.1190014)
+ },
+ {
+   id: 2,
+   content: "삼일 운전전문학원",
+   address_full: "서울 강남구 헌릉로 736",
+   fee1: 683000,
+   fee2: 683000,
+   bus: "http://www.samilcar.co.kr/company_04.html",
+   phone_number: "02-451-3131",
+   url: "http://www.samilcar.co.kr/#",
+   latlng: new kakao.maps.LatLng(37.46701172,127.1198035)
+ },
+ {
+   id: 3,
+   content: "창동 운전전문학원",
+   address_full: "서울 도봉구 도봉로136길 61",
+   fee1: 680000,
+   fee2: 680000,
+   bus: "https://hidi.co.kr/bus",
+   phone_number: "02-907-7744",
+   url: "https://hidi.co.kr/",
+   latlng: new kakao.maps.LatLng(37.65973306,127.0447146)
+ },
+ {
+   id: 4,
+   content: "녹천 운전전문학원",
+   address_full: "서울 노원구 마들로5길 91",
+   fee1: 709500,
+   fee2: 709500,
+   bus: "http://www.ncdrive.co.kr/bus/sub_00.php?PHPSESSID=31702b19767fed17159e6210da379359",
+   phone_number: "02-903-3131",
+   url: "http://www.ncdrive.co.kr/index.php",
+   latlng: new kakao.maps.LatLng(37.64341654,127.0511626)
+ },
+ {
+   id: 5,
+   content: "사당 운전전문학원",
+   address_full: "서울 서초구 과천대로 904-6",
+   fee1: 693000,
+   fee2: 693000,
+   bus: "http://sadangdrive.com/user_dir/popup/1561537005_1.jpg",
+   phone_number: "02-591-6300",
+   url: "http://www.sadangdrive.com/",
+   latlng: new kakao.maps.LatLng(37.47161104,126.9840567)
+ },
+ {
+   id: 6,
+   content: "서울 운전전문학원",
+   address_full: "서울 강서구 남부순환로 222",
+   fee1: 631400,
+   fee2: 631400,
+   bus: "https://www.seouldriver.co.kr/home/sub01.php?mid=4",
+   phone_number: "02-2665-6961",
+   url: "https://www.seouldriver.co.kr/home/",
+   latlng: new kakao.maps.LatLng(37.54609517,126.8207679)
+ },
+ {
+   id: 7,
+   content: "온수역 운전전문학원",
+   address_full: "서울 구로구 부일로1가길 18-44",
+   fee1: 658900,
+   fee2: 658900,
+   bus: "http://www.carist.kr/sub_01_02",
+   phone_number: "02-6971-7800",
+   url: "http://www.carist.kr/",
+   latlng: new kakao.maps.LatLng(37.49295028,126.817981)
+ },
+ {
+   id: 8,
+   content: "중랑 운전전문학원",
+   address_full: "서울 중랑구 상봉로 117",
+   fee1: 705000,
+   fee2: 705000,
+   bus: "http://www.jndriver.com/m1_3",
+   phone_number: "02-494-3355",
+   url: "http://www.jndriver.com/",
+   latlng: new kakao.maps.LatLng(37.59600556,127.0923548)
+ },
+ {
+   id: 9,
+   content: "양재 운전전문학원",
+   address_full: "서울 서초구 남부순환로342길 62-26",
+   fee1: 660000,
+   fee2: 660000,
+   bus: "http://www.yangjaecar.co.kr/bbs/board.php?bo_table=shuttle",
+   phone_number: "02-575-9500",
+   url: "http://www.yangjaecar.co.kr/",
+   latlng: new kakao.maps.LatLng(37.47919337,127.0259203)
+ },
+ {
+   id: 10,
+   content: "신도림 운전전문학원",
+   address_full: "서울 구로구 신도림로19길 68",
+   fee1: 660000,
+   fee2: 660000,
+   bus: "https://www.sindolim.co.kr/new/?cid=shuttle",
+   phone_number: "02-2672-8500",
+   url: "https://www.sindolim.co.kr/new/?cid=",
+   latlng: new kakao.maps.LatLng(37.51271679,126.8820391)
+ },
+ {
+   id: 11,
+   content: "일신 운전전문학원",
+   address_full: "인천 부평구 무네미로 521",
+   fee1: 640200,
+   fee2: 640200,
+   bus: "",
+   phone_number: "032-513-1313",
+   url: "https://isdrive.co.kr/?gclid=CjwKCAiAsOmABhAwEiwAEBR0Zr4eCwHf3gRdoI5koYWCyMJ0VHfOT0FLE2aujBu21Yv8QhbwZ31hGxoCDokQAvD_BwE",
+   latlng: new kakao.maps.LatLng(37.48268571,126.7520053)
+ },
+ {
+   id: 12,
+   content: "주신 운전전문학원",
+   address_full: "인천 남구 노적산로 66-36",
+   fee1: 646900,
+   fee2: 646900,
+   bus: "http://zushincar.co.kr/bus_01.htm",
+   phone_number: "032-873-4982",
+   url: "http://www.zushincar.co.kr/",
+   latlng: new kakao.maps.LatLng(37.44031684,126.6564877)
+ },
+ {
+   id: 13,
+   content: "인천 운전전문학원",
+   address_full: "인천 남구 매소홀로271번길 7",
+   fee1: null,
+   fee2: null,
+   bus: "",
+   phone_number: "032-715-6111",
+   url: "",
+   latlng: new kakao.maps.LatLng(37.44513713,126.6527652)
+ },
+ {
+   id: 14,
+   content: "기아 운전전문학원",
+   address_full: "인천 중구 서해대로 261",
+   fee1: 640000,
+   fee2: 640000,
+   bus: "http://www.kdschool.co.kr/company_04.html",
+   phone_number: "032-884-6111",
+   url: "http://www.kdschool.co.kr/",
+   latlng: new kakao.maps.LatLng(37.45095426,126.6243263)
+ },
+ {
+   id: 15,
+   content: "효성 운전전문학원",
+   address_full: "인천 계양구 새풀로8번길 14",
+   fee1: 669000,
+   fee2: 669000,
+   bus: "http://www.5517000.com/?sd=1&sc=1_6",
+   phone_number: "032-551-7000",
+   url: "http://www.5517000.com/",
+   latlng: new kakao.maps.LatLng(37.52437621,126.7015643)
+ },
+ {
+   id: 16,
+   content: "대우 운전전문학원",
+   address_full: "인천 서구 호두산로 18",
+   fee1: 650800,
+   fee2: 650800,
+   bus: "http://www.dwdrive.kr/s1_4.php",
+   phone_number: "031-516-0185",
+   url: "http://www.dwdrive.kr/",
+   latlng: new kakao.maps.LatLng(37.5442015,126.6487141)
+ },
+ {
+   id: 17,
+   content: "시엘 운전전문학원",
+   address_full: "인천 남구 소성로 34",
+   fee1: 630000,
+   fee2: 630000,
+   bus: "https://clds.modoo.at/?link=98msp3jc",
+   phone_number: "032-867-7070",
+   url: "https://clds.modoo.at/",
+   latlng: new kakao.maps.LatLng(37.44630068,126.6536579)
+ },
+ {
+   id: 18,
+   content: "한성 운전전문학원",
+   address_full: "인천 서구 중봉대로 266",
+   fee1: 644600,
+   fee2: 644600,
+   bus: "http://hansungdrive.com/company_04.html",
+   phone_number: "1588-0892",
+   url: "http://hansungdrive.com/index.html",
+   latlng: new kakao.maps.LatLng(37.5031648,126.6487143)
+ },
+ {
+   id: 19,
+   content: "강화 운전전문학원",
+   address_full: "인천 강화군 선원면 강화동로 984",
+   fee1: 674300,
+   fee2: 674300,
+   bus: "",
+   phone_number: "032-932-2176",
+   url: "https://www.eganghwa.com/",
+   latlng: new kakao.maps.LatLng(37.71736284,126.4770184)
+ },
+ {
+   id: 20,
+   content: "연세 운전전문학원",
+   address_full: "인천 계양구 장제로 988",
+   fee1: 625000,
+   fee2: 625000,
+   bus: "http://m.xn--e42b17tpc71dv52b9sa.com/page/page34",
+   phone_number: "032-507-7900",
+   url: "http://m.xn--e42b17tpc71dv52b9sa.com/main",
+   latlng: new kakao.maps.LatLng(37.55344807,126.7452941)
+ },
+ {
+   id: 21,
+   content: "오렌지 운전전문학원",
+   address_full: "인천 중구 서해대로 272",
+   fee1: 636000,
+   fee2: 636000,
+   bus: "http://www.orangedrive.co.kr/m1_4.htm",
+   phone_number: "032-8885-114",
+   url: "http://www.orangedrive.co.kr/default.asp",
+   latlng: new kakao.maps.LatLng(37.45144996,126.6264517)
+ },
+ {
+   id: 22,
+   content: "동아 운전전문학원",
+   address_full: "인천 남동구 청능대로534번길 39",
+   fee1: 643500,
+   fee2: 643500,
+   bus: "http://www.dongacar.co.kr/%EC%85%94%ED%8B%80%EC%95%88%EB%82%B4",
+   phone_number: "032-446-1100",
+   url: "http://www.dongacar.co.kr/",
+   latlng: new kakao.maps.LatLng(37.39876878,126.7204954)
+ },
+ {
+   id: 23,
+   content: "거성 운전전문학원",
+   address_full: "인천 계양구 봉오대로894번길 33-12",
+   fee1: 634700,
+   fee2: 634700,
+   bus: "http://www.geosungds.co.kr/company_02.html",
+   phone_number: "032-543-3399",
+   url: "http://www.geosungds.co.kr/index.html",
+   latlng: new kakao.maps.LatLng(37.52710223,126.74959)
+ },
+ {
+   id: 24,
+   content: "성도 운전전문학원",
+   address_full: "인천 계양구 아나지로 480",
+   fee1: 640000,
+   fee2: 640000,
+   bus: "http://www.sungdocar.co.kr/s1_2.php",
+   phone_number: "1544-8366",
+   url: "http://www.sungdocar.co.kr/",
+   latlng: new kakao.maps.LatLng(37.52516372,126.7461237)
+ },
+ {
+   id: 25,
+   content: "서울신진 운전전문학원",
+   address_full: "인천 계양구 아나지로551번길 15-1",
+   fee1: 627000,
+   fee2: 627000,
+   bus: "http://www.drivingok.co.kr/company/com_03.asp",
+   phone_number: "1544-3386",
+   url: "http://www.drivingok.co.kr/",
+   latlng: new kakao.maps.LatLng(37.52722882,126.7532081)
+ },
+ {
+   id: 26,
+   content: "세영 운전전문학원",
+   address_full: "인천 서구 당하동 산61-5",
+   fee1: 592020,
+   fee2: 592020,
+   bus: "http://www.sydrive.co.kr/2017/sub3-1.html",
+   phone_number: "1566-3156",
+   url: "http://www.sydrive.co.kr/",
+   latlng: new kakao.maps.LatLng(37.58933601,126.7036924)
+ },
+ {
+   id: 27,
+   content: "한양 운전전문학원",
+   address_full: "인천 계양구 장제로 988",
+   fee1: 642400,
+   fee2: 642400,
+   bus: "http://www.hydriver.kr/sub01/sub01_301",
+   phone_number: "080-507-4900",
+   url: "http://www.hydriver.kr/",
+   latlng: new kakao.maps.LatLng(37.55344807,126.7452941)
+ },
+ {
+   id: 28,
+   content: "인기 운전전문학원",
+   address_full: "인천 남동구 논현고잔로88번길 19",
+   fee1: 642950,
+   fee2: 642950,
+   bus: "http://inchondrive.co.kr/company_04.html",
+   phone_number: "032-446-1199",
+   url: "http://inchondrive.co.kr/index.html",
+   latlng: new kakao.maps.LatLng(37.39091125,126.7136872)
+ },
+ {
+   id: 29,
+   content: "신진 운전전문학원",
+   address_full: "인천 서구 드림로 285",
+   fee1: 625000,
+   fee2: 625000,
+   bus: "http://www.sjdrive.co.kr/shu/01.asp",
+   phone_number: "1600-9009",
+   url: "http://www.sjdrive.co.kr/default.asp",
+   latlng: new kakao.maps.LatLng(37.58324218,126.6701632)
+ },
+ {
+   id: 30,
+   content: "안양 운전전문학원",
+   address_full: "경기 안양시 만안구 안양로 599",
+   fee1: 649000,
+   fee2: 649000,
+   bus: "http://www.aycar.co.kr/bbs/board.php?bo_table=shuttlebus&sca=1%ED%98%B8%EC%B0%A8",
+   phone_number: "031-472-3003",
+   url: "http://www.aycar.co.kr/",
+   latlng: new kakao.maps.LatLng(37.42186648,126.9050724)
+ },
+ {
+   id: 31,
+   content: "수원현대 운전전문학원",
+   address_full: "경기 수원시 영통구 중부대로 452",
+   fee1: 632500,
+   fee2: 632500,
+   bus: "http://www.hddriving.co.kr/bbs/board.php?bo_table=a4",
+   phone_number: "031-211-3431",
+   url: "http://www.hddriving.co.kr/",
+   latlng: new kakao.maps.LatLng(37.26864795,127.0642073)
+ },
+ {
+   id: 32,
+   content: "신삼성 운전전문학원",
+   address_full: "경기 오산 내삼미 275-1",
+   fee1: 652300,
+   fee2: 652300,
+   bus: "http://sssdrive.kr/page/info.php#3",
+   phone_number: "1644-7088",
+   url: "http://sssdrive.kr/",
+   latlng: new kakao.maps.LatLng(37.1630728,127.051305)
+ },
+ {
+   id: 33,
+   content: "평택삼성 운전전문학원",
+   address_full: "경기 평택시 노루댕이1길 18-5",
+   fee1: 628100,
+   fee2: 628100,
+   bus: "http://psdrive.co.kr/company_02.html",
+   phone_number: "031-665-4770",
+   url: "http://psdrive.co.kr/",
+   latlng: new kakao.maps.LatLng(37.04441765,127.0643265)
+ },
+ {
+   id: 34,
+   content: "용인신갈 운전전문학원",
+   address_full: "경기 용인시 기흥구 백남준로 28-13",
+   fee1: 625900,
+   fee2: 625900,
+   bus: "http://www.newdrive.co.kr/company_04.html",
+   phone_number: "031-281-6363",
+   url: "http://www.newdrive.co.kr/",
+   latlng: new kakao.maps.LatLng(37.26921493,127.1149628)
+ },
+ {
+   id: 35,
+   content: "안성 운전전문학원",
+   address_full: "경기 안성시 대덕면 안성맞춤대로 1694-12",
+   fee1: 638000,
+   fee2: 638000,
+   bus: "http://www.asdrive.co.kr/company_04.html",
+   phone_number: "031-676-5757",
+   url: "http://www.asdrive.co.kr/",
+   latlng: new kakao.maps.LatLng(37.06151927,127.2571261)
+ },
+ {
+   id: 36,
+   content: "송탄역 운전전문학원",
+   address_full: "경기 평택시 목천로 72-17",
+   fee1: 628100,
+   fee2: 628100,
+   bus: "http://www.drivingacademy.co.kr/company_04.html",
+   phone_number: "031-655-0992",
+   url: "http://www.drivingacademy.co.kr/",
+   latlng: new kakao.maps.LatLng(37.08889909,127.0571857)
+ },
+ {
+   id: 37,
+   content: "이천 운전전문학원",
+   address_full: "경기 이천시 부발읍 황무로1605번길 109-73",
+   fee1: null,
+   fee2: null,
+   bus: "https://6317777.modoo.at/?link=3gws1h5d",
+   phone_number: "031-631-7777",
+   url: "https://6317777.modoo.at/",
+   latlng: new kakao.maps.LatLng(37.27486461,127.5204755)
+ },
+ {
+   id: 38,
+   content: "서부 운전전문학원",
+   address_full: "경기 김포 양촌 석모 892-3",
+   fee1: 594000,
+   fee2: 594000,
+   bus: "http://xn--z92bt5bg1eyxhbew0fa914y.kr/s1_2.php",
+   phone_number: "031-9899-011",
+   url: "http://xn--z92bt5bg1eyxhbew0fa914y.kr/",
+   latlng: new kakao.maps.LatLng(37.68465337,126.6015557)
+ },
+ {
+   id: 39,
+   content: "중앙 운전전문학원",
+   address_full: "경기 평택시 울성길 35",
+   fee1: 628100,
+   fee2: 628100,
+   bus: "http://jadrive.co.kr/sub-1/link_url.asp?ma_url=sub_4",
+   phone_number: "031-666-0007",
+   url: "http://jadrive.co.kr/",
+   latlng: new kakao.maps.LatLng(37.00334946,127.0720505)
+ },
+ {
+   id: 40,
+   content: "장호원 운전전문학원",
+   address_full: "경기 이천시 장호원읍 장여로 229-33",
+   fee1: 566500,
+   fee2: 566500,
+   bus: "",
+   phone_number: "1600-2956",
+   url: "http://jhwcar.co.kr/",
+   latlng: new kakao.maps.LatLng(37.13772401,127.6238715)
+ },
+ {
+   id: 41,
+   content: "뉴신진 운전전문학원",
+   address_full: "경기 여주군 여주읍 여주남로 236",
+   fee1: 638000,
+   fee2: 638000,
+   bus: "http://www.sjdriving.kr/skin/page/intro03.html",
+   phone_number: "1566-3823",
+   url: "http://www.sjdriving.kr/",
+   latlng: new kakao.maps.LatLng(37.26940351,127.6061739)
+ },
+ {
+   id: 42,
+   content: "단원 운전전문학원",
+   address_full: "경기 안산시 단원구 대선로 40-5",
+   fee1: 606000,
+   fee2: 606000,
+   bus: "http://danwondrive.com/company_04.html",
+   phone_number: "080-333-6600",
+   url: "http://danwondrive.com/",
+   latlng: new kakao.maps.LatLng(37.26747163,126.5663025)
+ },
+ {
+   id: 43,
+   content: "신동아 운전전문학원",
+   address_full: "경기 평택시 서탄면 발안로 927",
+   fee1: 616000,
+   fee2: 616000,
+   bus: "http://sdonga.com/shu/01.asp",
+   phone_number: "1588-0636",
+   url: "http://sdonga.com/",
+   latlng: new kakao.maps.LatLng(37.12554066,127.0047711)
+ },
+ {
+   id: 44,
+   content: "동양 운전전문학원",
+   address_full: "경기 이천시 부발읍 중부대로 1732-3",
+   fee1: 627000,
+   fee2: 627000,
+   bus: "",
+   phone_number: "031-632-1223",
+   url: "http://www.dyangdrive.co.kr/",
+   latlng: new kakao.maps.LatLng(37.28935746,127.4990728)
+ },
+ {
+   id: 45,
+   content: "안성신진 운전전문학원",
+   address_full: "경기 안성시 중리길 30",
+   fee1: 618200,
+   fee2: 618200,
+   bus: "http://assdrive.co.kr/company_03.html",
+   phone_number: "031-674-5454",
+   url: "http://assdrive.co.kr/",
+   latlng: new kakao.maps.LatLng(36.98546556,127.2704442)
+ },
+ {
+   id: 46,
+   content: "수원역 운전전문학원",
+   address_full: "경기 수원시 권선구 평동로 110",
+   fee1: 632500,
+   fee2: 632500,
+   bus: "http://www.driverschool.co.kr/main/sub.html?pageCode=13",
+   phone_number: "031-296-9696",
+   url: "http://www.driverschool.co.kr/",
+   latlng: new kakao.maps.LatLng(37.26041937,126.9955363)
+ },
+ {
+   id: 47,
+   content: "신분당 운전전문학원",
+   address_full: "경기 용인시 처인구 모현면 오산로 13-64",
+   fee1: 572000,
+   fee2: 572000,
+   bus: "http://www.sinbundangcar.com/company_04.html?PHPSESSID=34d2ff0f2c8a1907aa1bc2b93a85ce81",
+   phone_number: "1899-0530",
+   url: "http://www.sinbundangcar.com/",
+   latlng: new kakao.maps.LatLng(37.32975361,127.1513417)
+ },
+ {
+   id: 48,
+   content: "한강 운전전문학원",
+   address_full: "경기 김포시 통진읍 율마로300번길 153",
+   fee1: 590700,
+   fee2: 590700,
+   bus: "http://hangangcar.co.kr/company_04.html",
+   phone_number: "1688-7877",
+   url: "http://hangangcar.co.kr/#",
+   latlng: new kakao.maps.LatLng(37.68100241,126.6038797)
+ },
+ {
+   id: 49,
+   content: "아시아 운전전문학원",
+   address_full: "경기 화성시 경기대로 979",
+   fee1: 655600,
+   fee2: 655600,
+   bus: "",
+   phone_number: "031-239-8477",
+   url: "http://www.asiadrive.kr/",
+   latlng: new kakao.maps.LatLng(37.20333225,127.0379736)
+ },
+ {
+   id: 50,
+   content: "수지풍덕 운전전문학원",
+   address_full: "경기 용인시 수지구 수풍로37번길 56",
+   fee1: 594000,
+   fee2: 594000,
+   bus: "http://pungdukcar.com/about/about_03.php",
+   phone_number: "031-261-3333",
+   url: "http://pungdukcar.com/",
+   latlng: new kakao.maps.LatLng(37.33090218,127.0857573)
+ },
+ {
+   id: 51,
+   content: "모란 운전전문학원",
+   address_full: "경기 광주시 절골길 83",
+   fee1: 598400,
+   fee2: 598400,
+   bus: "http://www.mrdrive.kr/s1_2.php",
+   phone_number: "031-765-9999",
+   url: "http://www.mrdrive.kr/",
+   latlng: new kakao.maps.LatLng(37.40543363,127.2296593)
+ },
+ {
+   id: 52,
+   content: "용인 운전전문학원",
+   address_full: "경기 용인시 처인구 양지면 주북로 122",
+   fee1: 583000,
+   fee2: 583000,
+   bus: "http://www.yongincar.co.kr/company_04.html",
+   phone_number: "1600-5045",
+   url: "http://www.yongincar.co.kr/#",
+   latlng: new kakao.maps.LatLng(37.24763954,127.2453954)
+ },
+ {
+   id: 53,
+   content: "동부 운전전문학원",
+   address_full: "경기 광주시 오포읍 포은대로 332",
+   fee1: 572000,
+   fee2: 572000,
+   bus: "http://dongbucar.com/shuttle_03.html",
+   phone_number: "1577-5887",
+   url: "http://dongbucar.com/index.html",
+   latlng: new kakao.maps.LatLng(37.35883748,127.2280423)
+ },
+ {
+   id: 54,
+   content: "수원원천 운전전문학원",
+   address_full: "경기 수원시 영통구 중부대로462번길 23",
+   fee1: 632500,
+   fee2: 632500,
+   bus: "http://www.xn--zo5b1bb54j79ltto.com/%EC%85%94%ED%8B%80%EB%B2%84%EC%8A%A4",
+   phone_number: "031-217-8833",
+   url: "http://www.xn--zo5b1bb54j79ltto.com/",
+   latlng: new kakao.maps.LatLng(37.26767272,127.0652583)
+ },
+ {
+   id: 55,
+   content: "신현대 운전전문학원",
+   address_full: "경기 의왕시 경수대로 321",
+   fee1: 633600,
+   fee2: 633600,
+   bus: "http://www.shinhyundai.co.kr/edu/0101.asp",
+   phone_number: "031-421-5000",
+   url: "http://www.shinhyundai.co.kr/",
+   latlng: new kakao.maps.LatLng(37.35436061,126.9684813)
+ },
+ {
+   id: 56,
+   content: "e삼성 운전전문학원",
+   address_full: "경기 용인 처인 남동",
+   fee1: 594000,
+   fee2: 594000,
+   bus: "http://www.ssdrive.kr/s1_2.php",
+   phone_number: "031-335-0900",
+   url: "http://www.ssdrive.kr/",
+   latlng: new kakao.maps.LatLng(37.22205106,127.1997735)
+ },
+ {
+   id: 57,
+   content: "뉴삼성 운전전문학원",
+   address_full: "경기 수원시 권선구 매송고색로506번길 18",
+   fee1: 638000,
+   fee2: 638000,
+   bus: "http://www.newsamsung.co.kr/sub_01_02",
+   phone_number: "031-296-7711",
+   url: "http://www.newsamsung.co.kr/",
+   latlng: new kakao.maps.LatLng(37.24340435,126.9605031)
+ },
+ {
+   id: 58,
+   content: "(주)화성본오 운전전문학원",
+   address_full: "경기 화성시 우정읍 3.1만세로 199-17",
+   fee1: 630000,
+   fee2: 630000,
+   bus: "http://www.bonodrive.co.kr/sub/sub1-2.php",
+   phone_number: "031-351-8900",
+   url: "http://www.bonodrive.co.kr/",
+   latlng: new kakao.maps.LatLng(37.09158837,126.8289459)
+ },
+ {
+   id: 59,
+   content: "광원 운전전문학원",
+   address_full: "경기 양평군 양평읍 중앙로 244-26",
+   fee1: 627000,
+   fee2: 627000,
+   bus: "http://www.xn--e42b76r7yao2bn15ayzc.com/bus_01.html",
+   phone_number: "031-771-7100",
+   url: "http://www.xn--e42b76r7yao2bn15ayzc.com/",
+   latlng: new kakao.maps.LatLng(37.48861747,127.5149711)
+ },
+ {
+   id: 60,
+   content: "대동 운전전문학원",
+   address_full: "경기 평택 팽성 송화 220",
+   fee1: null,
+   fee2: null,
+   bus: "http://www.ddrive.kr/company_05.html",
+   phone_number: "031-655-5252",
+   url: "http://www.ddrive.kr/?PHPSESSID=199f7244e8cf4105ddc210ef7cd2be04",
+   latlng: new kakao.maps.LatLng(37.02303199,127.0037131)
+ },
+ {
+   id: 61,
+   content: "서울광명 운전전문학원",
+   address_full: "경기 광명시 안현로 81",
+   fee1: 689700,
+   fee2: 689700,
+   bus: "http://www.sgcar.co.kr/company_03.html",
+   phone_number: "02-894-6000",
+   url: "http://www.sgcar.co.kr/",
+   latlng: new kakao.maps.LatLng(37.46919172,126.8797131)
+ },
+ {
+   id: 62,
+   content: "공도삼성 운전전문학원",
+   address_full: "경기 안성시 공도읍 봉기길 87",
+   fee1: 638000,
+   fee2: 638000,
+   bus: "http://www.gddrive.kr/company_04.html",
+   phone_number: "031-655-6525",
+   url: "http://www.gddrive.kr/",
+   latlng: new kakao.maps.LatLng(36.99999949,127.1876643)
+ },
+ {
+   id: 63,
+   content: "광주제일 운전전문학원",
+   address_full: "경기 광주시 곤지암읍 평촌길11번길 48",
+   fee1: 700700,
+   fee2: 700700,
+   bus: "http://www.jeildrive.kr/company_04.html",
+   phone_number: "031-761-1400",
+   url: "http://www.jeildrive.kr/#",
+   latlng: new kakao.maps.LatLng(37.35489908,127.3327986)
+ },
+ {
+   id: 64,
+   content: "신진중동 운전전문학원",
+   address_full: "경기 부천시 원미구 평천로 651",
+   fee1: 631400,
+   fee2: 631400,
+   bus: "http://www.sinjindrive.com/bbs/board.php?bo_table=0104",
+   phone_number: "032-323-3388",
+   url: "http://www.sinjindrive.com/",
+   latlng: new kakao.maps.LatLng(37.51530865,126.762721)
+ },
+ {
+   id: 65,
+   content: "국제 운전전문학원",
+   address_full: "경기 광주시 오포읍 신현로 55-10",
+   fee1: 595100,
+   fee2: 595100,
+   bus: "http://www.01033944419.infom.kr/?c=167&idx=2",
+   phone_number: "031-718-7777",
+   url: "http://www.01033944419.infom.kr/",
+   latlng: new kakao.maps.LatLng(37.36168664,127.1529959)
+ },
+ {
+   id: 66,
+   content: "상록수 운전전문학원",
+   address_full: "경기 화성시 비봉면 하저자안로 207",
+   fee1: 645500,
+   fee2: 645500,
+   bus: "http://www.ssdriving.co.kr/company_04.html",
+   phone_number: "1577-1667",
+   url: "http://www.ssdriving.co.kr/",
+   latlng: new kakao.maps.LatLng(37.19648443,126.8750252)
+ },
+ {
+   id: 67,
+   content: "유환 운전전문학원",
+   address_full: "경기 군포시 경수대로 453",
+   fee1: 623700,
+   fee2: 623700,
+   bus: "http://www.yuhwancar.com/default/1004web/bb/b04.php",
+   phone_number: "031-454-6500",
+   url: "http://www.yuhwancar.com/default/",
+   latlng: new kakao.maps.LatLng(37.36303108,126.959122)
+ },
+ {
+   id: 68,
+   content: "(주)부천 운전전문학원",
+   address_full: "경기 부천시 오정구 성오로 157",
+   fee1: 633600,
+   fee2: 633600,
+   bus: "http://bcdriver.3458.co.kr/m/system/sub5_1.html",
+   phone_number: "032-679-3000",
+   url: "http://bcdriver.3458.co.kr/m/index.html",
+   latlng: new kakao.maps.LatLng(37.52669995,126.7973678)
+ },
+ {
+   id: 69,
+   content: "명학 운전전문학원",
+   address_full: "경기 안양시 만안구 덕천로48번길 71",
+   fee1: 649000,
+   fee2: 649000,
+   bus: "http://www.mhdrive.com/index.php?mid=m1_3",
+   phone_number: "031-468-6800",
+   url: "http://www.mhdrive.com/",
+   latlng: new kakao.maps.LatLng(37.38685417,126.9399357)
+ },
+ {
+   id: 70,
+   content: "e현대 운전전문학원",
+   address_full: "경기 시흥시 서해안로 584-1",
+   fee1: null,
+   fee2: null,
+   bus: "http://www.shcardrive.co.kr/company_03.html",
+   phone_number: "031-433-5577",
+   url: "http://www.shcardrive.co.kr/",
+   latlng: new kakao.maps.LatLng(37.36949574,126.7389797)
+ },
+ {
+   id: 71,
+   content: "성남 운전전문학원",
+   address_full: "경기 광주시 장지9길 140",
+   fee1: 600700,
+   fee2: 600700,
+   bus: "http://www.sndrive.co.kr/company_04.html?PHPSESSID=c0616632896bcd02861f251b710a4aee",
+   phone_number: "031-768-6811",
+   url: "http://www.sndrive.co.kr/",
+   latlng: new kakao.maps.LatLng(37.40500062,127.2410645)
+ },
+ {
+   id: 72,
+   content: "뉴현대 운전전문학원",
+   address_full: "경기 안산시 단원구 영전로 76",
+   fee1: 715000,
+   fee2: 715000,
+   bus: "http://www.nhddrive.com/company_04.html",
+   phone_number: "1566-9013",
+   url: "http://www.nhddrive.com/#",
+   latlng: new kakao.maps.LatLng(37.25136985,126.5972589)
+ },
+ {
+   id: 73,
+   content: "(주)하남21C 운전전문학원",
+   address_full: "경기 광주시 회안대로 982",
+   fee1: 723000,
+   fee2: 693000,
+   bus: "https://www.hanam21c.co.kr/bbs/page.php?hid=aboutus04",
+   phone_number: "031-763-2221",
+   url: "http://www.hanam21c.co.kr/",
+   latlng: new kakao.maps.LatLng(37.43220528,127.26308)
+ },
+ {
+   id: 74,
+   content: "(주)안산대일 운전전문학원",
+   address_full: "경기 안산시 단원구 원포공원로 45",
+   fee1: 685000,
+   fee2: 685000,
+   bus: "http://daeildrive.co.kr/",
+   phone_number: "031-413-1100",
+   url: "http://daeildrive.co.kr/",
+   latlng: new kakao.maps.LatLng(37.30263113,126.8091702)
+ },
+ {
+   id: 75,
+   content: "이천제일 운전전문학원",
+   address_full: "경기 이천시 신둔면 원적로512번길 256-23",
+   fee1: 739800,
+   fee2: 739800,
+   bus: "http://jeildriving.com/company_04.html",
+   phone_number: "031-638-0707",
+   url: "http://jeildriving.com/#",
+   latlng: new kakao.maps.LatLng(37.31223429,127.452223)
+ },
+ {
+   id: 76,
+   content: "한빛 운전전문학원",
+   address_full: "경기 시흥시 봉화로 49",
+   fee1: 610000,
+   fee2: 610000,
+   bus: "http://xn--xx3bs6moc81du52boa.com/%EC%85%94%ED%8B%80%EB%B2%84%EC%8A%A4%EB%85%B8%EC%84%A0",
+   phone_number: "031-433-5500",
+   url: "http://xn--xx3bs6moc81du52boa.com/",
+   latlng: new kakao.maps.LatLng(37.36713781,126.7395463)
+ },
+ {
+   id: 77,
+   content: "평택안중 운전전문학원",
+   address_full: "경기 평택시 안중읍 서동대로 1673-56",
+   fee1: 627000,
+   fee2: 627000,
+   bus: "http://www.ptajdrive.co.kr/company_04.html",
+   phone_number: "031-682-1140",
+   url: "http://www.ptajdrive.co.kr/?n_media=27758&n_query=%ED%8F%89%ED%83%9D%EC%95%88%EC%A4%91%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_rank=1&n_ad_group=grp-a001-01-000000011568935&n_ad=nad-a001-01-000000066885182&n_keyword_id=nkw-a001-01-000002125846744&n_keyword=%ED%8F%89%ED%83%9D%EC%95%88%EC%A4%91%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_campaign_type=1&n_ad_group_type=1",
+   latlng: new kakao.maps.LatLng(36.99176844,126.9375776)
+ },
+ {
+   id: 78,
+   content: "동일 운전전문학원",
+   address_full: "경기 남양주시 경춘로 679-14",
+   fee1: null,
+   fee2: null,
+   bus: "http://www.dongil-car.co.kr/company_04.html",
+   phone_number: "051-557-3636",
+   url: "http://www.dongil-car.co.kr/",
+   latlng: new kakao.maps.LatLng(37.62293261,127.1806394)
+ },
+ {
+   id: 79,
+   content: "신광 운전전문학원",
+   address_full: "경기 동두천시 벌마들로40번길 24-9",
+   fee1: null,
+   fee2: null,
+   bus: "http://skdrive.co.kr/company_02.html",
+   phone_number: "031-862-6433",
+   url: "http://skdrive.co.kr/index.html",
+   latlng: new kakao.maps.LatLng(37.90334002,127.0398666)
+ },
+ {
+   id: 80,
+   content: "양원 운전전문학원",
+   address_full: "경기 남양주시 진접읍 경복대로샘말길 35-2",
+   fee1: 600000,
+   fee2: 600000,
+   bus: "http://www.ywdrive.com/pc/shuttle/shuttle.html",
+   phone_number: "1544-3499",
+   url: "http://www.ywdrive.com/pc/index.html?NaPm=ct%3Dkkq71614%7Cci%3D0uB7002Hi1Hu%2DcSeFKWW%7Ctr%3Dsa%7Chk%3D8beae5acf359a0056b12ac0467f3153ef5e6519f&OV_REFFER=https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%EC%96%91%EC%9B%90+%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&oquery=%EC%8B%A0%EA%B4%91+%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&tqi=htWdkdprvxsssBjqhkdssssstMl-081094",
+   latlng: new kakao.maps.LatLng(37.71550106,127.2103147)
+ },
+ {
+   id: 81,
+   content: "한미 운전전문학원",
+   address_full: "경기 양주시 삼숭로129번길 11",
+   fee1: null,
+   fee2: null,
+   bus: "http://www.hanmidrive.com/ab-4417-9",
+   phone_number: "1588-1268",
+   url: "http://www.hanmidrive.com/",
+   latlng: new kakao.maps.LatLng(37.80387039,127.0982472)
+ },
+ {
+   id: 82,
+   content: "강북삼성 운전전문학원",
+   address_full: "경기 양주시 백석읍 꿈나무로 93",
+   fee1: null,
+   fee2: null,
+   bus: "http://www.kbdrive.co.kr/bus_01.html",
+   phone_number: "1577-4877",
+   url: "http://www.kbdrive.co.kr/",
+   latlng: new kakao.maps.LatLng(37.79852747,126.994834)
+ },
+ {
+   id: 83,
+   content: "우리 운전전문학원",
+   address_full: "경기 가평군 가평읍 태봉두밀로 34-71",
+   fee1: 560000,
+   fee2: 560000,
+   bus: "http://www.wooridrive.com/company_02.html",
+   phone_number: "1661-0050",
+   url: "http://www.wooridrive.com/?n_media=27758&n_query=%EC%9A%B0%EB%A6%AC%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_rank=1&n_ad_group=grp-m001-01-000000656989956&n_ad=nad-a001-01-000000077900989&n_keyword_id=nkw-m001-01-000000674635643&n_keyword=%EC%9A%B0%EB%A6%AC%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_campaign_type=1&n_ad_group_type=1#",
+   latlng: new kakao.maps.LatLng(37.80491518,127.4864328)
+ },
+ {
+   id: 84,
+   content: "명문 운전전문학원",
+   address_full: "경기 고양시 일산서구 탄중로275번길 52-35",
+   fee1: 693000,
+   fee2: 693000,
+   bus: "http://www.myungmuncar.co.kr/bus_01.html",
+   phone_number: "031-381-5000",
+   url: "http://www.myungmuncar.co.kr/#",
+   latlng: new kakao.maps.LatLng(37.69744351,126.77775)
+ },
+ {
+   id: 85,
+   content: "엘씨 운전전문학원",
+   address_full: "경기 파주시 문산읍 우계로457번길 21",
+   fee1: 616000,
+   fee2: 616000,
+   bus: "http://www.lccar.kr/shu/01.asp",
+   phone_number: "031-952-6400",
+   url: "http://www.lccar.kr/",
+   latlng: new kakao.maps.LatLng(37.8582911,126.7925004)
+ },
+ {
+   id: 86,
+   content: "신일 운전전문학원",
+   address_full: "경기 고양시 일산동구 성현로268번길 93",
+   fee1: 660000,
+   fee2: 660000,
+   bus: "http://www.shinil-car.co.kr/company_03.html",
+   phone_number: "031-977-1522",
+   url: "http://www.shinil-car.co.kr/",
+   latlng: new kakao.maps.LatLng(37.70169764,126.8141416)
+ },
+ {
+   id: 87,
+   content: "올리브 운전전문학원",
+   address_full: "경기 파주시 탄현면 장릉로 5-23",
+   fee1: 693000,
+   fee2: 693000,
+   bus: "http://www.olivedriving.co.kr/check_04.html",
+   phone_number: "031-948-8600",
+   url: "http://www.olivedriving.co.kr/",
+   latlng: new kakao.maps.LatLng(37.77328249,126.717113)
+ },
+ {
+   id: 88,
+   content: "뉴대성 운전전문학원",
+   address_full: "경기 고양시 일산동구 장대길 160-38",
+   fee1: 610000,
+   fee2: 610000,
+   bus: "",
+   phone_number: "0507-1346-7077",
+   url: "",
+   latlng: new kakao.maps.LatLng(37.64314904,126.7620954)
+ },
+ {
+   id: 89,
+   content: "뉴강남 운전전문학원",
+   address_full: "경기 가평군 설악면 신천중앙로28번길 3-132",
+   fee1: null,
+   fee2: null,
+   bus: "http://www.newdriver.co.kr/company_04.html",
+   phone_number: "1800-3233",
+   url: "http://www.newdriver.co.kr/index.html",
+   latlng: new kakao.maps.LatLng(37.66743919,127.4937658)
+ },
+ {
+   id: 90,
+   content: "한수 운전전문학원",
+   address_full: "경기 파주시 교하로 507",
+   fee1: 649000,
+   fee2: 649000,
+   bus: "http://www.xn--2q1bv3l24f54ebeu1cjxa156go2xya.com/%EC%9D%BC%EC%82%B0%EB%B0%A9%ED%96%A5",
+   phone_number: "031-943-0037",
+   url: "http://www.xn--2q1bv3l24f54ebeu1cjxa156go2xya.com/",
+   latlng: new kakao.maps.LatLng(37.70445701,126.721467)
+ },
+ {
+   id: 91,
+   content: "신원 운전전문학원",
+   address_full: "경기 고양시 일산서구 덕산로 167",
+   fee1: null,
+   fee2: null,
+   bus: "",
+   phone_number: "031-923-0997",
+   url: "http://www.driveworld.co.kr/",
+   latlng: new kakao.maps.LatLng(37.69464339,126.7208784)
+ },
+ {
+   id: 92,
+   content: "하예서부 운전전문학원",
+   address_full: "경기 파주시 파주읍 학당말길 141",
+   fee1: 616000,
+   fee2: 616000,
+   bus: "http://www.hayedrive.com/company_02.html",
+   phone_number: "1522-3208",
+   url: "http://www.hayedrive.com/",
+   latlng: new kakao.maps.LatLng(37.83991252,126.8202155)
+ },
+ {
+   id: 93,
+   content: "정다운파주 운전전문학원",
+   address_full: "경기 파주시 월롱면 정문로293번길 93",
+   fee1: 649000,
+   fee2: 649000,
+   bus: "http://www.pajucar.co.kr/sub1.php?num=1_2",
+   phone_number: "031-954-5858",
+   url: "http://www.pajucar.co.kr/",
+   latlng: new kakao.maps.LatLng(37.78862403,126.8126739)
+ },
+ {
+   id: 94,
+   content: "자유로 운전전문학원",
+   address_full: "경기 파주시 범벅골길 60-6",
+   fee1: 649000,
+   fee2: 649000,
+   bus: "http://www.jayuway.kr/home/homepage.php?homefile=sub_01_03.html",
+   phone_number: "031-947-9944",
+   url: "http://www.jayuway.kr/home/index.php?n_media=27758&n_query=%EC%9E%90%EC%9C%A0%EB%A1%9C%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_rank=1&n_ad_group=grp-m001-01-000001559456389&n_ad=nad-a001-01-000000111890622&n_keyword_id=nkw-m001-01-000001559456443&n_keyword=%EC%9E%90%EC%9C%A0%EB%A1%9C%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_campaign_type=1&n_ad_group_type=1&NaPm=ct%3Dkkqcvmf4%7Cci%3D0zS00008rLHuYyC13L3Q%7Ctr%3Dsa%7Chk%3D2f1f1dab91e602eab99722ebd8bf84eaaa54fafa",
+   latlng: new kakao.maps.LatLng(37.74536966,126.7362581)
+ },
+ {
+   id: 95,
+   content: "행운 운전전문학원",
+   address_full: "경기 포천시 신북면 중앙로 332-34",
+   fee1: null,
+   fee2: null,
+   bus: "http://www.hwolle.co.kr/ab-921",
+   phone_number: "1577-1978",
+   url: "http://www.hwolle.co.kr/",
+   latlng: new kakao.maps.LatLng(37.91515199,127.2151536)
+ },
+ {
+   id: 96,
+   content: "신진 운전전문학원",
+   address_full: "경기 파주시 월롱면 정문로293번길 95",
+   fee1: 649000,
+   fee2: 649000,
+   bus: "http://1644-8677.com/1_3.php",
+   phone_number: "1644-8677",
+   url: "http://1644-8677.com/",
+   latlng: new kakao.maps.LatLng(37.78953053,126.8127911)
+ },
+ {
+   id: 97,
+   content: "연천 운전전문학원",
+   address_full: "경기 연천군 연천읍 통현길 100",
+   fee1: null,
+   fee2: null,
+   bus: "http://www.ycdrive.com/page/board.php?su_id=sub0401",
+   phone_number: "031-834-5800",
+   url: "http://www.ycdrive.com/?n_media=27758&n_query=%EC%97%B0%EC%B2%9C%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_rank=1&n_ad_group=grp-a001-01-000000000970141&n_ad=nad-a001-01-000000086648818&n_keyword_id=nkw-a001-01-000000163457717&n_keyword=%EC%97%B0%EC%B2%9C%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_campaign_type=1&n_ad_group_type=1",
+   latlng: new kakao.maps.LatLng(38.0622285,127.0826642)
+ },
+ {
+   id: 98,
+   content: "북부중앙 운전전문학원",
+   address_full: "경기 양주시 화합로 1221",
+   fee1: null,
+   fee2: null,
+   bus: "",
+   phone_number: "031-858-1555",
+   url: "https://bbdrive114.modoo.at/",
+   latlng: new kakao.maps.LatLng(37.8485995,127.0509674)
+ },
+ {
+   id: 99,
+   content: "시티 운전전문학원",
+   address_full: "경기 의정부시 신흥로 41",
+   fee1: null,
+   fee2: null,
+   bus: "http://citydrive.co.kr/new/bbs/content.php?co_id=0103",
+   phone_number: "031-877-1377",
+   url: "http://citydrive.co.kr/new/index.php",
+   latlng: new kakao.maps.LatLng(37.71974711,127.0435859)
+ },
+ {
+   id: 100,
+   content: "대진 운전전문학원",
+   address_full: "경기 포천시 군내면 포천로909번길 31",
+   fee1: 747000,
+   fee2: 747000,
+   bus: "http://www.djdrive.kr/company_04.html",
+   phone_number: "1899-2846",
+   url: "http://www.djdrive.kr/",
+   latlng: new kakao.maps.LatLng(37.85240605,127.1947341)
+ },
+ {
+   id: 101,
+   content: "new강동 운전전문학원",
+   address_full: "경기 남양주시 진접읍 진건오남로 1048",
+   fee1: null,
+   fee2: null,
+   bus: "http://www.jeil82.com/bbs/content.php?co_id=page0103",
+   phone_number: "1599-3399",
+   url: "http://www.jeil82.com/?n_media=27758&n_query=%EB%89%B4%EA%B0%95%EB%8F%99%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_rank=1&n_ad_group=grp-a001-01-000000001305006&n_ad=nad-a001-01-000000103511067&n_keyword_id=nkw-a001-01-000000231285279&n_keyword=%EB%89%B4%EA%B0%95%EB%8F%99%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_campaign_type=1&n_ad_group_type=1",
+   latlng: new kakao.maps.LatLng(37.71230391,127.1836798)
+ },
+ {
+   id: 102,
+   content: "그린 운전전문학원",
+   address_full: "경기 포천시 소흘 223-38",
+   fee1: null,
+   fee2: null,
+   bus: "http://www.gdts.co.kr/index.php?mid=page_WAkF18",
+   phone_number: "1588-2977",
+   url: "http://www.gdts.co.kr/",
+   latlng: new kakao.maps.LatLng(37.96766787,127.237579)
+ },
+ {
+   id: 103,
+   content: "신제일 운전전문학원",
+   address_full: "경기 포천시 영북면 문암길 20-1",
+   fee1: null,
+   fee2: null,
+   bus: "http://www.sinjeil87.com/bbs/content.php?co_id=bus",
+   phone_number: "080-536-8787",
+   url: "http://www.sinjeil87.com/",
+   latlng: new kakao.maps.LatLng(38.07979791,127.2741596)
+ },
+ {
+   id: 104,
+   content: "스피드(일반) 운전전문학원",
+   address_full: "경기 양주시 청담로 42번길 63-15",
+   fee1: 594000,
+   fee2: 594000,
+   bus: "http://www.smartdriving.kr/intro_03.html",
+   phone_number: "070-4576-1400",
+   url: "http://www.smartdriving.kr/#",
+   latlng: new kakao.maps.LatLng(37.80454706,127.0743903)
+ }
+];
+
+// 마커 이미지의 이미지 주소입니다
+var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+for (var i = 0; i < positions.length; i ++) {
+
+    // 마커 이미지의 이미지 크기 입니다
+    var imageSize = new kakao.maps.Size(24, 35);
+
+    // 마커 이미지를 생성합니다
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng, // 마커를 표시할 위치
+        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+        image : markerImage // 마커 이미지
+    });
+}
+
+</script>
+{% endblock %}
+
+
