@@ -22,6 +22,7 @@ nums <- sample(1:100, 10)
 print(sort(nums))
 print(sort(nums,decreasing = TRUE))
 print(nums[nums>50])
+## 50보다 작거나 같은 원소들의 인덱스를 추출하시오
 print(which(nums<=50))
 print(which.max(nums))
 print(which.min(nums))
