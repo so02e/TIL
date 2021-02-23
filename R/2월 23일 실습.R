@@ -1,17 +1,16 @@
 # 문제 1
-(v1 <- sample(1:30,10))
-(v2 <- letters[26:17])
-names(v1) <- v2
+(v1 <- sample(1:30,10,replace=TRUE)) #중복 허용
+v2 <- v1
+names(v2) <- letters[26:17]
 print(v1); print(v2)
 
 # 문제 2
 v<-seq(10,38,by=2) 
-m1 <- matrix(v,nrow=3)
-m2 <- m1 + 100
-print(m1); print(m2)
+(m1 <- matrix(v,nrow=3,byrow=T))# 행 우선
+(m2 <- m1 + 100)
 (m_max_v <- max(m1))
 (m_min_v <- min(m1))
-(row_max <- apply(m1, 1, max))
+(row_max <- apply(m1, 1, max)) # rowsums rowmins, rowmax는 없기 때문에 apply 함수 이용
 (col_max <- apply(m1, 2, max))
 
 # 문제 3
@@ -75,3 +74,4 @@ print(a)
 
 # 삭제
 rm(a)
+
