@@ -34,8 +34,12 @@ print(m4)
 alpha <- matrix(letters[1:6],nrow=2)
 add <- c("x","y","z")
 alpha2 <- rbind(alpha,add)
+      # 아규먼트가 벡터가 올 수도 있고 행렬이 올 수 있다.
+alpha4 <- rbind(alpha, c("x","y","z")) 
+
 add2 <- c("s","p")
 alpha3 <- cbind(alpha,add2)
+alpha5 <- cbind(alpha, c("s","p"))
 
 print(alpha);print(alpha2);print(alpha3)
 
