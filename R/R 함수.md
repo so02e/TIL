@@ -1,7 +1,7 @@
 # 1. 벡터 생성 함수
 ## (1) c()
 
-c() 함수는 아규먼트를 원하는 만큼 전달할 수 있다.
+`c()` 함수는 아규먼트를 원하는 만큼 전달할 수 있다.
 
 ```R
 v1 <- c(5,2,6,7,1)
@@ -11,7 +11,7 @@ v1 <- c(5,2,6,7,1)
 
 ## (2) seq()
 
- seq() 함수는 range와 비슷한 성질을 갖는다. 
+ `seq()` 함수는 range와 비슷한 성질을 갖는다. 
 
 ```R
 v2 <- seq(1,9,by=2)
@@ -21,7 +21,7 @@ v2 <- seq(1,9,by=2)
 
 ## (3) rep()
 
-함수는 데이터 값을 몇 번 반복할지 정하여 데이터셋을 만든다.
+`rep()` 함수는 데이터 값을 몇 번 반복할지 정하여 데이터셋을 만든다.
 
 ```R
 v3 <- rep(1,100)
@@ -34,7 +34,7 @@ v6 <- rep(1:3,each=5) # 1,2,3 이 각각 5번씩 반복된다
 
 ## (4) :
 
-:는 1씩 증가하거나 1씩 감소하여 데이터셋을 만들 때 사용한다.
+`:`는 1씩 증가하거나 1씩 감소하여 데이터셋을 만들 때 사용한다.
 
 ```R
 v7 <- 1:10
@@ -84,25 +84,25 @@ v8 <- 10:1
 
 # 3. 타입 체크 함수 : is.
 
-is.character(x) - 문자형
+`is.character(x)` - 문자형
 
-is.logical(x) - 논리형
+`is.logical(x)` - 논리형
 
-is.numeric(x) - 수치형
+`is.numeric(x)` - 수치형
 
-is.double(x) - 실수형
+`is.double(x)` - 실수형
 
-is.integer(x) - 정수형
+`is.integer(x)` - 정수형
 
-is.null(x) - 데이터 셋이 비어있음 
+`is.null(x)` - 데이터 셋이 비어있음 
 
-is.na(x) - 데이터 셋의 내부에 존재하지 않는 값(결측치)
+`is.na(x)` - 데이터 셋의 내부에 존재하지 않는 값(결측치)
 
-is.nan(x) : 숫자가 아님
+`is.nan(x)` : 숫자가 아님
 
-is.finite(x) : 유한대값
+`is.finite(x)` : 유한대값
 
-is.infinite(x) : 무한대값
+`is.infinite(x)` : 무한대값
 
 
 
@@ -110,17 +110,17 @@ is.infinite(x) : 무한대값
 
 # 4. 강제 형변환 함수 : as.
 
-as.character(x)            
+`as.character(x)        `    
 
-as.complex(x)      
+`as.complex(x)     ` 
 
-as.numeric(x)              
+`as.numeric(x)  `            
 
-as.double(x)                       
+`as.double(x)    `                   
 
-as.integer(x)               
+`as.integer(x)`               
 
-as.logical(x)       
+`as.logical(x)     `  
 
 
 
@@ -129,13 +129,13 @@ as.logical(x)
 
 # 5. 자료형 또는 구조 확인 함수
 
-class(x)
+`class(x)`
 
-str(x)
+`str(x)`
 
-mode(x)
+`mode(x)`
 
-typeof(x)
+`typeof(x)`
 
 
 
@@ -239,7 +239,7 @@ which(rainfall == 348.0)
 
 ### 2) which (조건)
 
-비교식이 참인 경우의 index값을 추출한다.
+`which`는 비교식이 참인 경우의 index값을 추출한다.
 
 ```R
 which(rainfall > 100) 
@@ -255,7 +255,7 @@ month.name[which(rainfall > 100)] # which에 의해 추출된 5,6,7,8,9에 따�
 
 ### 3) which.max
 
-which.max는 argument 벡터에서 최대값의 인덱스를 추출한다.
+`which.max`는 argument 벡터에서 최대값의 인덱스를 추출한다.
 
 ```R
 which.max(rainfall) #which.max는 argument 벡터에서 최대값의 인덱스를 추출
@@ -268,7 +268,7 @@ month.korname[which.max(rainfall)]
 
 ### 4) which.min
 
-which.max는 argument 벡터에서 최소값의 인덱스를 추출한다.
+`which.min`는 argument 벡터에서 최소값의 인덱스를 추출한다.
 
 ```R
 which.min(rainfall) #which.max는 argument 벡터에서 최소값의 인덱스를 추출
