@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% block css %}
+
+{% endblock %}
+{% block headcontent %}
+<title>다함께 차차차</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Nanum+Brush+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR:200,300,400,500,600,700,900&display=swap');
+  .img{
+    position: relative;
+    background-size: cover;
+  }
+
+  .img-cover{
+     position: absolute;
+     width: 100%;
+     z-index:1;
+  }
+
+  .img .content{
+     position: absolute;
+     top:50%;
+     left:35%;
+     transform: translate(-50%, -35%);
+     z-index: 2;
+  }
+
+  .content{
+    text-align : center;
+    width : 70%;
+    background-color : rgba(255,255,255,0.4);
+  }
+
+p {
+  font-size : 30px;
+  color : black;
+ font-family: 'Nanum Brush Script', cursive;
+
+}
+
+h1 {
+  color : #D3D3D#;
+  font-size : 45px;
+  font-family: 'Noto Serif KR', serif;
+}
+
+h4 {
+  font-family: 'Noto Serif KR', serif;
+
+}
+</style>
+
+<main class="" id="hero-full-wrapper">
+
+        <div class="img">
+      <img src="{% static 'images/4.png' %}" width="100%" style="overflow: hidden; ">
+        <div class="img-cover"></div>
+    </div>
+
+  <br>
+
+     <div class="img">
+      <img src="{% static 'images/img06.jpg' %}" width="100%"  style="overflow: hidden; opacity: 0.9;">
+        <div class="content">
+           <br><h1>지도편달(指導鞭撻) </h1> <br>
+      <p>'지도편달'은 바른 길로 가도록 가르쳐 이끌며 경계하고 격려한다는 뜻입니다. <br>
+        저희 '팀 지도편달'은 운전을 시작하려는 사람들에게 운전 면허 시험 정보, 학원, 시험장 정보를 <br>
+          제공하기 위한 목적으로 프로젝트를 시작했습니다.</p> <br>
+        </div>
+        <div class="img-cover"></div>
+    </div>
+
+  <br>
+
+
+    <div class="img">
+      <img src="{% static 'images/img03.jfif' %}" width="100%" style="overflow: hidden; opacity: 0.4;">
+        <div class="content">
+           <br><h1>'다함께 차차차' 프로젝트란?</h1> <br>
+      <p>저희는 다함께 차차차 프로젝트를 통해 분산되어 있는 운전면허학원의 정보(수강료, 위치, 셔틀버스 정보)와 <br>
+          운전면허시험장의 코스정보를 한눈에 확인해 볼 수 있는 사이트를 구축했습니다.<br>
+          본 사이트가 예비 운전자 여러분들의 합리적인 학원 선택에 도움이 되길 바랍니다.
+      </p> <br>
+        </div>
+        <div class="img-cover"></div>
+    </div>
+
+    <br>
+
+
+    <footer class="site-footer">
+		<div class="container">
+
+			<div class="row mb-5">
+				<p class="col-12 text-center">
+					copyright &copy; <script>document.write(new Date().getFullYear());</script> by 지도편달
+				</p>
+			</div>
+
+			<div class="row mb-5">
+				<div class="col-md-12 text-center">
+                    <a href="https://github.com/he-reme"><img alt="" src="{% static 'images/github1.png' %}" width="50px" hspace="15px"></a>
+                    <a href="https://github.com/sanghyun-an"><img alt="" src="{% static 'images/github2.png' %}" width="50px" hspace="15px"></a>
+                    <a href="https://github.com/MyChoYS"><img alt="" src="{% static 'images/github3.png' %}" width="50px" hspace="15px"></a>
+                    <a href="https://github.com/so02e"><img alt="" src="{% static 'images/github4.png' %}" width="50px" hspace="15px"></a>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+
+    <!--
+      <div class="grid-item">
+        <img class="img-responsive" alt="" src="{% static 'images/1.jpg' %}">
+        <a href="https://github.com/he-reme" class="project-description">
+          <div class="project-text-holder">
+            <div class="project-text-inner">
+              <h3>김혜림</h3>
+              <p>he-reme</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+
+      <div class="grid-item">
+        <img class="img-responsive" alt="" src="{% static 'images/4.png' %}">
+        <a href="https://github.com/sanghyun-an" class="project-description">
+          <div class="project-text-holder">
+            <div class="project-text-inner">
+              <h3>안상현</h3>
+              <p>sanghyun-an</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+
+
+      <div class="grid-item">
+        <img class="img-responsive" alt="" src="{% static 'images/6.jpg' %}">
+        <a href="https://github.com/MyChoYS" class="project-description">
+          <div class="project-text-holder">
+            <div class="project-text-inner">
+              <h3>조용상</h3>
+              <p>MyChoYS</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="grid-item">
+    <img class="img-responsive" alt="" src="{% static 'images/2.jpg' %}">
+      <a href="https://github.com/so02e" class="project-description">
+        <div class="project-text-holder">
+          <div class="project-text-inner">
+            <h3>장소영</h3>
+            <p>so02e</p>
+          </div>
+        </div>
+      </a>
+       -->
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+      masonryBuild();
+    });
+  </script>
+
+</main>
+
+{% endblock %}
