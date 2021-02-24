@@ -323,9 +323,9 @@ month.korname[which.min(rainfall)]
 
 ## (8) 통계량
 
-| 최대값 | 최소값 |  평균  |  합   | 기초 통계량 |
-| :----: | :----: | :----: | :---: | :---------: |
-| max()  | min()  | mean() | sum() |  summary()  |
+| 최대값  | 최소값  |   평균   |   합    | 기초 통계량 |
+| :-----: | :-----: | :------: | :-----: | :---------: |
+| `max()` | `min()` | `mean()` | `sum()` | `summary()` |
 
 
 
@@ -335,15 +335,15 @@ month.korname[which.min(rainfall)]
 
 # 8. 랜덤 추출
 
-## (1) sample(a:b,n)
+## (1) sample(a:b,n) 
 
 중복을 허용하지 않고 a에서 b까지의 수에서 n개를 추출한다.
 
 
 
-## (2) sample(a:b,replace = T)
+## (2) sample(a:b,replace = T) : 중복허용
 
-중복 허용하여 a에서 b까지의 수에서 n개를 추출한다.
+**중복 허용**하여 a에서 b까지의 수에서 n개를 추출한다.
 
 
 
@@ -353,6 +353,8 @@ month.korname[which.min(rainfall)]
 
 # 9. 글자 붙이기
 
+v1과 v2 벡터가 다음과 같이 정의 되어있다.
+
 v1 <- c("Apple", "Banana", "Strawberry")
 v2 <- c("Pie","Juice", "Cake")
 
@@ -360,7 +362,7 @@ v2 <- c("Pie","Juice", "Cake")
 
 ## (1) paste(v1,v2)
 
-나열된 원소 사이에 공백을 두고 결과값을 추출한다.
+나열된 원소 사이에 **공백**을 두고 결과값을 추출한다.
 
 "Apple Pie"       "Banana Juice"    "Strawberry Cake"
 
@@ -368,7 +370,7 @@ v2 <- c("Pie","Juice", "Cake")
 
 ## (2) paste0(v1,v2)
 
-나열된 원소 사이에 공백 없이 결과값을 추출한다.
+나열된 원소 사이에 **공백 없이** 결과값을 추출한다.
 
 "ApplePie"       "BananaJuice"    "StrawberryCake"
 
@@ -376,7 +378,7 @@ v2 <- c("Pie","Juice", "Cake")
 
 ## (3) paste(v1,v2,sep=":::")
 
-sep 옵션을 통해 구분자를 설정할 수 있다.
+sep 옵션을 통해 **구분자를 설정**할 수 있다.
 
 "Apple:::Pie"       "Banana:::Juice"    "Strawberry:::Cake"
 
@@ -384,7 +386,7 @@ sep 옵션을 통해 구분자를 설정할 수 있다.
 
 ## (4) paste(v1,v2,collpase=",")
 
-collapse 옵션을 통해 이어붙여진 결과값의 구분자를 설정할 수 있다.
+collapse 옵션을 통해 **이어 붙여진 결과값의 구분자**를 설정할 수 있다.
 
 "Apple Pie,Banana Juice,Strawberry Cake"
 
@@ -404,11 +406,17 @@ sep옵션과 collapse옵션을 동시에 주어 다음과 같은 결과를 얻�
 
 # 10. 행렬 (Matrix) 생성 함수
 
-## (1) matrix(data=벡터, nrow= 행의 개수,ncol=열의 개수) 
+## (1) matrix() 
 
 ### 1) 기본 형식(byrow=FALSE) : 열 우선
 
+```R
+matrix(data=벡터, nrow= 행의 개수,ncol=열의 개수) 
+```
+
 열 단위로 먼저 채워진다.
+
+
 
 ```R
 x1 <-matrix(data=1:8, nrow = 2)
@@ -422,6 +430,12 @@ x1 <-matrix(data=1:8, nrow = 2)
 
 
 ### 2)  byrow = TRUE : 행 우선
+
+```R
+matrix(data=벡터, nrow= 행의 개수,ncol=열의 개수,byrow=TRUE) 
+```
+
+
 
 행 우선으로 채워진다.
 
@@ -440,7 +454,9 @@ x1 <-matrix(data=1:8, nrow = 2, byrow=TRUE)
 
 ## (2) rbind() , cbind()
 
-### 1) rbind() : 행 단위로 행렬 만듬
+### 1) rbind() 
+
+`rbind()`는 행 단위로 행렬을 만든다.
 
 ```R
 vec1 <- c(1,2,3)
@@ -459,7 +475,9 @@ vec3    7    8    9
 
 
 
-### 2) cbind() : 열 단위로 행렬 만듬
+### 2) cbind() 
+
+`cbind()`는 열 단위로 행렬을 만든다.
 
 ```R
 vec1 <- c(1,2,3)
@@ -482,29 +500,43 @@ mat2 <- cbind(vec1,vec2,vec3); mat2 # 벡터의 이름이 바로 열 이름이 �
 
 # 11. 행렬 관련 함수
 
-## (1) 행렬의 차원 : dim(), ncol(), nrow()
+## (1) 행렬의 차원
+
+### 1) dim()
 
 `dim(m)` - 행렬이 몇 차원인지 체크
 
+
+
+### 2) ncol()
+
 `ncol(행렬)` - 열의 개수
+
+
+
+### 3) nrow()
 
 `nrow(행렬)` - 행의 개수
 
 
 
-## (2) 행과 열의 이름 : colnames(), rownames()
+## (2) 행과 열의 이름 
+
+### 1) colnames()
 
 `colnames(m) `- 열 이름 
 
-```
+```R
 colnames(m) <- c('c1','c2','c3','c4') # 열 이름 대입
 ```
 
 
 
+### 2) rownames()
+
 `rownames(m)` - 행 이름
 
-```
+```R
 
 rownames(m) <- c('r1','r2','r3') # 행 이름 대입
 
@@ -512,7 +544,9 @@ rownames(m) <- c('r1','r2','r3') # 행 이름 대입
 
 
 
-## (3) 행렬에서의 연산 : colSums(), rowSums(), colMeans(), rowMeans()
+## (3) 행렬에서의 연산 
+
+### 1) colSums(), rowSums()
 
 `colSums(m)` : 열 단위의 합
 
@@ -520,11 +554,15 @@ rownames(m) <- c('r1','r2','r3') # 행 이름 대입
 
 
 
+### 2) colMeans(), rowMeans()
+
 `colMeans(m) ` : 열 단위의 평균
 
 `rowMeans(m)` : 행 단위의 평균
 
 
+
+### 3) sum(), mean()
 
 `sum(m)` : 행렬의 모든 원소에 대한 합 연산
 
@@ -532,7 +570,7 @@ rownames(m) <- c('r1','r2','r3') # 행 이름 대입
 
 
 
-## (4) 행렬에 특정 함수 불러오기 : apply(m,1/2,함수명)
+## (4) 행렬에 특정 함수 불러오기 : apply()
 
 `apply(m,1또는 2,함수)`: 함수에 함수를 불러올 때 사용한다.
 
@@ -566,14 +604,25 @@ a1 <- array(1:30, dim=c(2,3,5)) # dim 매개변수를 꼭 주어야 하는 array
 
 # 13. 팩터(facor)와 범주형 데이터
 
-## (1) 생성방법
-factor(벡터)
+> `팩터(factor)`는 문자형 데이터가 저장되는 벡터의 일종으로, 저장되는 문자값들이 **종류를 나타내는 값** 일 때 사용한다.
 
-factor(벡터[, levels=레벨벡터])
+범주형 데이터는 **명목형(Nominal)** 데이터와 **순서형(Ordinal)** 데이터로 구분된다.
 
-factor() : 명목형
+명목형 데이터는 값들 간의 크기 비교가 불가능한 경우이고, 순서형 데이터는 값을 측정하거나 개수를 세는 등의 숫자로 나온 값을 의미한다.
 
-ordered = TRUE 순서형 
+
+
+## (1) 생성방법 : factor()
+
+```R
+factor(X, # 팩터로 표현하고자 하는 벡터 (주로 문자열 벡터) 
+       levels, # 값의 레벨
+       ordered = FALSE # FALSE (기본값): 명목형 데이터 , 
+       				   # TRUE : 순서형 데이터 
+      )
+```
+
+
 
 ```R
 score <- c(1,3,2,4,2,1,3,5,1,3,3,3)
@@ -587,7 +636,6 @@ Levels: 1 2 3 4 5
 > summary(f_score)
 1 2 3 4 5 
 3 2 5 1 1 
-
 ```
 
 
@@ -596,7 +644,9 @@ Levels: 1 2 3 4 5
 
 ## (2)  레벨 정보 추출
 
-값의 범주를 나타낸다.
+### 1) levels()
+
+`levels()`는 팩터에서 레벨의 목록(값의 범주)를 나타낸다.
 
 ```R
 levels(f_score)
@@ -604,9 +654,23 @@ levels(f_score)
 [1] "1" "2" "3" "4" "5"
 ```
 
-
-
 levels로 값의 범주를 지정했으나, 데이터셋에서 범주 이외의 값이 존재한다면, **NA(결측값)**으로 자동적으로 처리된다.
+
+
+
+### 2) nlevels()
+
+`nlevels()`는 팩터에서 레벨의 개수를 반환한다.
+
+
+
+### 3) is.ordered()
+
+`is.ordered`는 순서형 팩터인지 판단한다.
+
+
+
+ 
 
 
 
@@ -614,25 +678,54 @@ levels로 값의 범주를 지정했으나, 데이터셋에서 범주 이외의 
 
 # 14. 데이터 프레임(dataframe) 함수
 
+> 데이터프레임은 열 단위로 벡터가 묶어져 있으며, 모든 열의 데이터 개수는 동일해야 한다. 
+>
+> 열 단위마다 서로 다른 유형의 데이터 타입을 가질 수 있다. 
+
+
+
 ## (1) 데이터 관련 함수
 
+### 1) data()
+
 `data()` : R 자체에 내장되어 있는 데이터셋을 확인할 수 있다.
+
+### 2) head(), tail()
 
 `head(데이터셋명)` : 데이터의 일부(앞에서 부터 6행)를 확인할 수 있다.
 
 `tail(데이터셋명)` : 데이터의 일부(뒤에서 부터 6행)를 확인할 수 있다.
 
+### 3) View()
+
 `View(데이터셋명)` : 데이터셋의 내용을 시각화하여(표) 확인할 수 있다.
 
-`str(데이터셋명)` : 데이터셋의 구조를 확인할 수 있다.
+### 4) summary()
 
 `summary(데이터셋명)`
 
 
 
-## (2) 데이터 프레임 생성 함수 : data.frame(벡터들)
+## (2) 데이터 프레임 생성 함수
+### 1) data.frame()
+```R
+data.frame(
+   # value 또는 tag=value로 표현된 데이터 값. '...'은 가변 인자를 의미한다.
+   ...,
+   # 주어진 문자열을 팩터로 저장할 것인지 또는 문자열로 저장할 것인지를 지정하는 인자.
+   # 기본값은 보통 FALSE이다.
+   stringsAsFactors=default.stringsAsFactors()
+)
+반환 값은 데이터 프레임이다
+```
 
-### 1) 미리 벡터를 만들고 생성
+`data.frame()`으로 데이터 프레임을 생성할 때 stringsAsFactors 의 기본값은 FALSE 이다. (4이상 버전에서 변경된 항목.)
+
+<u>**-> 과거에는 문자열 벡터는 자동으로 팩터로 만들었지만, 현재는 아니다.**</u>
+
+
+
+#### ① 미리 벡터를 만들고 생성
 
 미리 벡터를 만들어 두었다가 데이터 프레임을 만드는 경우에는 `data.frame(벡터1, 벡터2, 벡터3)`의 형식으로 만든다.
 
@@ -641,12 +734,12 @@ english <- c(90, 80, 60, 70)
 math <- c(50, 60, 100, 20)
 classnum <- c(1,1,2,2)
 df_midterm <- data.frame(
-  english, math, classnum) 
+  					english, math, classnum) 
 ```
 
 
 
-### 2) 바로 벡터를 만들어 생성
+#### ② 바로 벡터를 만들어 생성
 
 미리 벡터를 만들지 않고 데이터 프레임 생성 함수 안에서 벡터를 만들어 데이터프레임을 만들 수 있다.
 
@@ -668,7 +761,7 @@ df_midterm2 <- data.frame(
 
 
 
-### 3) 바로 벡터와 그 벡터의 이름을 만들어 생성
+#### ③ 바로 벡터와 그 벡터의 이름을 만들어 생성
 
 벡터의 이름을 지정했기 때문에 컬럼명은 다음과 같이 벡터의 이름이 컬럼명으로 설정된다.
 
@@ -690,15 +783,17 @@ df_midterm2 <- data.frame(
 
 ## (3) 데이터 프레임 변환 함수
 
+### 1) cbind(), rbind()
+
 `cbind(df, 벡터)` : 없었던 열을 새로 붙이는 경우
-
-
 
 `rbind(df, 벡터)` : 없었던 행을 새로 붙이는 경우
 
 
 
 ## (4) 데이터 프레임 구조 확인 함수
+
+### 1) str(), dim()
 
 `str(df)` : 주로 사용된다. 
 
@@ -708,13 +803,13 @@ df_midterm2 <- data.frame(
 
 ## (5) 데이터 프레임의 인덱싱
 
-`[행의 인덱싱, 열의 인덱싱]`
+`df[행의 인덱싱, 열의 인덱싱]`
 
-`[열의 인덱싱]` : 데이터 프레임은 열 단위의 데이터처리가 일반적이기 때문에 대괄호에 컬럼이름, 컬럼 숫자를 하나만 작성할 경우 열의 인덱싱을 인식한다.
+`df[열의 인덱싱]` : 데이터 프레임은 열 단위의 데이터처리가 일반적이기 때문에 대괄호에 컬럼이름, 컬럼 숫자를 하나만 작성할 경우 열의 인덱싱을 인식한다.
 
 `df$컬럼이름` : $는 파이썬의 member 연산자(.)와 동일한 역할을 한다. 
 
-`[[열인덱싱]]`
+`df[[열인덱싱]]`
 
 
 
@@ -724,9 +819,9 @@ df_midterm2 <- data.frame(
 
 
 
-### 2) subset함수
+### 2) subset()
 
-subset(df,select=컬럼명들, subset=(조건))
+`subset(df,select=컬럼명들, subset=(조건))`
 
 ```R
 subset(emp,select = c(ename, job, sal)) #subset 함수의 사용
@@ -735,7 +830,48 @@ subset(emp,select = c(ename, job, sal)) #subset 함수의 사용
 
 
 
+### 3) is.na() : 커미션이 정해지지 않은 데이터
+
+`is.na()` 커미션이 정해지지 않은 데이터
+
+```R
+is.na(emp$name) # 결측치이면 TRUE, (비어있으면 TRUE) -> 모두가 false인데 logical(0)는 모두 거짓이라는 뜻.
+
+```
+
+
+
+
+
 ## (7) 데이터 프레임의 정렬
+
+
+
+```R
+order(myemp$sal)
+myemp[order(myemp$sal),]
+
+```
+
+
+
+
+
+## (8) 컬럼별 수 구하기
+
+### 1) summary()
+
+양적, 캐릭터 기반 써머리
+
+
+
+### 2) table()
+
+factor형으로 바꾼 summary.
+
+무조건 개수를 세어준다. 
+
+
 
 
 

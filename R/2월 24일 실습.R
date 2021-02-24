@@ -75,24 +75,34 @@ switch(EXPR = deco,
 
 # 문제 10
 score <- sample(0:100,1)
-grade <- NULL
 
-cat(score, "점은", switch(EXPR = score),{
-    if (score < 60)
-    grade <- "F"
-      else if(score < 70)
-        grade <-"D"
-      else if(score < 80)
-        grade <- "C"
-      else if(score < 90)
-        grade <- "B"
-      else if(score <= 100)
-        grade <- "A"
-}
-    ,"등급입니다")
+# (1) 10으로 나눈 몫을 활용한다.
+cat(score, "점은 ", switch(EXPR = score%/%10+1,
+                     "F",
+                     "F",
+                     "F",
+                     "F",
+                     "F",
+                     "F",
+                     "D",
+                     "C",
+                     "B",
+                     "A","A"
+                     ), "등급입니다."
+)
+
+# (2) 리스트를 아규먼트로 받아올 수는 없다.
+grade <- c (rep("F",60),
+            rep("D",10),
+            rep("C",10),
+            rep("B",10),
+            rep("A",11)
+)
+ 
+
+cat(score, "점은 ", switch(score+1,list(grade)), "점 입니다.")
 
 
-# for 문 ?
 
 # 문제 11
 # (1) 제어문을 사용하지 않고 구현
