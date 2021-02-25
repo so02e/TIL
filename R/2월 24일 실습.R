@@ -104,6 +104,56 @@ switch(EXPR = deco,
 
 
 
+# 참고할만한 소스 추가
+count <- sample(3:10,1)
+deco <- sample(1:3,1)
+if(deco==1){
+  cat(rep("*",count),"\n")
+}else if (deco==2){
+  cat(rep("$",count),"\n")
+}else {
+  cat(rep("#",count),"\n")
+}
+
+if (deco==1){
+  for(i in 1:count)
+    cat("*")
+}else if (deco==2) {
+  for(i in 1:count)
+    cat("$")
+}else{
+  for(i in 1:count)
+    cat("#")
+}
+
+(count = sample(3:10,1))
+(deco = sample(1:3,1))
+
+if(deco == 1){
+  rep("*",count)
+}else if(deco == 2){
+  rep("$",count)
+}else {
+  rep("#",count)
+} 
+
+
+
+count <- sample(3:10, 1)
+deco <- sample(1:3, 1)
+idx = 1
+while (idx <= count) {
+  switch(EXPR = deco,
+         cat("*"),
+         cat("$"),
+         cat("#")
+  )
+  idx <- idx + 1
+}
+
+
+
+
 
 # 문제 10
 score <- sample(0:100,1)
@@ -134,6 +184,19 @@ grade <- c (rep("F",60),
 
 cat(score, "점은 ", switch(score+1,list(grade)), "점 입니다.")
 
+
+# (3) char 형으로 바꾸어서
+
+score <- sample(0:100,1)
+score 
+score <- score %/% 10
+level <- switch(EXPR=as.character(score), 
+                "10"=, "9"="A등급",
+                "8"="B등급",
+                "7"="C등급",
+                "6"="D등급",
+                "F등급")
+cat(score,"은 ",level,"입니다\n",sep="")
 
 
 
