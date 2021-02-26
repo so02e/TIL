@@ -1135,7 +1135,180 @@ testParamType1 <- function(x){
 
 ### (11) warning()
 
+함수 수행을 중지시키지는 않고 수행은 하지만, 경고 메세지도 출력을 함
 
+
+
+### (12) try()
+
+`try()`함수 안에서 함수를 호출하면, 오류가 발생했을 때 본 함수도 같이 중단되는 상황을 막을 수 있다.
+
+**데이터 수집, 웹 크롤링**에 있어서 유연성있게 프로그램을 만들 수 있다. (특정 페이지에서 오류가 나더라도 다음 페이지에서들은 문제없이 수행되도록 하고 싶을 때)
+
+```R
+test1 <-function(p){
+  cat("난 수행함\n")
+  testError1(-1) # 에러 발생
+  cat("나 수행할까요? \n") # testError1을 호출한 test1도 중단된다.
+}
+test1()
+
+#try() 함수를 알아야 데이터 수집을 편하게 할 수 있다.
+test2 <- function(p){
+  cat("난 수행함\n")
+  try(testError1(-1)) # test1도 같이 중단되는 상황을 방지하기 위해서는 try
+  cat("나 수행할까요? \n") 
+}
+test2()
+```
+
+
+
+except
+
+else
+
+finally : 항상 시행되는.
+
+
+
+### (13) tryCatch()
+
+
+
+ ```R
+testAll <-function(p){
+  tryCatch({
+    if(p=="오류테스트"){
+      testError1(-1)
+    }else if (p =="경고테스트"){
+      testWarn(6)
+    }else{
+      cat("정상 수행..\n")
+      print(testError1(2))
+      print(testWarn(3))
+    }
+  },warning = function(w){ # 매개변수 warning(경고)에 함수
+    print(w)
+    cat("-.-;;\n")
+  },error = function(e){ # 매개변수 error(오류)에 함수
+    print(e)
+    cat("ㅠㅠ \n")
+  },finally ={ # 매개변수 finally(반드시 수행)에 수행코드
+    cat("오류, 경고 발생 여부에 관계없이 반드시 수행되는 부분입니다요..\n")
+  })
+}
+ ```
+
+
+
+```
+> testAll("오류테스트")
+<simpleError in testError1(-1): 양의 값만 전달 하숑!! 더 이상 수행 안할거임..>
+ㅠㅠ 
+오류, 경고 발생 여부에 관계없이 반드시 수행되는 부분입니다요..
+> testAll("경고테스트")
+<simpleWarning in testWarn(6): 5보다 크면 안됨!! 하여 5로 처리했삼...!!>
+-.-;;
+오류, 경고 발생 여부에 관계없이 반드시 수행되는 부분입니다요..
+> testAll("아무거나")
+정상 수행..
+[1] "테스트" "테스트"
+[1] "테스트" "테스트" "테스트"
+오류, 경고 발생 여부에 관계없이 반드시 수행되는 부분입니다요..
+```
+
+
+
+
+
+### (14) is.na()
+
+`is.na()`는 하나의 요소만 NA인지 체크할 수 있는 함수이기 때문에 다음과 같이 여러 개의 요소가 있는 벡터를 주었을 경우, 첫번째 인덱스에서만 그 기능을 한다. 
+
+따라서 **여러 요소가 있는 경우**에는  `any()`혹은 `all()`의 사용이 필요하다. 
+
+```R
+f.case1 <- function(x) {
+  if(is.na(x)) 
+    return("NA가 있슈")
+  else
+    return("NA가 없슈")
+}
+
+
+> f.case1(100)
+[1] "NA가 없슈"
+> f.case1(NA)
+[1] "NA가 있슈"
+> f.case1(1:6)
+[1] "NA가 없슈"
+경고메시지(들): 
+In if (is.na(x)) return("NA가 있슈") else return("NA가 없슈") :
+  length > 1 이라는 조건이 있고, 첫번째 요소만이 사용될 것입니다
+> f.case1(c(10,20,30)) #  is.na()는 첫번째 요소만 NA 가 있는지 체크하는 하나의 값만 가지고 수행할 수 있는 함수 
+[1] "NA가 없슈"
+경고메시지(들): 
+In if (is.na(x)) return("NA가 있슈") else return("NA가 없슈") :
+  length > 1 이라는 조건이 있고, 첫번째 요소만이 사용될 것입니다
+> f.case1(c(NA, 20))
+[1] "NA가 있슈"
+경고메시지(들): 
+In if (is.na(x)) return("NA가 있슈") else return("NA가 없슈") :
+  length > 1 이라는 조건이 있고, 첫번째 요소만이 사용될 것입니다
+> f.case1(c(10, NA, 20))
+[1] "NA가 없슈"
+경고메시지(들): 
+In if (is.na(x)) return("NA가 있슈") else return("NA가 없슈") :
+```
+
+
+
+#### ① any()
+
+`any()`는 아규먼트로 주어진 함수의 결과가 **하나라도 TRUE**가 있으면(즉 is.na()의 결과가 하나라도 True 가 있으면을 의미한다.
+
+```R
+f.case2 <- function(x) {
+  if(any(is.na(x))) # for 문을 안쓰고도 활용할 수 있다. any혹은 all을 통해 사용할 수 있다. 
+    return("NA가 있슈")
+  else
+    return("NA가 없슈")
+}
+
+> f.case2(100)
+[1] "NA가 없슈"
+> f.case2(NA)
+[1] "NA가 있슈"
+> f.case2(1:6)
+[1] "NA가 없슈"
+> f.case2(c(10,20,30))
+[1] "NA가 없슈"
+> f.case2(c(NA, 20))
+[1] "NA가 있슈"
+> f.case2(c(10, NA, 20))
+[1] "NA가 있슈"
+```
+
+
+
+#### ② all()
+
+`all()`은 아규먼트로 주어진 함수의 결과가 **모두가  TRUE**가 임을 의미한다.
+
+```R
+f.case3 <- function(x) {
+  if(all(is.na(x))) 
+    return("모두 NA임")
+  else
+    return("모두 NA인 것은 아님")
+}
+f.case3(100)
+f.case3(LETTERS)
+f.case3(NA)
+f.case3(c(NA, NA, NA))
+f.case3(c(NA, NA, 10))
+```
 
 
 
