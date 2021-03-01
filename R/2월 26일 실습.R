@@ -8,6 +8,7 @@ countEvenOdd <- function(vt){
     result <- list(even = even, odd = odd)
     return (result)}
 }
+
 countEvenOdd(c(1,4,3))
 countEvenOdd(c(1,2,3,4,5))
 
@@ -28,6 +29,7 @@ vmSum(data.frame(1,2,3))
 
 
 
+
 # 문제 3
 vmSum2 <- function(vt){
   if (!is.vector(vt)) stop("벡터만 전달하숑!") #  에러발생
@@ -35,7 +37,6 @@ vmSum2 <- function(vt){
   else
     return(sum(vt))
 }
-
 
 vmSum2(c(1,4,3))
 vmSum2(c(1,"가"))
@@ -68,7 +69,6 @@ mySum <- function(vt){if (!is.vector(vt)) stop("벡터만 처리가능!")
     }
 }
 
-
 mySum()
 mySum(c(NA,2,3,5))
 mySum(data.frame(2))
@@ -78,21 +78,21 @@ mySum(c(1,5,2,7,10))
 
 
 
-
-# 문제 5 (수정:함수를 인자로?)
-myExpr <- function(...){
-  f1 <- function()
-  if (!is.function(f1)) stop("수행 안할꺼임!")
-  else
-    {
-    a1 <- sample(1:45,6)
+# 문제 5 (sum은 왜 수행이 안되는지?)
+myExpr <- function(f1){
+  a1 <- sample(1:45,6)
+  if (is.function(f1)){
     result <- f1(a1)
-    return(result)}
+    return (result)
+  }
+  else stop("수행안할꺼임")
 }
 
 myExpr(2)
-myExpr(sum())
-
+myExpr(mean)
+myExpr(max)
+myExpr(sort)
+myExpr(sum)
 
 
 
@@ -111,6 +111,7 @@ createVector1(1,2,5)
 
 
 
+
 # 문제 7
 createVector2 <- function(...){
   p <- c(...)
@@ -121,4 +122,6 @@ createVector2 <- function(...){
 createVector2()
 createVector2(1,2,"가나")
 createVector2(A = c(1:2),LETTERS,"가나다",TRUE)
+
+
 
