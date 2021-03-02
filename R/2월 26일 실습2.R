@@ -6,4 +6,3 @@ cat("오름차순 : ", sort(nums))
 cat("내림차순 : " ,sort(nums,decreasing=TRUE))
 cat("합 : ", sum(nums))
 cat("평균 : ", mean(nums))
-
