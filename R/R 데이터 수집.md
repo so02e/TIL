@@ -232,23 +232,57 @@ Xpath를 이용할 시 `//`의 의미에 대해 잘 알아두자. `//`는 조상
 
   일반적으로 **태그**라고 부르지만, DOM 객체의 상태에서는 **노드**라고 한다. (태그 = 노드)
 
-  
-
-#### ① `xml2 패키지` (크롤링)
-
-` read_html(url)` : HTML 웹 페이지를 요청해서 받아오기 
 
 
 
+크롤링과 스크래핑과 관련된 패키지는 rvest, XML, httr 패키지가 있고 다음의 코드를 통해 설치하고, 불러올 수 있다.
 
 
-#### ② `rvest 패키지` (스크래핑)
+
+```R
+install.packages("rvest") 
+install.packages("XML")
+install.packages("httr")
+
+
+library("rvest") 
+library("XML")
+library("httr")
+```
+
+
+
+#### ① `xml2 패키지` (크롤링) - HTML 웹페이지만 가능
+
+` read_html(url)` : **HTML 웹 페이지**를 요청해서 받아오기 
+
+
+
+#### ② `httr 패키지` (크롤링) - 이미지나 다른 파일 형식도 가능
+
+`GET(url)` : HTML 웹 페이지를 요청해서 받아오기
+
+​			  	**요청헤더에 계정 또는 패스워드 등의 정보 전달 가능**
+
+​                  **응답 내용이 바이너리인 경우에도 사용 가능**
+
+##### ※ `바이너리 파일`
+
+pdf , 이미지 파일과 같이  메모장으로 열지 못하는 이진파일로 열기 위해서는 특정 프로그램이 필요하다.
+
+
+
+`POST()` : POST방식으로 불러오는 함수도 있다.
+
+
+
+
+
+#### ③ `rvest 패키지` (스크래핑)
 
 ##### ⓐ 돔 객체 찾아오기
 
 `html_nodes(x, css, xpath)`, `html_node(x, css, xpath) ` : 원하는 노드(태그) 추출
-
-
 
 > xpath 로 찾아오는 경우에는 `xpath = '  '`와 같이 매개변수를 주는 방식으로 찾아온다. 
 
@@ -264,13 +298,13 @@ Xpath를 이용할 시 `//`의 의미에 대해 잘 알아두자. `//`는 조상
 
 `html_attrs(x)` : 노드에서 속성 추출하기 
 
-`html_attr(x, name, default = "") `: 노드에서 주어진 명칭의 속성값 추출하기 
+`html_attr(x, name, default = "") ` : 노드에서 주어진 명칭의 속성값 추출하기 
 
 
 
 
 
-#### ③ `XML 패키지` (스크래핑)
+#### ④ `XML 패키지` (스크래핑)
 
 `htmlParse (file, encoding="…")` : xpathSApply() 사용 가능한 객체로 변환
 
@@ -282,15 +316,7 @@ Xpath를 이용할 시 `//`의 의미에 대해 잘 알아두자. `//`는 조상
 
 
 
-#### ④ `httr 패키지` (크롤링)
 
-`GET(url)` : HTML 웹 페이지를 요청해서 받아오기, 요청헤더에 계정 또는 패스워드 등의 정보 전달 가능, 응답 내용이 바이너리인 경우에도 사용 가능
-
-```R
-install.packages("rvest") 
-install.packages("XML")
-install.packages("httr")
-```
 
 
 
@@ -304,4 +330,88 @@ install.packages("httr")
 
 ![](C:\TIL\R\data\web.png)
 
+
+
+
+
+몇번째 li인지 달라진다.
+
+
+
+css 선택자
+
+
+
+xpath
+
+
+
+```
+# 웹 크롤링에 필요한 라이브러리 로드
+library(rvest)
+library(XML)
+library(httr)
+
+title <- NULL; press <- NULL ; vtitle <- NULL; vpress <- NULL
+
+url<- "http://news.daum.net/ranking/popular"
+text <- read_html(url)
+text
+
+
+# html_node, html_text- rvest() 패키지의 사용
+
+
+for (index in 1:50) {
+  # 뉴스 제목
+  node <- html_node(text, paste0("#mArticle > div.rank_news > ul.list_news2 > li:nth-child(", index,")>div.cont_thumb > strong > a" ))
+  title <- html_text(node)
+  vtitle[index] <- title
+  
+  
+  # 신문사 명
+  node <- html_nodes(text, xpath=paste0('//*[@id="mArticle"]/div[2]/ul[3]/li[', index,"]/div[2]/strong/span"))
+  press <- html_text(node)
+  vpress[index] <- press
+}
+
+page <- data.frame(vtitle, vpress)
+View(page)
+write.csv(page, "output/daumnews.csv")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+네이버 뉴스
+
+URL로 받아온 페이지 전체. 
+
+만약 , 첫페이지 뿐만 아니라 여러 페이지를 요청하려고 할 때. 
+
+
+
+
+
+
+
+## (4) open API 를 통한 데이터 수집
+
+|                   파일 데이터                    |                           Open API                           |
+| :----------------------------------------------: | :----------------------------------------------------------: |
+| 승인을 받거나 해 필요할 때 파일을 내려받음(정적) |            회원가입과 신청을 통해 사용할 수 있다.            |
+|                                                  | <pre>무료(공개) 데이터를 정해진 URL 문자열을 사용해서 요청하고, </pre></br> 수집할 수 있는 스펙 |
+
+API 는 프로그램을 개발할 때 자주 사용하는 기능을 모아둔 프로그램이다. API 가 함수인 경우와 클래스, 내장 객체인 경우가 있다. 
 
