@@ -3,21 +3,22 @@ library(rvest)
 library(XML)
 library(httr)
 library(jsonlite)
+library(rtweet) 
 
-# open api 실습 1 네이버 블로그에서 검색어 '맛집' 
+
+# open api 실습 1. 네이버 블로그에서 검색어 '맛집' 
 searchUrl<- "https://openapi.naver.com/v1/search/blog.xml"
 Client_ID <- "izGsqP2exeThwwEUVU3x"
 Client_Secret <- "WrwbQ1l6ZI"
 
 query <- URLencode(iconv("맛집","euc-kr","UTF-8"))
-url <- paste0(searchUrl, "?query=", query, "&display=100")
+url <- paste0(searchUrl, "?query=", query, "&display=100") # 100개 
 
 doc <- GET(url, add_headers("Content_Type" = "application/xml",
                             "X-Naver-client-Id" = Client_ID, "X-naver-Client-Secret" = Client_Secret))
 
 doc2 <- htmlParse(doc, encoding="UTF-8")
 text<- xpathSApply(doc2, "//item/description", xmlValue)
-is.vector(text)
 text <- gsub("</?b>", "", text)
 text <- gsub("&.+t;", "", text)
 text
@@ -26,8 +27,7 @@ write.table(text, "output/naverblog.txt")
 
 
 
-# open api 실습 2 트위터에서 코로나 라는 단어 검색
-library(rtweet) 
+# open api 실습 2. 트위터에서 코로나 라는 단어 검색
 appname <- "edu_data_collection"
 api_key <- "RvnZeIl8ra88reu8fm23m0bST"
 api_secret <- "wTRylK94GK2KmhZUnqXonDaIszwAsS6VPvpSsIo6EX5GQLtzQo"
@@ -48,8 +48,10 @@ class(result)
 result$retweet_text
 content <- result$retweet_text
 
-content <- gsub("[[:lower:][:upper:][:digit:][:punct:][:cntrl:]]", "", content)   
-content <- content[complete.cases(content)]
+content <- gsub("[[:lower:][:upper:][:punct:]]", "", content) 
+
+# NA 행은 제거
+content <- content[complete.cases(content)] # content <- content[!is.na(content)]
 content
 
 write.table(content, "output/twitter.txt")
@@ -57,7 +59,7 @@ write.table(content, "output/twitter.txt")
 
 
 
-# open api 실습 3 공공 DB 360버스에 대한 노선 ID, 노선 길이, 기점, 종점, 배차간격
+# open api 실습 3. 공공 DB 360버스에 대한 노선 ID, 노선 길이, 기점, 종점, 배차간격
 API_key  <- "%2BjzsSyNtwmcqxUsGnflvs3rW2oceFvhHR8AFkM3ao%2Fw50hwHXgGyPVutXw04uAXvrkoWgkoScvvhlH7jgD4%2FRQ%3D%3D"
 bus_No <- "360" 
 url <- paste("http://ws.bus.go.kr/api/rest/busRouteInfo/getBusRouteList?ServiceKey=", API_key, "&strSrch=", bus_No, sep="")
@@ -85,7 +87,7 @@ cat("배차간격 : ", df$배차간격)
 
 
 
-# open api 실습 4 네이버 뉴스에서 빅데이터 검색
+# open api 실습 4. 네이버 뉴스에서 빅데이터 검색
 searchUrl<- "https://openapi.naver.com/v1/search/news.json"
 Client_ID <- "izGsqP2exeThwwEUVU3x"
 Client_Secret <- "WrwbQ1l6ZI"
@@ -102,11 +104,14 @@ json_obj <- fromJSON(json_data)
 df <- data.frame(json_obj)
 View(df)
 df <- df[[5]] # 오류 원인
+df
 is.vector(df)
 
 
 # 문자 제거
 df <- gsub("</?b>", "", df)
-df <- gsub("&.+t;", "", df)
+df <- gsub("&quot;", "", df) # 특정 문자 제거
+df <- gsub("&gt", "", df)
+
 df
 write.table(df, "output/navernews.txt")
