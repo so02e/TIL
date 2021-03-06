@@ -11,52 +11,34 @@ remDr$open()
 url <- "https://hotel.naver.com/hotels/item?hotelId=hotel:Shilla_Stay_Yeoksam&destination_kor=%EC%8B%A0%EB%9D%BC%EC%8A%A4%ED%85%8C%EC%9D%B4%20%EC%97%AD%EC%82%BC&rooms=2"
 remDr$navigate(url)
 
-# 4. 크롤링
-  # /html/body/div/div/div[1]/div[2]/div[6]/div[2]/ul/li/div[2]/p/text()
-  # /html/body/div/div/div[1]/div[2]/div[6]/div[2]/ul/li[4]/div[2]/p/text()
-
-# (1) 첫 페이지의 리뷰 가져오기 
-  # doms1 <- remDr$findElements(using="xpath",value='/html/body/div/div/div[1]/div[2]/div[6]/div[2]/ul/li/div[2]/p/text()')
-  # body > div > div > div.container.ng-scope > div.content > div.hotel_used_review.ng-isolate-scope > div.review_ta.ng-scope > ul > li:nth-child(2) > div.review_desc
-  # body > div > div > div.container.ng-scope > div.content > div.hotel_used_review.ng-isolate-scope > div.review_ta.ng-scope > ul > li:nth-child(4) > div.review_desc
-
-repl_v = NULL;
-
-doms1<-remDr$findElements(using ="css selector","body > div > div > div.container.ng-scope > div.content > div.hotel_used_review.ng-isolate-scope > div.review_ta.ng-scope > ul > li > div.review_desc > p")
-vest_repl <- sapply(doms1,function(x){x$getElementText()})
-vest_repl
-repl_v <- c(repl_v, unlist(vest_repl))
-repl_v
-
-# (2) 모든 페이지의 리뷰 가져오기 
-# body > div > div > div.container.ng-scope > div.content > div.hotel_used_review.ng-isolate-scope > div.review_ta.ng-scope > div.paginate > span:nth-child(3) > a
-
-# body > div > div > div.container.ng-scope > div.content > div.hotel_used_review.ng-isolate-scope > div.review_ta.ng-scope > div.paginate > span:nth-child(6) > a
-
+# 4. 크롤링 , 
   
   repeat{
-    doms1<-remDr$findElements(using ="css selector","body > div > div > div.container.ng-scope > div.content > div.hotel_used_review.ng-isolate-scope > div.review_ta.ng-scope > ul > li > div.review_desc > p")
+    # 페이지 내용 찾기
+    content<-remDr$findElements(using='css selector','div.review_desc > p') 
+    review <- sapply(content, function(x) x$getElementText())
+    
+
+    reviewcontent <- c(reviewcontent,unlist(review))
+    
+    
     
     Sys.sleep(1)
     
-    vest_repl <- sapply(doms1,function(x){x$getElementText()})
-    print(vest_repl)
+    # 다음 버튼 
+    nextbutton <- "body > div > div > div.container.ng-scope > div.content > div.hotel_used_review.ng-isolate-scope > div.review_ta.ng-scope > div.paginate > a.direction.next"
     
-    repl_v <- c(repl_v, unlist(vest_repl))
-    repl_v
-  
-    
-    nextCss <- "body > div > div > div.container.ng-scope > div.content > div.hotel_used_review.ng-isolate-scope > div.review_ta.ng-scope > div.paginate > a.direction.next"
-    
-    nextPage<-remDr$findElement(using='css selector',nextCss)
+    nextPage <- remDr$findElement(using='css selector',nextbutton)
     nextPage$clickElement()
     Sys.sleep(2)
     
-    # 속성값이 disabled이면.
+
+    # 속성값이 disabled이면, 무한반복을 빠져나옴. 
     if (nextPage$getElementAttribute("class")=="direction next disabled"){
       break;
     } 
-}
+  }
+
 
 
 # 5. 저장

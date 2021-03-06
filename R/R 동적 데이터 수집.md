@@ -66,13 +66,13 @@ java -Dwebdriver.chrome.driver="chromedriver.exe" -jar selenium-server-standalon
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | R 코드로 Selenium 서버에 접속하고<br/>remoteDriver 객체 리턴 | 브라우저 오픈(크롬)                                          |
 | **remDr$navigate(url)**                                      | **one <- remDr$findElement(using='css selector',‘css선택자')** |
-| url 에 해당하는 웹페이지 랜더링                              | **태그 한 개 찾기(webElement 객체)<br/>태그가 없으면 NoSuchElement 오류 발생** |
+| url 에 해당하는 웹페이지 랜더링                              | **태그 한 개 찾기(webElement 객체)<br/>태그가 없으면 NoSuchElement 오류 발생**리스트 객체는 $연산자를 쓰는데 변수이름 $ |
 | **one$getElementTagName()**                                  | **one$getElementText()**                                     |
 | 찾아진 태그의 태그 명 추출                                   | 찾아진 태그의 태그 내용 추출                                 |
 | **one$getElementAttribute(”속성명”)**                        | **one$clickEmenet()**                                        |
 | 찾아진 태그의 속성 명에 대한 값 추출                         | 찾아진 태그에서 클릭이벤트 발생시키기                        |
 | **doms <- remDr$findElements(using ="css selector","컨텐트를추출하려는태그의 CSS선택자")** | **sapply(doms,function(x){x$getElementText()})**             |
-| 태그들을 찾기<br/>존재하지 않으면 비어있는 리스트 리턴       | 찾아진 태그들의 컨텐트들의 추출하여 리스트로 리턴            |
+| 태그들을 찾기<br/>존재하지 않으면 비어있는 **리스트** 리턴 찾은 element객체의 리스트 객체 . 웹 엘리먼트 객체가 3개 만들어져있으면, 이를 담는 엘리먼트 객체 . 장점 : css 에 알맞은 선택자가 있든 없든 선택할 수 있다. | 찾아진 태그들의 컨텐트들의 추출하여 리스트로 리턴            |
 | **sapply(more, function(x){x$clickElement()})**              | **remDr$executeScript("arguments[0].click();",nextPageLink)** |
 | 찾아진 태그들에 각각 클릭 이벤트 발생                        | 가끔 clickElement() 가 일을 안 할 때가 있음…ㅜ 이 때 사용하면 좋음 |
 | **webElem <- remDr$findElement("css", "body")remDr$executeScript("scrollTo(0, document.body.scrollHeight)", args =<br/>list(webElem))** |                                                              |
