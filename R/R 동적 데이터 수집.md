@@ -58,29 +58,59 @@ java -Dwebdriver.chrome.driver="chromedriver.exe" -jar selenium-server-standalon
 
 
 
+`remDr <- remoteDriver(remoteServerAddr="localhost",port=4445,browserName="chrome")  ` : R 코드로 Selenium 서버에 접속하고 remoteDriver 객체 리턴  
+
+`remDr$open()` : 브라우저 오픈(크롬)  
+
+`remDr$navigate(url)` : url 에 해당하는 웹페이지 랜더링  
+
+
+
+`one <- remDr$findElement(using='css selector',‘css선택자') ` : **태그 한 개 찾기(webElement 객체/태그가 없으면 NoSuchElement 오류 발생**리스트 객체는 $연산자를 쓰는데 변수이름 $  
+
+`one$getElementTagName()` : 찾아진 태그의 태그 명 추출  
+
+`one$getElementText()` : 찾아진 태그의 태그 내용 추출  
+
+`one$getElementAttribute(”속성명”)` : 찾아진 태그의 속성 명에 대한 값 추출  
+
+`one$clickEmenet()` : 찾아진 태그에서 클릭이벤트 발생시키기  
 
 
 
 
-| remDr <- remoteDriver(remoteServerAddr="localhost",port=4445,browserName="chrome") | remDr$open()                                                 |
-| :----------------------------------------------------------- | ------------------------------------------------------------ |
-| R 코드로 Selenium 서버에 접속하고<br/>remoteDriver 객체 리턴 | 브라우저 오픈(크롬)                                          |
-| **remDr$navigate(url)**                                      | **one <- remDr$findElement(using='css selector',‘css선택자')** |
-| url 에 해당하는 웹페이지 랜더링                              | **태그 한 개 찾기(webElement 객체)<br/>태그가 없으면 NoSuchElement 오류 발생**리스트 객체는 $연산자를 쓰는데 변수이름 $ |
-| **one$getElementTagName()**                                  | **one$getElementText()**                                     |
-| 찾아진 태그의 태그 명 추출                                   | 찾아진 태그의 태그 내용 추출                                 |
-| **one$getElementAttribute(”속성명”)**                        | **one$clickEmenet()**                                        |
-| 찾아진 태그의 속성 명에 대한 값 추출                         | 찾아진 태그에서 클릭이벤트 발생시키기                        |
-| **doms <- remDr$findElements(using ="css selector","컨텐트를추출하려는태그의 CSS선택자")** | **sapply(doms,function(x){x$getElementText()})**             |
-| 태그들을 찾기<br/>존재하지 않으면 비어있는 **리스트** 리턴 찾은 element객체의 리스트 객체 . 웹 엘리먼트 객체가 3개 만들어져있으면, 이를 담는 엘리먼트 객체 . 장점 : css 에 알맞은 선택자가 있든 없든 선택할 수 있다. | 찾아진 태그들의 컨텐트들의 추출하여 리스트로 리턴            |
-| **sapply(more, function(x){x$clickElement()})**              | **remDr$executeScript("arguments[0].click();",nextPageLink)** |
-| 찾아진 태그들에 각각 클릭 이벤트 발생                        | 가끔 clickElement() 가 일을 안 할 때가 있음…ㅜ 이 때 사용하면 좋음 |
-| **webElem <- remDr$findElement("css", "body")remDr$executeScript("scrollTo(0, document.body.scrollHeight)", args =<br/>list(webElem))** |                                                              |
-| 페이지를 아래로 내리는(스크롤) 효과                          |                                                              |
+
+`doms <- remDr$findElements(using ="css selector","컨텐트를추출하려는태그의 CSS선택자")` : 태그들을 찾기 존재하지 않으면 비어있는 **리스트** 리턴 찾은 element객체의 리스트 객체 . 웹 엘리먼트 객체가 3개 만들어져있으면, 이를 담는 엘리먼트 객체 . 장점 : css 에 알맞은 선택자가 있든 없든 선택할 수 있다.  
+
+-> 반복문을 써서 리스트에 담긴 것을 하나하나 꺼내서 get element, clickelement 등을 할 수 있다.복수 개의 데이터를 담고 있는 벡터나 리스트에 대하여 각각의 원소를 하나하나 반복해서 꺼내 처리할 것이다. 그리고 처리한 결과를 하나의 데이터로 만들 때는 sapply.  -> (리스트 객체, 무엇을 할 것인지 함수)
+
+
+
+`sapply(doms,function(x){x$getElementText()})` : 찾아진 태그들의 컨텐트들의 추출하여 리스트로 리턴  
+
+-> div 로 태그로 묶은 댓글 컨텐츠들의 
+
+// sapply 를 안쓰고. 
+
+doms[[1]]$getElementText() : 하나만 꺼내올때. doms는 리스트이기 때문에 ?
+
+doms[[2]]$getElementText() : 하나만 꺼내올때. doms는 리스트이기 때문에 ?
 
 
 
 
+
+
+
+`sapply(doms, function(x){x$clickElement()})` : 찾아진 태그들에 각각 클릭 이벤트 발생  (기본적으로 a태그와 submit 이 내장하고 있다.)
+
+`remDr$executeScript("arguments[0].click();",nextPageLink)` : clickable 에러 메세지가 뜰 때 가끔 clickElement() 가 일을 안 할 때가 있음…ㅜ 이 때 사용하면 좋음  / 리스트 객체 두번째 객체로 준다. 
+
+
+
+
+
+`webElem <- remDr$findElement("css","body")remDr$executeScript("scrollTo(0,document.body.scrollHeight)", args =list(webElem))` : 페이지를 아래로 내리는(스크롤) 효과  
 
 
 
@@ -118,7 +148,7 @@ str(webElem)
 
 
 
-### 1.셀레늄으로 검색
+### 1.셀레늄으로 검색 : sendKeysToElement
 
 ```R
 webElem <- remDr$findElement(using = "css selector", "[name = 'q']")
@@ -223,4 +253,38 @@ one$getElementText()
 remDr$executeScript("arguments[0].click();",list(one)); # 클릭 이벤트 수행. executeScript("자바스크립트 코드")
 # 자바스크립트의 가변형, arguments인수를 써서 가변형인자를 받을 수 있다. 내부적으로 하나의 함수로 인식되는 자바스크립트 코드 -> clickElement()가 안먹는 경우가 있어서. 
 ```
+
+ 
+
+명견만리에서 스크롤 다운 이벤트를 처리할 때도 execute script 를 사용한다.
+
+
+
+
+
+# * 참고 
+
+css 선택자 
+
+자손 자식
+
+```
+#review-0 > div.Review-comment-right > div.Review-comment-bubble > div.Review-comment-body > p.Review-comment-bodyText
+
+#review-7 > div.Review-comment-right > div.Review-comment-bubble > div.Review-comment-body > p.Review-comment-bodyText
+
+#review-19 > div.Review-comment-right > div.Review-comment-bubble > div.Review-comment-body > p.Review-comment-bodyText
+```
+
+
+
+findelement 를 통해서 태그 = 돔 객체 = 웹 element 객체를 가져온다.
+
+
+
+
+
+
+
+ # 스타벅스 소스
 
