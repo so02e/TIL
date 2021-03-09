@@ -31,7 +31,8 @@ dist(com, method = "cosine")
 ## 유클리드
 dist(com, method = "Euclidean")
 
-print("duke와 ddochi/ duke와 gildong학생이 가장 유사하다")
+print("duke와 ddochi/ duke와 gildong학생이 가장 유사하다") # 값이 작을 수록 유사하다.
+
 
 
 # (2) 학생들에게 가장 많이 선택된 과일
@@ -46,5 +47,5 @@ names(which.max(most))
 # order(rowSums(summary))
 
 # (3) 학생들에게 가장 적게 선택된 과일
-names(which.min(most))   # 자두와 자몽은 왜 안나오는지
+# names(which.min(most))   # 자두와 자몽은 왜 안나오는지
 names(which(most==1))
