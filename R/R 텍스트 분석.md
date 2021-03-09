@@ -54,6 +54,8 @@
 
 
 
+`extractNoun(분석할 문장, 변수)`
+
 
 
 리스트로 품사를 리턴하는 extractNoun
@@ -66,7 +68,9 @@ Filter 함수 : 두번째 아규먼트인 데이터셋에 대하여, 첫번째 �
 
 
 
+sejongDic
 
+NIADic
 
 S: 기호
 
@@ -229,4 +233,36 @@ library(stringr)
 ​    
 
 ## 5) 결과 시각화
+
+
+
+
+
+OTT 서비스
+
+Build a multimodal corpus of pre-match interviews and press conferences of football matches • Perform automated content analysis to study correlation of language features with performance and predict match outcomes
+
+
+
+Steps: 1. Identify data sources and collect data (pre-match interviews and game results) 2. Explorative data analysis (e.g., term-level correlations) 3. Train and evaluate predictive NLP models models (traditional and SOTA) 4. Platform (web app) for real-time acquisition of interviews and outcome prediction
+
+
+
+
+
+본 연구는 소셜빅데이터 분석 방법을 활용하여 스포츠산업 관련 지원 사업에 대한 인식과 수요를 분석하는데, 그 목적이 있다. 이러한 연구목적을 달성하기 위해 ㈜더아이엠씨가 개발한 빅데이터 일괄처리 솔루션 ‘TextoM’을 활용하여 2015년 7월 1일부터 2016년 6월 30일까지 최근 1년간의 스포츠산업 글로벌화 지원 등을 포함한 10개의 스포츠산업 관련정책에 대한 소셜빅데이터를 인터넷 포털사이트(Naver)에서 수집하였다. 빅데이터의 수집대상 채널은 포털사이트인 네이버(Naver)의 뉴스, 블로그, 카페, 지식인과 웹을 포함하였고, 선정된 10개 정책(지원 사업)에 대한 VOC를 최대한 중복 및 누락 없이 수집하기 위해 정책 명칭 및 정책 관련 주요 단어들을 주요 키워드에 포함하여 총 991,387건의 데이터를 수집하였다. 본 연구에서는 빅데이터 분석방법 중 텍스트마이닝, 감성분석, 의미연결망 분석을 이용하여 수집된 데이터를 기반으로 스포츠산업 지원 사업과 관련하여 동반출현 빈도가 높은 단어, 스포츠산업 지원 사업에 대한 긍·부정의 이미지, 동반 출현한 주요 키워드들 간의 관련성 등을 살펴보았다. 이러한 분석 결과를 바탕으로 스포츠산업 지원 사업의 수요자들에 대한 인식 및 수요를 파악할 수 있었으며, 이에 대한 인사이트 및 정책 제언이 제시되었다.
+
+
+
+
+
+최근 들어 VR 산업의 성장을 위한 양질의 VR 콘텐츠에 대한 필요성이 꾸준히 제기되고 있다. 이에 본 연구는 VR 콘텐츠 중에서 가장 큰 주목을 받고 있는 VR 게임의 사용자의 관심요소에 대해 연구하였다. 연구 수행을 위해 스팀(STEAM)의 사용자 리뷰 데이터를 활용하였고 리뷰 데이터에 텍스트마이닝과 네트워크 분석을 적용한 결과 VR 게임 사용자의 관심요소는 "현존감", "1인칭 시점 게임", "청각적 요소", "상호작용" 으로 확인되었다. 본 연구는 양질의 VR 게임 개발을 위한 사용자 관점의 연구를 수행하고 사용자 관점의 연구를 리뷰을 통해 시도한 초기 연구라는 것에 대해 그 의의가 있다.
+
+
+
+
+
+
+
+
 

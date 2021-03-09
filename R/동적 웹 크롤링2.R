@@ -3,16 +3,26 @@ site <- 'http://gs25.gsretail.com/gscvs/ko/products/event-goods'
 remDr$navigate(site)
 
 
-eventgoodsnodes <- remDr$findElements(using='css selector', '#contents > div.cnt > div.cnt_section.mt50 > div > div > div:nth-child(3) > ul > li > div > p.tit')
-eventgoodsname <- sapply(eventgoodsnodes, function(x) {x$getElementText()})
-
-eventgoodsnodes <- remDr$findElements(using='css selector', '#contents > div.cnt > div.cnt_section.mt50 > div > div > div:nth-child(3) > ul > li > div > p.price > span')
-eventgoodsprice <- sapply(eventgoodsnodes, function(x) {x$getElementText()})
-
-data.frame(egn = unlist(eventgoodsname), egp = unlist(eventgoodsprice))
+repeat {
 
 
 
+nextCss <- "#contents > div.cnt > div.cnt_section.mt50 > div > div > div:nth-child(3) > div > a.next"
+pagenum <- "#contents > div.cnt > div.cnt_section.mt50 > div > div > div:nth-child(3) > div > span > a:nth-child(6)"
+nextPage<-remDr$findElement(using='css selector',nextCss)
+lastpage<-remDr$findElement(using='css selector',pagenum)
+nextPage$clickElement()
+Sys.sleep(2)
+
+#contents > div.cnt > div.cnt_section.mt50 > div > div > div:nth-child(3) > div > span > a:nth-child(6)
+#contents > div.cnt > div.cnt_section.mt50 > div > div > div:nth-child(3) > div > span > a.on
+
+# 속성값 페이지가 on 속성이면?
+if (lastpage$getElementAttribute("class")=="on"){
+  break;
+} 
+
+}
 
 
 
@@ -143,29 +153,3 @@ repeat{
 }
 write.csv(starbucks, "output/starbucks.csv")
 # scrollIntoView() 
-
-
-
-# 브라우저 화면 스크린샷하기
-install.packages("base64enc")
-install.packages("magick")
-library(base64enc)
-library(magick)
-
-remDr <- remoteDriver(remoteServerAddr = "localhost", port=4445, browserName="chrome")
-remDr$open()
-remDr$navigate("https://google.com")
-
-
-# this returns a list of base64 characters
-screenshot <- remDr$screenshot(display = FALSE)
-# converts the base64 characters into a vector
-screenshot <- base64decode(toString(screenshot), output = NULL)
-# reads the vector as stores it as a PNG
-screenshot <- image_read(screenshot)
-image_browse(screenshot)
-
-
-remDr$screenshot(display = FALSE, file="c:/Temp/google.png")
-pngdata <- image_read("c:/Temp/google.png")
-image_browse(pngdata)

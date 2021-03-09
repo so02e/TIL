@@ -84,6 +84,9 @@ url<-'http://comic.naver.com/comment/comment.nhn?titleId=570503&no=135'
 remDr$navigate(url)
 
 #단수형으로 노드 추출
+
+
+
 more<-remDr$findElement(using='css selector','#cbox_module > div > div.u_cbox_sort > div.u_cbox_sort_option > div > ul > li:nth-child(2) > a')
 more$getElementTagName()
 more$getElementText()
