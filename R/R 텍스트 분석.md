@@ -1,3 +1,5 @@
+
+
 # 1. 텍스트 분석
 
 ## 1) 텍스트 마이닝 개요
@@ -17,8 +19,6 @@
 | 연관성 분석 | 트렌드 분석 | 감성 분석 |
 | ----------- | ----------- | --------- |
 |             |             |           |
-
-
 
 
 
@@ -96,20 +96,15 @@ X: 접사
 
 
 
-
-
 ## 3) 텍스트 전처리와 tm패키지
 
- **[** **정규** **표현식** **활용** **]**
+### (1) 데이터 정제, 변환
 
-stringr 패키지.. 에서 pattern 이라고 되어 있는 부분들은 정규 표현식을 사용할 수 있다.
+텍스트는 기본적으로 비정형 데이터로서 분석에 불필요한 때로는 분석에 방해가 되는 요소들이 포함되어 있어서 데이터 정제(data cleaning) 작업은 필수이다. 
 
+#### ① 정규표현식
 
-
-
-
- **word <- "JAVA** **javascript** **가나다** **12.3 %^&\*"**
-
+```R
  gsub("A", "", word) 
 
  gsub("a", "", word) 
@@ -118,7 +113,7 @@ stringr 패키지.. 에서 pattern 이라고 되어 있는 부분들은 정규 �
 
  gsub("[가-힣]", "", word) 
 
- gsub("[^가-힣]", "", word) 
+ gsub("[ ^가-힣]", "", word) 
 
  gsub("[&^%*]", "", word) 
 
@@ -135,50 +130,87 @@ stringr 패키지.. 에서 pattern 이라고 되어 있는 부분들은 정규 �
  gsub("[[:space:]]", "", word) 
 
  gsub("[[:space:][:punct:]]", "", word)
+```
 
 
 
-**[** **stringr** **패키지 활용** **]**
+#### ② stringr 패키지
 
- 
-
+```R
 install.packages("stringr")
-
 library(stringr)
+```
 
 
 
-**[ tm** **패키지를 이용한 텍스트 전처리** **:** **tm_map****()** **함수 사용** **]**
-
-텍스트는 기본적으로 비정형 데이터로서 분석에 불필요한 때로는 분석에 방해가 되는 요소들이 포함되어 있어서 데이터 정제(data cleaning) 작업은 필수이다. tm 패키지에는 텍스트 데이터의 정제작업을 지원하는 다양한 변환함수를 제공한다. getTransformations()이라는 함수를 수행시키면 사용 가능한 변환함수의 리스트를 확인할 수 있으며 이 함수들은 tm_map() 함수에 인수로 전달하여 변환작업을 처리할 수 있다. 문서에서 문장 부호를 제거하거나, 문자를 모두 소문자로 바꾸거나, 단어의 어간을 추출해주는 스테밍(stemming)을 적용할 수 있다.
-
- **tm_map****(**
-
-  **x,  #** **코퍼스**
-
-  **FUN #** **변환에 사용할 함수**
-
- **)**            
-
-​            corp2. <- tm_map(corp1,stripWhitespace) # 여러 개의 공백을 하나의 공백으로 변환한다.
-
-​     corp2. <- tm_map(corp2.,removeNumbers) # 숫자를 제거한다.
-
-​            corp2. <- tm_map(myCorpus, content_transformer(tolower)) # 영문 대문자를 소문자로 변환한다.
-
-​            corp2. <- tm_map(corp2.,removePunctuation) # 마침표,콤마,세미콜론,콜론 등 문자 제거한다.
-
-​            corp2. <- tm_map(corp2.,PlainTextDocument)
-
-​            stopword2. <- c(stopwords('en'),"and","but") # 기본 불용어 외에 불용어로 쓸 단어 추가
-
-​            corp2. <- tm_map(corp2.,removeWords,stopword2.) # 불용어 제거하기 (전치사 , 관사 등)                   
+stringr 패키지 에서 **pattern** 이라고 되어 있는 부분들은 정규 표현식을 사용할 수 있다.
 
 
 
-**코퍼스란**
 
-코퍼스(corpus; 말뭉치): 언어학에서 구조를 이루고 있는 텍스트 집합으로 통계 분석 및 가설 검증, 언어 규칙의 검사 등에 사용된다. 텍스트 마이닝 패키지인 tm에서 문서를 관리하는 기본구조를 Corpus라 부르며, 이는 텍스트 문서들의 집합을 의미한다.
+
+#### ③ tm 패키지
+
+tm 패키지에는 텍스트 데이터의 정제작업을 지원하는 다양한 변환함수를 제공한다. `getTransformations()`이라는 함수를 수행시키면 사용 가능한 변환함수의 리스트를 확인할 수 있으며 이 함수들은 `tm_map()` 함수에 인수로 전달하여 변환작업을 처리할 수 있다. 문서에서 문장 부호를 제거하거나, 문자를 모두 소문자로 바꾸거나, 단어의 어간을 추출해주는 스테밍(stemming)을 적용할 수 있다.
+
+
+
+데이터 정제작업이 필요한 **코퍼스** 객체를 첫번째 아규먼트, 두번째 아규먼트로 어떤 작업을 줄 것인지 준다.
+
+readLines로 읽는 것이 아니라, `코퍼스`라는 객체를 만들어 적용해야 한다.
+
+```R
+tm_map (
+	x, # 코퍼스
+    FUN # 변환에 사용할 함수
+)
+```
+
+
+
+##### ⑴ 여러 개의 공백을 하나의 공백으로 변환
+
+```R
+corp2. <- tm_map(corp1,stripWhitespace)        
+```
+
+##### ⑵ 숫자 제거
+
+```R
+corp2. <- tm_map(corp2.,removeNumbers)      
+```
+
+##### ⑶ 영문 대문자를 소문자로 변환
+
+```R
+corp2. <- tm_map(myCorpus, content_transformer(tolower))
+```
+
+##### ⑷ 마침표, 콤마, 세미콜론, 콜론 등 문자 제거 (특수문자 삭제)
+
+```R
+corp2. <- tm_map(corp2.,removePunctuation)
+```
+
+##### ⑸ 기본 불용어 외에 불용어로 쓸 단어 추가
+
+ **기본불용어** : stopwords(나라코드)를 넣으면 그 나라의 불용어가 나오지만 한국어의 불용어는 없다.
+
+```R
+stopword2. <- c(stopwords('en'),"and","but")
+```
+
+##### ⑹ 불용어 제거하기 (전치사 , 관사 등)       
+
+```R
+corp2. <- tm_map(corp2.,removeWords,stopword2.)      
+```
+
+
+
+#### ④ 코퍼스 (corpus, 말뭉치)
+
+언어학에서 구조를 이루고 있는 텍스트 집합으로 통계 분석 및 가설 검증, 언어 규칙의 검사 등에 사용된다. 텍스트 마이닝 패키지인 **tm에서 문서를 관리하는 기본구조를 Corpus**라 부르며, 이는 텍스트 문서들의 집합을 의미한다.
 
 
 
@@ -186,7 +218,7 @@ library(stringr)
 
 
 
-코퍼스 접근법은 **분석 대상이 되는 개별 텍스트 즉 문서****(document)****를 단어의 집합****(****주머니****)****으로 단순화시킨 표현 방법으로서 단어의 순서나 문법은 무시하고 단어의 출현 빈도만을 이용하여 텍스트를 매트릭스로 표현**한다. 이 때 생성되는 매트릭스를 term-document-matrix(TDM)또는 document-term-matrix(DTM) 라고 한다.
+코퍼스 접근법은 **분석 대상이 되는 개별 텍스트 즉 문서**(document)를 단어의 집합(주머니)으로 단순화시킨 표현 방법으로서 단어의 순서나 문법은 무시하고 단어의 출현 빈도만을 이용하여 텍스트를 매트릭스로 표현한다. 이 때 생성되는 매트릭스를 term-document-matrix(TDM)또는 document-term-matrix(DTM) 라고 한다.
 
 
 
@@ -194,75 +226,263 @@ library(stringr)
 
 
 
+코퍼스 객체는 다양한 자원을 통해 만들 수 있다. (소스 객체 : 데이터 프레임, Dir, URI, **Vector**, XML, Zip )
+
+
+
+##### ⑴ VectorSource 예제1
+
+다음은 6명의 학생의 점심메뉴 벡터 객체이다.
+
+```R
+lunch <- c("커피 파스타 치킨 샐러드 아이스크림", 
+		   "커피 우동 소고기김밥 귤",
+		   "참치김밥 커피 오뎅",
+		   "샐러드 피자 파스타 콜라",
+		   "티라미슈 햄버거 콜라",
+		   "파스타 샐러드 콜라")
+```
+
+1. 벡터 소스 함수를 이용하여 코퍼스 객체를 만든다.
+
+   알맹이는 매트릭스 객체이지만. 
+
+```
+cps <- VCorpus(VectorSource(lunch)) # 벡터 소스 함수를 이용하여 코퍼스 객체를 만든다.
+tdm <- TermDocumentMatrix(cps) #
+tdm
+(m <- as.matrix(tdm))
+```
+
+![image-20210309140635571](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20210309140635571.png)
+
+:arrow_right: 텀의 길이가 3자 이상인 것만 만들기 때문에 커피가 보이지 않는다.
+
+
+
+:imp: wordLengths에 최소값 최대값 을 준다. Inf는 무한대를 뜻하는 리터럴이다.
+
+
+
+```R
+cps <- VCorpus(VectorSource(lunch))
+tdm <- TermDocumentMatrix(cps,
+control=list(wordLengths = c(1, Inf)))
+tdm
+(m <- as.matrix(tdm))
+```
+![image-20210309140851284](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20210309140851284.png)
+
+:arrow_right: 텀의 길이가 3자 이상인 것만 만들기 때문에 커피가 보이지 않는다. 커피는 4명이 먹었구나 금방 알 수 있다. 하지만 행과 열의 개수가 많은 데이터의 경우에는 rowsSums, colSums()함수의 도움을 받는다. 실제로는 matrix객체이다.!
+
+
+
+![image-20210309141004467](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20210309141004467.png)
+
+t() 함수는 전치 행렬을 수행하는 역할을 한다. 행과 열을 바꿔주는 역할을 한다
+
+
+
+행렬 곱 연산(com).  샐러드와 먹은 사람과 다른 메뉴를 먹은 사람간의 관계를 알 수 있다. com 은 동시 출현한 단어, 단어간의 관계를 가리킨다.
+
+
+
+##### ⑵ VectorSource 예제2
+
+```R
+library(tm)
+A <- c('포도 바나나 딸기 맥주 비빔밥 여행 낚시 떡볶이 분홍색 듀크 귤')
+B <- c('사과 와인 스테이크 배 포도 여행 등산 짜장면 냉면 삼겹살 파란색 듀크 귤 귤')
+C <- c('백숙 바나나 맥주 여행 피자 콜라 햄버거 비빔밥 파란색 듀크 귤')
+D <- c('귤 와인 스테이크 배 포도 햄버거 등산 갈비 냉면 삼겹살 녹색 듀크')
+data <- c(A,B,C,D)
+cps <- Corpus(VectorSource(data))
+
+tdm <- TermDocumentMatrix(cps) # 객체에 대한 전반적인 정보만 출력된다. 
+inspect(tdm) # 매트릭스 내용 + 객체 전반적 내용까지도 보여준다.
+
+m <- as.matrix(tdm)
+v <- sort(rowSums(m), decreasing=T) # 모든 문서에서 단어가 몇번 나왔는지 체크
+```
+
+
+
+![image-20210309142250500](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20210309142250500.png)
+
+![image-20210309142346168](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20210309142346168.png)
+
+
+
+![image-20210309142413857](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20210309142413857.png)
+
+
+
+![image-20210309142430953](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20210309142430953.png)
+
+4개의 문서에서 듀크는 모두 나왔다는 것을 확인할 수 있다. 
+
+
+
+
+
+```R
+<가중치.>
+m1 <- as.matrix(weightTf(tdm))
+m2 <- as.matrix(weightTfIdf(tdm))
+```
+
+단어 가중치 : 문서에서 어떤 단어의 중요도를 평가하기 위해
+사용되는 통계적인 수치
+**TF : Term Frequency(단어빈도)**
+**IDF : Inverse Document Frequency(역문서빈도)**
+**DF : Document Frequency(문서빈도)**
+**TFIDF : TF X IDF**
+특정 문서 내에서 단어 빈도가 높을 수록, 전체 문서들엔 그 단어를
+포함한 문서가 적을 수록 TFIDF 값이 높아지게 된다.
+즉, 문서 내에서 해당 단어의 중요도는 커지게 된다.
+
+![image-20210309142628963](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20210309142628963.png)
+
+
+
+
+
+![image-20210309142640625](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20210309142640625.png)
+
+m2 에서 TFIDF = TF와 IDF를 곱한 것. 
+
+어떤 문서가 첫번째에서만 등장하고, 나머지 에서는 등장하지 않으면, 그 등장했던 첫번째 에서 가중치가 크다는 것이다. 4군데 다 등장하면, 주제어로서의 가중치는 0이 된다.
+
+
+
+##### ⑵ 스티브잡스 예제3
+
+```R
+// 조상이 누구이든 간에 p 태그만 찾는다. -> 연설문이 p태극 가 낭ㄴ다. 
+v <- sort(rowSums(m), decreasing=T) # 모든 문서에서 단어가 몇번 나왔는지 체크
+```
+
+content_transformer 는 리턴값이 함수이다. 
+
+stemDocument() :  어근을 남긴다.?
+
+
+
+
+
 
 
 ## 4) 문서간 유사도 분석
 
-문서들간에 동일한 단어 또는 비슷한 단어가 얼마나 공통으로 많이 사용 되었나에 따라서 문서간 유사도 분석을 할 수 있다.
+문서들 간에 동일한 단어 또는 비슷한 단어가 얼마나 공통으로 많이 사용 되었나에 따라서 문서간 유사도 분석을 할 수 있다.
+
+문서간의 유사도를 분석하기 위해서는 문서에 포함된 단어들을 단어별로 쪼갠 후에 단어별로 개수를 세어 행렬로 만들어주는 전처리가 수행되어 있어야 한다.
+
+documentTermMatrix를 만들어서 수행을 해야 . 전치 행렬  * 행렬
 
 
 
-(1)문서의 각 단어들을 수치화 하여 표현한다. – DTM
+### ● 유사도 분석의 step
 
-(2)문서간 단어들의 차이를 계산한다 – 코사인 유사도, 유클리드 거리
-
-●
-
-코사인 유사도(Cosine Similarity)
-
-두 벡터 간의 코사인 각도를 이용하여 유사도를 측정한다. 
-
-두 벡터의 값이 완전 동일하면 1, 반대 방향이면 -1, 90도의 각을 이루면 0 이된다. 1에 가까울수록 유사도가 높다.
+1. 문서의 각 단어들을 수치화 하여 표현한다. – DTM
+2. 문서간 단어들의 차이를 계산한다 – **코사인 유사도**, **유클리드 거리**
 
 
 
+### (1) 코사인 유사도(Cosine Similarity)
+
+두 벡터 간의 코사인 각도를 이용하여 유사도를 측정하고 문서 분류 군집화 등에 활용할 수 있다. 
+
+코사인 유사도는 문서의 길이가 다른 상황에서 비교적 공정한 비교를 할 수 있도록 도와준다.
+
+이는 코사인 유사도는 유사도를 구할 때, 벡터의 크기가 아니라 벡터의 방향(패턴)에 초점을 두기 때문인데,  코사인 유사도가 벡터의 유사도를 구하는 또 다른 방법인 내적과 가지는 차이점이라 할 수 있다.
+
+![](https://wikidocs.net/images/page/24603/%EC%BD%94%EC%82%AC%EC%9D%B8%EC%9C%A0%EC%82%AC%EB%8F%84.PNG)
+
+| 완전히 동일 | 반대 방향 | 90도의 각 |  높은 유사도   |
+| :---------: | :-------: | :-------: | :------------: |
+|      1      |    -1     |     0     | 1에 가까울수록 |
+
+```R
+dist(com, method = "cosine")
+```
+
+동일 0 
+
+다르면 1
+
+0~1 사이의 범위의 값 . 실질적으로 음의 값은 나오지 않는다. 
+
+1- 1
+
+1--1
 
 
 
 
 
+#### :notebook_with_decorative_cover:`참고` :notebook_with_decorative_cover: 코사인거리와 코사인 유사도
+
+`코사인 유사도(Cosine Similarity)`는 두 개의 문서별 단어별 개수를 세어놓은 특징 벡터 X, Y 에 대해서 두 벡터의 곱(X*Y)을 두 벡터의 L2 norm (즉, 유클리드 거리) 의 곱으로 나눈 값이다. 
+
+그리고 `코사인 거리(Cosine Distance)`는 1 - 코사인 유사도(Cosine Similarity) 이다. 
 
 
 
-유클리드 거리(Euclidean distance)
-
-두 점 사이의 유클리드 거리 공식은 피타고라스의 정리를 통해 두 점 사이의 거리를 구하는 것과 동일하다.
 
 
+### (2) 유클리드 거리 유사도 (Euclidean Distance)
 
-​    
+두 점 사이의 유클리드 거리 공식은 **피타고라스의 정리**를 통해 두 점 사이의 거리를 구하는 것과 동일하다.
+
+```R
+dist(com, method = "Euclidean")
+```
+
+
+
+ ```R
+install.packages("proxy")
+dd <- NULL
+d1 <- c("aaa bbb ccc")
+d2 <- c("aaa bbb ddd")
+d3 <- c("aaa bbb ccc")
+d4 <- c("xxx yyy zzz")
+dd <- c(d1, d2, d3, d4)
+cps <- Corpus(VectorSource(dd))
+dtm <- DocumentTermMatrix(cps) # 행이 도큐먼트. 
+as.matrix(dtm)
+inspect(dtm)
+m <- as.matrix(dtm)
+com <- m %*% t(m)
+com
+dist(com, method = "cosine")
+dist(com, method = "Euclidean")
+ ```
+
+
+
+
 
 ## 5) 결과 시각화
 
+### (1) 워드클라우드
+
+```R
+wordcloud2(data = head(result_df,100),    # 데이터프레임
+           fontFamily = '나눔고딕',        # 사용할 글꼴
+           fontWeight = 'normal',         # 글꼴의 굵기 (normal or bold)
+           size = 1.3,                    # 글꼴크기(기본값=1)
+           minSize= 0.3,                  # 글꼴의 최소 크기
+           backgroundColor = "#ffffff",   # 배경색상
+           widgetsize = c(800, 600),      # 위젯의 크기 (가로,세로) 픽셀 형식의 벡터
+           color=brewer.pal(11, "RdYlGn") # 색상 팔래트 적용 (단일 값인 경우 단색으로 지정됨)
+          )
+```
 
 
 
-
-OTT 서비스
-
-Build a multimodal corpus of pre-match interviews and press conferences of football matches • Perform automated content analysis to study correlation of language features with performance and predict match outcomes
-
-
-
-Steps: 1. Identify data sources and collect data (pre-match interviews and game results) 2. Explorative data analysis (e.g., term-level correlations) 3. Train and evaluate predictive NLP models models (traditional and SOTA) 4. Platform (web app) for real-time acquisition of interviews and outcome prediction
-
-
-
-
-
-본 연구는 소셜빅데이터 분석 방법을 활용하여 스포츠산업 관련 지원 사업에 대한 인식과 수요를 분석하는데, 그 목적이 있다. 이러한 연구목적을 달성하기 위해 ㈜더아이엠씨가 개발한 빅데이터 일괄처리 솔루션 ‘TextoM’을 활용하여 2015년 7월 1일부터 2016년 6월 30일까지 최근 1년간의 스포츠산업 글로벌화 지원 등을 포함한 10개의 스포츠산업 관련정책에 대한 소셜빅데이터를 인터넷 포털사이트(Naver)에서 수집하였다. 빅데이터의 수집대상 채널은 포털사이트인 네이버(Naver)의 뉴스, 블로그, 카페, 지식인과 웹을 포함하였고, 선정된 10개 정책(지원 사업)에 대한 VOC를 최대한 중복 및 누락 없이 수집하기 위해 정책 명칭 및 정책 관련 주요 단어들을 주요 키워드에 포함하여 총 991,387건의 데이터를 수집하였다. 본 연구에서는 빅데이터 분석방법 중 텍스트마이닝, 감성분석, 의미연결망 분석을 이용하여 수집된 데이터를 기반으로 스포츠산업 지원 사업과 관련하여 동반출현 빈도가 높은 단어, 스포츠산업 지원 사업에 대한 긍·부정의 이미지, 동반 출현한 주요 키워드들 간의 관련성 등을 살펴보았다. 이러한 분석 결과를 바탕으로 스포츠산업 지원 사업의 수요자들에 대한 인식 및 수요를 파악할 수 있었으며, 이에 대한 인사이트 및 정책 제언이 제시되었다.
-
-
-
-
-
-최근 들어 VR 산업의 성장을 위한 양질의 VR 콘텐츠에 대한 필요성이 꾸준히 제기되고 있다. 이에 본 연구는 VR 콘텐츠 중에서 가장 큰 주목을 받고 있는 VR 게임의 사용자의 관심요소에 대해 연구하였다. 연구 수행을 위해 스팀(STEAM)의 사용자 리뷰 데이터를 활용하였고 리뷰 데이터에 텍스트마이닝과 네트워크 분석을 적용한 결과 VR 게임 사용자의 관심요소는 "현존감", "1인칭 시점 게임", "청각적 요소", "상호작용" 으로 확인되었다. 본 연구는 양질의 VR 게임 개발을 위한 사용자 관점의 연구를 수행하고 사용자 관점의 연구를 리뷰을 통해 시도한 초기 연구라는 것에 대해 그 의의가 있다.
-
-
-
-
-
-
+### (2) barplot
 
 
 
