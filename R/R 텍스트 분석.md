@@ -451,7 +451,24 @@ dist(com, method = "Euclidean")
 
 
 
-### (3)유사도 분석의 결과 해석
+### (3) 유사도 분석의 결과 해석
 
 유사도 분석의 결과를 해석하자면, 거리가 짧을수록(숫자가 작을수록) 두 문서간 유사도가 높다고 판단할 수 있다.
 
+
+
+
+
+## 5) 워드클라우드
+
+```R
+wordcloud2(data = head(result_df,100),    # 데이터프레임
+           fontFamily = '나눔고딕',        # 사용할 글꼴
+           fontWeight = 'normal',         # 글꼴의 굵기 (normal or bold)
+           size = 1.3,                    # 글꼴크기(기본값=1)
+           minSize= 0.3,                  # 글꼴의 최소 크기
+           backgroundColor = "#ffffff",   # 배경색상
+           widgetsize = c(800, 600),      # 위젯의 크기 (가로,세로) 픽셀 형식의 벡터
+           color=brewer.pal(11, "RdYlGn") # 색상 팔래트 적용 (단일 값인 경우 단색으로 지정됨)
+          )
+```
