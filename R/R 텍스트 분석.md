@@ -143,7 +143,7 @@ library(stringr)
 
 
 
-stringr 패키지 에서 **pattern** 이라고 되어 있는 부분들은 정규 표현식을 사용할 수 있다.
+stringr 패키지 에서 **pattern** 아규먼트에서 정규 표현식을 사용할 수 있다.
 
 
 
@@ -374,7 +374,7 @@ stemDocument() :  어근을 남긴다.?
 
 ## 4) 문서간 유사도 분석
 
-문서들 간에 동일한 단어 또는 비슷한 단어가 얼마나 공통으로 많이 사용 되었나에 따라서 문서간 유사도 분석을 할 수 있다.
+문서들 간에 동일한 단어 또는 비슷한 단어가 얼마나 공통으로 많이 사용 되었나에 따라서 ==문서간 유사도 분석==을 할 수 있다.
 
 문서간의 유사도를 분석하기 위해서는 문서에 포함된 단어들을 단어별로 쪼갠 후에 단어별로 개수를 세어 행렬로 만들어주는 전처리가 수행되어 있어야 한다.
 
@@ -399,33 +399,20 @@ documentTermMatrix를 만들어서 수행을 해야 . 전치 행렬  * 행렬
 
 ![](https://wikidocs.net/images/page/24603/%EC%BD%94%EC%82%AC%EC%9D%B8%EC%9C%A0%EC%82%AC%EB%8F%84.PNG)
 
-| 완전히 동일 | 반대 방향 | 90도의 각 |  높은 유사도   |
-| :---------: | :-------: | :-------: | :------------: |
-|      1      |    -1     |     0     | 1에 가까울수록 |
-
+| 완전히 동일 | 반대 방향 | 90도 |
+| :---------: | :-------: | :--: |
+|      1      |    -1     |  0   |
 ```R
 dist(com, method = "cosine")
 ```
 
-동일 0 
-
-다르면 1
-
-0~1 사이의 범위의 값 . 실질적으로 음의 값은 나오지 않는다. 
-
-1- 1
-
-1--1
 
 
-
-
-
-#### :notebook_with_decorative_cover:`참고` :notebook_with_decorative_cover: 코사인거리와 코사인 유사도
+#### :notebook_with_decorative_cover:`참고` 코사인거리와 코사인 유사도
 
 `코사인 유사도(Cosine Similarity)`는 두 개의 문서별 단어별 개수를 세어놓은 특징 벡터 X, Y 에 대해서 두 벡터의 곱(X*Y)을 두 벡터의 L2 norm (즉, 유클리드 거리) 의 곱으로 나눈 값이다. 
 
-그리고 `코사인 거리(Cosine Distance)`는 1 - 코사인 유사도(Cosine Similarity) 이다. 
+ `코사인 거리(Cosine Distance)`는 1 - 코사인 유사도(Cosine Similarity) 이다. 
 
 
 
@@ -464,25 +451,7 @@ dist(com, method = "Euclidean")
 
 
 
-## 5) 결과 시각화
+### (3)유사도 분석의 결과 해석
 
-### (1) 워드클라우드
-
-```R
-wordcloud2(data = head(result_df,100),    # 데이터프레임
-           fontFamily = '나눔고딕',        # 사용할 글꼴
-           fontWeight = 'normal',         # 글꼴의 굵기 (normal or bold)
-           size = 1.3,                    # 글꼴크기(기본값=1)
-           minSize= 0.3,                  # 글꼴의 최소 크기
-           backgroundColor = "#ffffff",   # 배경색상
-           widgetsize = c(800, 600),      # 위젯의 크기 (가로,세로) 픽셀 형식의 벡터
-           color=brewer.pal(11, "RdYlGn") # 색상 팔래트 적용 (단일 값인 경우 단색으로 지정됨)
-          )
-```
-
-
-
-### (2) barplot
-
-
+유사도 분석의 결과를 해석하자면, 거리가 짧을수록(숫자가 작을수록) 두 문서간 유사도가 높다고 판단할 수 있다.
 
