@@ -13,7 +13,7 @@ install.packages("dplyr") library(dplyr)
 ```
 
 
-> :spiral_notepad: **<u>dplyr 패키지 방식으로의 코딩</u> :spiral_notepad:** : 단축키 `[Ctrl+Shit+M]`으로 %>% 기호 입력
+> :spiral_notepad: **<u>dplyr 패키지 방식으로의 코딩</u> :spiral_notepad:** : 단축키 `[Ctrl+Shit+M]`으로 `%>%` 기호 입력
 >
 > > ```R
 > > # a <- xxx
@@ -48,9 +48,9 @@ install.packages("dplyr") library(dplyr)
 | **> select(df, one_of())**      | **정규표현식과 일치하는 열 선택**                |                  |
 | **> select(df, num_range())**   | **접두사가있는 num_range a에서 n까지의 열 선택** |                  |
 | **rename()**                    | **열** **이름** **변경**                         | {reshape} rename |
-| distinct()                      | 고유 한 (고유 한) 행 추출                        |  {base} unique   |
-| sample_n()                      | 고정 된 수에 대한 랜덤 샘플 행                   |  {base} sample   |
-| sample_frac()                   | 고정 분수에 대한 랜덤 샘플 행                    |  {base} sample   |
+| distinct()                      | 고유한 행 추출                                   |  {base} unique   |
+| sample_n()                      | 고정된 개수에 대한 랜덤 샘플 행                  |  {base} sample   |
+| sample_frac()                   | 고정된 비율에 대한 랜덤 샘플 행                  |  {base} sample   |
 | mutate()                        | 새 열을 생성 (추가)  방금 만든 열을 참조 가능    | {base} transform |
 | transmute()                     | 새 열을 생성 (추가)  새 열만 유지합니다.         | {base} transform |
 | summarise()                     | 가치 요약                                        |  {base} summary  |
@@ -218,21 +218,21 @@ sample_n(Cars93[, 1:5], 20, replace = TRUE) # a bootstrap sample of 20 records
 
 #### ⓐ group_by() : 그룹별 집계
 
-* 기본형태 : %>% group_by() 
+* 기본형태 : **%>% group_by()** 
 
-함수 `group_by()`는
+함수 `group_by()`는 그룹별로 집계를 할 때 사용한다.
 
 ```R
 Cars93 %>% group_by(Manufacturer) %>% summarise(mean_price = mean(Price))
-Cars93 %>% group_by(Manufacturer) %>%
-summarise(mean_price = mean(Price), max_price = max(Price), min_price = mean(Price))
-Cars93 %>% group_by(Manufacturer, Model) %>%
-summarise(mean_price = mean(Price), max_price = max(Price), min_price = mean(Price))
+
+Cars93 %>% group_by(Manufacturer) %>% summarise(mean_price = mean(Price), max_price = max(Price), min_price = mean(Price))
+
+Cars93 %>% group_by(Manufacturer, Model) %>% summarise(mean_price = mean(Price), max_price = max(Price), min_price = mean(Price))
 ```
 
 #### ⓑ summarise()
 
-* 기본형태 : %>% summarise() 
+* 기본형태 : **%>% summarise()** 
 
 함수 `summarise()`는 mean(), sd(), var(), median() 등의 함수를 지정하여 기초 통계량을 구할 수 있다. **결과값은 데이터 프레임 형식이다.**
 
@@ -275,7 +275,7 @@ Cars93 %>% group_by(Type) %>% summarise(count = n())
 
 #### ⓐ mutate()
 
-* 기본형태 : **%>% mutate( **새로 추가하고자 하는 변수명1 = 식1,   새로 추가하고자 하는 변수명2 = 식2***)** 
+* 기본형태 : **%>% mutate( **<u>새로 추가하고자 하는 변수명1 = 식1</u>,   <u>새로 추가하고자 하는 변수명2 = 식2</u>**)** 
 
 함수 `mutate()`는 원하는 변수를 새로 만드는, 즉, 파생변수를 만들어 추가한다.
 
@@ -286,13 +286,10 @@ score <- read.table("성적.txt", header=T)
 score %>% mutate(총점 = 국어 + 영어 + 수학, 평균 = 총점/3)
 
 # 총점과 평균이라는 파생변수의 추가와 총점 내림차순
-score %>%
-mutate(총점 = 국어 + 영어 + 수학, 평균 = 총점/3) %>%
-arrange(desc(총점))
+score %>% mutate(총점 = 국어 + 영어 + 수학, 평균 = 총점/3) %>% arrange(desc(총점))
 
 # 총점과 결과라는 파생변수의 추가
-score %>%
-mutate(총점 = 국어 + 영어 + 수학, 결과 = ifelse(총점 >= 20, "pass", "fail"))
+score %>%mutate(총점 = 국어 + 영어 + 수학, 결과 = ifelse(총점 >= 20, "pass", "fail"))
 ```
 
 
@@ -405,16 +402,12 @@ mean(exam$math)
 df <- data.frame(sex = c("M", "F", NA, "M", "F"), score = c(5, 4, 3, 4, NA))
 ```
 
-
-
 ##### ⑴ 결측치 확인
 
 ```R
 is.na(df)
 table(is.na(df))
 ```
-
-
 
 ##### ⑵ 변수별로 결측치 확인
 
@@ -423,15 +416,12 @@ table(is.na(df$sex))
 table(is.na(df$score))
 ```
 
-
-
 ##### ⑶ 결측치 포함된 상태로 분석
 
 ```R
-mean(df$score); sum(df$score)
+mean(df$score)
+sum(df$score)
 ```
-
-
 
 ##### ⑷ 결측치 있는 행 제거
 
@@ -440,13 +430,12 @@ df %>% filter(is.na(score))
 df %>% filter(!is.na(score))
 ```
 
-
-
 ##### ⑸ 결측치 제외한 데이터로 분석
 
 ```R
 df_nomiss <- df %>% filter(!is.na(score))
-mean(df_nomiss$score); sum(df_nomiss$score)
+mean(df_nomiss$score)
+sum(df_nomiss$score)
 ```
 
 
@@ -470,13 +459,9 @@ outlier$sex <- ifelse(outlier$sex == 3, NA, outlier$sex)
 outlier$score <- ifelse(outlier$score > 5, NA, outlier$score)
 ```
 
-
-
 ##### ⑵ 이상치를 제외하고 분석
 
 ```R
-outlier %>%
-filter(!is.na(sex) & !is.na(score)) %>%
-group_by(sex) %>%
-summarise(mean_score = mean(score))
+outlier %>% filter(!is.na(sex) & !is.na(score)) %>%
+group_by(sex) %>% summarise(mean_score = mean(score))
 ```
