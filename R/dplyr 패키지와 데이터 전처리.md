@@ -216,11 +216,11 @@ sample_n(Cars93[, 1:5], 20, replace = TRUE) # a bootstrap sample of 20 records
 
 ### ⑦ 집계
 
-#### ⓐ group_by() : 그룹별 집계
+#### ⓐ group_by()
 
 * 기본형태 : **%>% group_by()** 
 
-함수 `group_by()`는 그룹별로 집계를 할 때 사용한다.
+함수 `group_by()`는 그룹별로 집계를 할 때 사용한다. 그룹의 수준을 여러개를 줄 수도 있다.(대그룹, 소그룹)의 형태로 그룹을 할 수 있다는 뜻이다.
 
 ```R
 Cars93 %>% group_by(Manufacturer) %>% summarise(mean_price = mean(Price))
@@ -232,9 +232,9 @@ Cars93 %>% group_by(Manufacturer, Model) %>% summarise(mean_price = mean(Price),
 
 #### ⓑ summarise()
 
-* 기본형태 : **%>% summarise()** 
+* 기본형태 : **summarise()**
 
-함수 `summarise()`는 mean(), sd(), var(), median() 등의 함수를 지정하여 기초 통계량을 구할 수 있다. **결과값은 데이터 프레임 형식이다.**
+함수 `summarise()`는 mean(), sd(), var(), median() 등의 함수를 지정하여 기초 통계량을 구할 수 있다. **결과값은 데이터 프레임 형식이다.** 일반적으로 `group_by()`와 함께 쓰이지만, summarise()를 **혼자서 사용하면, 전체 데이터의 요약**을 하게 된다. 
 
 ```R
 Cars93 %>% group_by(Type) %>% summarise(count = n())
@@ -253,23 +253,19 @@ Cars93 %>% group_by(Type) %>% summarise(count = n())
 |  max()   |  최댓값  |
 |   n()    |   빈도   |
 
+`tally()`, `count()` 이전 식에서 전달한 데이터프레임에서 행의 개수를 셀 때 쓰인다. 이들은 아규먼트를 안주고 호출하게 되면, 전달한 데이터 프레임의 모든 행의 개수를 세게 된다. 
 
 
 
-
-![](https://statkclee.github.io/r-novice-gapminder/fig/13-dplyr-fig1.png)
-
-
-
-![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpQUwre7EUeHQo5FUyjjJcogrKjEtFxXa-vA&usqp=CAU)
+<img src="https://statkclee.github.io/r-novice-gapminder/fig/13-dplyr-fig1.png" style="zoom:67%;" />
 
 
 
-![](https://statkclee.github.io/r-novice-gapminder/fig/13-dplyr-fig3.png)
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpQUwre7EUeHQo5FUyjjJcogrKjEtFxXa-vA&usqp=CAU" style="zoom:150%;" />
 
 
 
-
+<img src="https://statkclee.github.io/r-novice-gapminder/fig/13-dplyr-fig3.png" style="zoom:80%;" />
 
 ### ⑧ 파생변수 추가
 
@@ -296,7 +292,9 @@ score %>%mutate(총점 = 국어 + 영어 + 수학, 결과 = ifelse(총점 >= 20,
 
 ### ⑨ 둘 이상의 데이터 프레임 결합
 
-> :spiral_notepad: **<u>dplyr패키지를 rbind, colbind 와 비교한 장점</u> :spiral_notepad:**
+![](https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F263BA94E581EF3FD17)
+
+> :spiral_notepad: **<u>dplyr패키지를 rbind, cbind 와 비교한 장점</u> :spiral_notepad:**
 >
 > > 1.  열(columns)이 서로 동일하지 않아도 행(rows) 기준으로 합칠 수 있음
 > >
@@ -323,12 +321,6 @@ dplyr 패키지의 `bind_rows()` 함수는 두 개 이상의 데이터 프레임
 * 기본형태 : **bind_cols(**  *dataframe 1, dataframe 2,* ...**)**
 
   
-
-
-
-![](https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F263BA94E581EF3FD17)
-
-
 
 
 
