@@ -324,10 +324,9 @@ dplyr 패키지의 `bind_rows()` 함수는 두 개 이상의 데이터 프레임
 
 
 
-### ⑩ 조인
+### ⑩ 조인과 머지
 
-**두 개의 데이터프레임**을 선택된 **공통의 변수에 기반하여 결합**한다.
-결합하는 경우 두 개의 인자의 위치에 따른 4가지의 결합기준을 이용할 수 있다.
+**두 개의 데이터프레임**을 선택된 **공통의 변수에 기반하여 결합**한다. 결합하는 경우 두 개의 인자의 위치에 따른 4가지의 결합기준을 이용할 수 있으며 데이터 프레임을 **좌우**로 붙이는 것이라 생각하면 된다. 
 
 |          left_join          |          right_join           |        inner_join         |        full_join        |
 | :-------------------------: | :---------------------------: | :-----------------------: | :---------------------: |
@@ -341,25 +340,28 @@ dplyr 패키지의 `bind_rows()` 함수는 두 개 이상의 데이터 프레임
 
 #### ⓐ left_join
 
-* 기본형태 : **join(**  *dataframe 1, dataframe 2,* ...**)**
+* 기본형태 : **left_join(**  *dataframe 1, dataframe 2,* <u>by = "no"</u>**)**
 
-
+함수 `left_join()` 은 왼쪽 데이터 프레임의 내용은 모두 출력하고, 비어있는 오른쪽 데이터 프레임은 NA 값을 준다. `merge(test1, test2, all.x = T)` 이 동일한 역할을 한다.
 
 #### ⓑ right_join
 
-* 기본형태 : **join(**  *dataframe 1, dataframe 2,* ...**)**
+* 기본형태 : **right_join(**  *dataframe 1, dataframe 2,* <u>by = "no"</u>.**)**
 
-
+함수 `right_join()`은 오른쪽 데이터 프레임의 내용을 모두 출력하고, 비어있는 왼쪽 데이터 프레임은 NA 값을 준다. `merge(test1, test2, all.y = T)` 이 동일한 역할을 한다. 
 
 #### ⓒ inner_join
 
-* 기본형태 : **join(**  *dataframe 1, dataframe 2,* ...**)**
+* 기본형태 : **inner_join(**  *dataframe 1, dataframe 2,* <u>by = "no"</u>.**)**
 
-
+함수 `inner_join()`은 두 데이터프레임을 하나로 묶는데, **일치하는 경우만** no 값이 같은 애들끼리 붙인다. `merge(test1, test2)`이 동일한 역할을 한다.  
 
 #### ⓓ full_join
 
-* 기본형태 : **join(**  *dataframe 1, dataframe 2,* ...**)**
+* 기본형태 : **full_join(**  *dataframe 1, dataframe 2,* <u>by = "no"</u>.**)**
+
+
+함수 `full_join()`은 일치하는 경우가 없더라도 하나로 묶는다. `merge(test1, test2, all = T)`이 동일한 역할을 한다. 
 
 
 
@@ -368,15 +370,29 @@ dplyr 패키지의 `bind_rows()` 함수는 두 개 이상의 데이터 프레임
 데이터 정제를 위해서는 **빠진 데이터(결측치)**, **이상한 데이터(이상치)** 제거해야 한다.
 
 ```R
+# 여러 변수 동시에 결측치 없는 데이터 추출하기
+# score, sex 결측치 제외
+df_nomiss <- df %>% filter(!is.na(score) & !is.na(sex))
+df_nomiss  
+
+
+# 결측치가 하나라도 있으면 제거하기
+df_nomiss2 <- na.omit(df)  # 모든 변수에 결측치 없는 데이터 추출
+df_nomiss2
+```
+
+
+
+```R
 df_nomiss <- df %>% filter(!is.na(score) & !is.na(sex))
 df_nomiss2 <- na.omit(df)
 mean(df$score, na.rm = T)
 sum(df$score, na.rm = T)
-summarise()에서 na.rm = T사용하기
+# summarise()에서 na.rm = T사용하기
 exam %>% summarise(mean_math = mean(math))
 exam %>% summarise(mean_math = mean(math, na.rm = T))
-exam %>% summarise(mean_math = mean(math, na.rm = T),
-sum_math = sum(math, na.rm = T),
+exam %>% summarise(mean_math = mean(math, na.rm = T)
+sum_math = sum(math, na.rm = T)
 median_math = median(math, na.rm = T))
 mean(exam$math, na.rm = T)
 exam$math <- ifelse(is.na(exam$math), 55, exam$math)
