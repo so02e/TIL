@@ -1,0 +1,1159 @@
+과정명 : 프로젝트형 빅데이터 분석 서비스 개발
+강사명 : 김정현(unicodaum@hanmail.net)
+
+프로그래밍 역량 : 분석역량 = 6 : 4
+전공자(IT계열) : 비전공자 =  2 : 8
+[ 공통 교과 ]
+4주 : 파이썬-데이터베이스-웹프로그래밍(클라이언트(HTML,CSS,JavaScript),서버(DJango))
+2주 : 팀프로젝트
+[ 전공 교과 ]
+R 언어 구문, 데이터 수집&저장, EDA, 데이터 전처리, 분석1,시각화-미니프로젝트(1주)
+파이썬 언어 데이터 수집&저장, EDA, 데이터 전처리, 분석2,시각화
+                 스파크 - 전공프로젝트(2주)
+[ 융합 프로젝트 ]
+
+
+
+[ 학습전 설문 ]
+메일제목 : 빅데이터분석서비스-XXX
+작성내용 :
+(1) 전공학과(복수전공, 부전공)
+(2) 프로그래밍 학습 경험
+     (C, Java, JavaScript, R, Python)
+(3) 웹 프로그래밍 학습 경험
+     (HTML, CSS, JavaScript, jQuery, Servlet, JSP, PHP...)
+(4) 데이터 분석 학습 경험
+     (R, Python, SPSS, EXCEL)
+(5) 기타 건의 사항
+          
+
+
+
+
+자료 공유 URL - http://naver.me/56I8CgbA
+                       비밀번호 - 2021
+
+[ 파이썬 프로그래밍의 기초 구문 ]
+- 프로그램을 구성하는 요소들
+(1) 리터럴 : 프로그램에서 다루는 데이터 값
+                10, 3.14, 'num', "num", '김', True, False, 123, '123', '@#', ..
+(2) 변수 : 값을 저장하려는 메모리 영역에 부여한 이름
+ 
+      (1+2+3+4+5+6+7+8+9+10) / 10
+      (1+2+3+4+5+6+7+8+9+10) * 10
+      (1+2+3+4+5+6+7+8+9+10) - 10
+
+      result = 1+2+3+4+5+6+7+8+9+10
+      result / 10
+      result * 10
+      result - 10
+
+      - 만들어서 사용한다.
+      - 변수명 규칙 : 키워드는 변수명이 될 수 없다. 
+                           숫자로 시작할 수 없다.
+                           특수문자는 _(언더스코어)만 사용 가능하다.
+          	           공백사용 불가하다.
+                           대소문자 구분(NUM, num, Num)
+      변수명 = 식
+                   (리터럴, 변수, 연산식, 함수의호출식)
+      l-value = r-value
+      (방, 메모리공간)    값
+
+     v1 = 10
+     v2 = 20
+     v3 = v1 + v2
+     v4 = v1
+     v4 = v1 + 100
+     v4 = v5   --> 구문 오류 발생
+     v5 = len([10,20,30])
+
+    변수의 사용 : 방(l-value), 값(r-value)
+
+(3) 연산자와 연산식(식)
+     연산자 : 값을 가지고 처리하려는 기능을 나타내는 기호
+                  +, -, *, /, //, %, ==, !=, >, <, >=, <=, and, or, +=, -=, *=, =
+     피연산자 : 연산의 대상이 되는 값(변수, 리터럴, 연산식  --> 식) 
+     연산식 : 연산자와 피연산로 구성된 식을 연산식
+
+(4) 데이터타입
+     데이터 값의 종류
+     
+     123 * 3    --> 369
+     '123' * 3  --> '123123123'
+                           
+     '@' * 100
+
+    10 + 20  --> 30
+    '10' + "20"  --> "1020"
+    '10' + 20 --> 오류
+    '10' + str(20)  --> '1020'
+
+   숫자형, 문자열형, 부울형(대수형) 
+     
+(5) 주석
+    코드에 대한 설명, 일부 코드를 실행하지 않게 하려는 경우
+    
+    단일행 주석 -  # xxxxxxxxx
+    다중행 주석 - """ xxxxxxxxx
+                             xxxxxxxxx
+                             xxxxxxxxx """
+
+(6) 함수 
+     프로그래밍에서의 함수(서브루틴)
+     자주 사용되는 명령(코드)들을 담고있는 블럭(주머니)  --> 프로그램의 재사용성
+     함수에 의해 처리되는 기능에 따라 데이터를 받을 수도 있고 수행 결과값을 리턴할 수 있다.
+     (수행 결과값이 없는 경우에는 None(없음)이라는 리터럴이 리턴된다.)
+ 
+     - 함수 만드는 방법 
+             def 함수명() :
+	코드블럭
+     - 함수 사용하는 방법 - 호출
+            함수명()
+            함수명(값1, 값2)	
+
+         
+
+ 1101
+ 0b1101  --> 13
+
+10진수
+16진수
+2진수
+8진수
+
+0x1a   -->  1x16**1 + 10x16**0
+                  1x16 + 10 x 1  --> 26
+
+"Have a "nice" day"
+'Have a "nice" day'
+"Have a \"nice\" day"
+"n"
+"\n"  --> 개행문자, 행바꿈문자
+"aaa\nbbb" --> aaa
+                           bbb
+"aaa\tbbb"  --> aaa	bbb
+
+"c:\\kjh\\PYTHONexam\\day1\\test.py"
+
+"c:/kjh/PYTHONexam/day1/test.py"
+
+
+a -= 1 --> a = a-1
+a *= 3 --> a = a*3
+
+- 제어문(프로그램의 수행 흐름을 제어한다.)
+   if, elif, else     ---> 조건제어문
+   for, while       ---> 반복제어문
+   break, continue   ---> 분기제어문
+
+   break : 반복문을 끝내라...
+
+[ 반복문 ]
+
+   for 변수 in 데이터값집합 :
+       반복처리할수행문장의블럭
+
+   for d in [10,20,30] :
+       print(d)
+
+   for d in [1,2,3,4,5,6,7,8,9] :
+       print(3 * d)
+
+   for d in range(1, 10, 1 ):
+       print(3 * d)
+
+   for d in range(1, 20, 1 ):
+       print(3 * d)
+
+   for i in range(10) :
+       성적처리
+
+   range(10)  	-> 0~9
+   range(1,10) 	-> 1~9
+   range(1,10,2)	-> 1,3,5,7,9
+   range(2,10,2)	-> 2,4,6,8
+   range(10,1,-1)	-> 10,9,8,7,6,5,4,3,2
+   range(10,101,10)	-> 10, 20, 30, 40, 50, 60, 70, 80, 90, 100
+
+
+  while 조건식 :
+      반복하려는수행문장블럭
+
+  while True :
+      반복하려는수행문장블럭     ---> 무한루프
+
+  while True :
+      반복하려는수행문장블럭
+      if 조건식 :
+          break 
+
+  3, 6, 9, 12, 15, 18
+
+  [   ], {   }, (   )
+
+
+
+
+
+
+
+ [ 도큐먼트 주석 : docstring ]
+
+- docstring 은 모듈 또는 함수의 첫 번째 명령문으로 발생하는 문자열 리터럴
+- ''' 또는 """ 으로 구성한다.
+
+
+"ABC" + "100"   --> "ABC100"
+
+
+
+for d in range(10) :
+
+for d in [10, 20, 30] :
+
+[ 10 ]
+
+( 10 )   --->  ( 10, )
+
+a,b,c = "가나다"
+s = "가나다가"
+s.count("가")
+
+
+
+
+
+
+
+[ 웹 프로그래밍 기술 - 클라이언트 ]
+웹 사이트를 구축할려면 웹 페이지를 먼저 개발해야 한다.
+-----> HTML(Hyper Text Markup Language)
+             텍스트, 이미지, 동영상 등을 어떻게 표현할지를 정하는 언어로서 마크업 방식으로 구현한다.
+
+             	<h1>올라프</h1>
+             	<h3>올라프</h3>
+	<a href="http://www.w3schools.com/">올라프</a>
+	<img src="olaf1.png">
+                <table border="1"><tr><td>올라프</td></tr></table>
+-----> CSS(Cascading Style Sheets)
+             HTML 태그에 의해서 웹 페이지가 출력(랜더링)될 때 스타일을 조정할 수 있는 기술
+
+          	<h1 style="color : orange;background-color : green">올라프</h1>
+
+               <style>
+	   h1 {
+		color : orange;
+		background-color : green
+                   }
+              </style>
+-----> JavaScript
+            웹 페이지를 만들때 프로그램적으로 처리해하는 기능이 있을 때 사용하는 주로 웹 개발에서 사용되는
+            프로그래밍 언어
+            브라우저에서 수행 가능한 프로그래밍 언어(대부분의 브라우저에서는 자바스크립트 인터프리터(엔진)를
+            내장하고 있다.  --> 동적인 웹 페이지 개발 필수 기술이다.
+
+
+- URL(Uniform Resource Locator)
+   웹 자원의 위치를 알려주는 단일화된 형식의 문자열
+   웹 사이트(웹 페이지의) 주소 문자열
+   
+   프로토콜명://서버도메인명(IP주소):포트번호/패스/.../파일명?Query문자열
+
+   http(https)://www.naver.com/    -> 네이버 웹 사이트의 index.html(기본파일, 웰컴파일)
+   http://www.google.com/
+   https://www.w3schools.com/colors/colors_picker.asp 
+   https://www.google.com/search?q=%EC%9D%BC%EA%B8%B0+%EC%98%88%EB%B3%B4&oq=%EC%9D%BC%EA%B8%B0+%EC%98%88%EB%B3%B4&aqs=chrome..69i57j0l7.10632j1j7&sourceid=chrome&ie=UTF-8
+   http://localhost:8000/
+              127.0.0.1
+   http://localhost:8000/edu/first.html   ------------------ (1)
+   http://localhost:8000/edu/htmlexam/exam1.html   ------- (2)
+
+   docbase, document root   --> nginx 설치된 폴더/html
+   브라우저에서 nginx 서버에게 파일을 요철하면 찾기 시작하는 최상위 디렉토리 
+
+
+img[src$=png]
+
+img[src=png]
+
+a:hover
+
+img:hover {  ..................... }
+
+
+  margin-top, margin-right, margin-bottom, margin-left
+  margin : 10px 20px 30px 40px
+  margin : 10px 20px 30px
+  margin : 10px 20px 
+  margin : 10px 
+
+[ CSS 실습 도움 ]
+(1) 이미지를 한행에 3개씩 출력해서 두개 행이 되게 한다.
+- 첫번째 방법
+<img><img><img><br>
+<img><img><img>
+- 두번째 방법
+<div><img><img><img></div>
+<div><img><img><img></div>
+
+(2) 이미지 6 개 모두 가운데로 정렬한다.
+- 첫번째 방법
+<img>태그6개를 모두 블럭스타일태그에 담아서(컨텐트가 되게 해서) 처리한다.
+<div><img><img><img><br>
+<img><img><img></div>
+<div> 태그에 사이즈를 지정하고 <div> 태그를 가운데 출력한다.
+사이즈(가로(세로)), 좌우마진 auto
+- 두번째 방법
+<img> 태그가 이미 블럭스타일 태그인 <div>태그에 담겨 있으므로 <div> 태그에
+스타일만 지정한다. 사이즈(가로,세로), 좌우마진 auto
+<div><img><img><img></div>
+<div><img><img><img></div>
+<div> 태그에 사이즈를 지정하고 <div> 태그를 가운데 출력한다.
+
+단!! <img> 태그를 담을 <div>태그의 가로(세로) 크기는 이미지보다 크게 정한다.
+
+-------------------------------------------------------
+[ 에러 ]
+python, javascript, R   ----> 구문(신텍스)적으로 잘못된 것이 인식되면 
+                                                에러를 발생시키고 처리를 종료한다.
+
+[ 예외 ]
+python, javascript   ----> 프로그램에 구문적인 에러는 없지만 실행하는 동안
+                                            발생할 수 있는 잘못된 상황(약간은 가벼운 에러)
+                                            (1) 발생한 예외를 처리하는 코드가 준비되 있는지 확인하고
+                                                 준비되어 있는 예외처리 코드를 실행한다.
+                                            (2) 예외처리 코드가 준비된 상황이 아니면
+                                                 에러를 발생시키고 처리를 종료한다.
+
+[ 예외 처리 구문 ]
+try ~ except.... ~ else ~ finally
+
+try :
+      예외가 발생할 가능성이 있는 블록
+	:
+except [ 처리하려는 예외명 ] :
+      예외처리 코드 블록
+else :
+      예외가 발생하지 않았을 때 수행되는 코드 블록
+finally :
+      예외 발생 여부와 관계없이 수행되는 코드 블록
+
+
+
+
+
+
+
+
+
+
+
+[ 문자셋(characterset) ]
+문자마다 분여한 코드값들을 모아 놓은 것으로 각 문자셋마다 고유 명칭이 있다.
+기억할만한 문자셋 명칭
+- ansi(euc-kr, ksc5601, cp949) - 영문 1바이트(ASCII값), 한글 2바이트 
+-------------> unicode
+- utf-16 : 모든 나라의 언어에 코드값을 통일화 시키자. 2바이트로!!
+- utf-8 : 모든 나라의 언어에 코드값을 통일화 시키자. 1~4바이트로!!
+
+
+class 클래스명(부모클래스명) :
+	def m1(self) :
+	    pass
+	@classmethod
+	def m2(cls) :
+	    pass
+	@staticmethod
+	def m3() :
+	    pass 
+
+
+[ 자바스크립트(JavaScript) ]
+- 웹 페이지의 동적인 처리를 구현하는 프로그래밍 언어이다.
+- HTML 파일 안에 구현하는 프로그래밍 언어로서 인터프리터 언어이다.
+- <script> 태그의 컨텐트로 작성하거나 HTML 태그에 정의된 속성의 값으로
+   작성한다.
+- 구문
+   파이썬 그리고 R 과 많은 부분 비숫한 구문을 가지고 있습니다.
+   세 개 언어 모두 인터프리터 언어로 분류된다.
+   1. 변수 정의 방법과 처리 가능한 데이터 타입
+   2. 연산자와 제어문 
+   3. 배열(array) - 파이썬 리스트
+   4. 함수 정의 방법, 함수 사용 방법(호출)
+        함수는 일급 객체이다. 
+   5. 객체 생성 방법 - 클래스를 가지고 객체를 생성하는 방법
+                                 {   ...  } 를 사용해서 객체를 생성하는 방법 - 객체리터럴
+   6. 이벤트 처리하는 방법, DOM 객체를 통해서 HTML태그를 제어하는 방법
+   7. jQuery : JavaScript의 대표적인 API - 간단한 자바스크립트 구현을 지원
+
+
+    파이썬 : True, False
+    자바스크립트 : true, false
+    R : TRUE, FALSE
+
+
+   ++(증가), --(감소)  -> 증감
+   주어진 피연산자의 값을 1 증가(감소)
+   ++변수 : 변수의 값을 1 증가시키고 다른 연산을 수행
+   변수++ : 다른 연산을 먼저 하고 나중에 변수의 값을 1 증가
+   
+   var num=10;
+   document.writeln(num++);    // 출력10 num=11
+   document.writeln(--num);     // num=10 출력10
+
+   &&   --> and
+   ||      --> or
+   
+   if (num % 2 == 0)
+        document.writeln(num+"는 짝수");
+
+
+   window.alert() : 사용자에게 메시지를 보여주고 확인받는 용도
+   window.prompt() : 사용자로 부터 데이터를 입력받는 용도
+   window.confirm() : yes 또는 no 둘 중 하나를 입력는 용도
+
+  API : Application Programming Interface
+          프로그래밍할 때 자주 구현되는 기능들을 미리 구현해 놓은 프로그램
+          프로그래밍 언어마다 자기만의 API 를 가지고 있으며 개발환경을 구축할 때
+          함께 설치되는 API를 표준 API 라고 하며 개발자가 필요에 의해 추가로 설치하는
+          API들을 확장 API 또는 third-party API 라고 한다.
+
+          C 언어 : 함수
+          Java 언어 : 클래스(메서드)
+          Python, JavaScript, R 언어 : 함수, 클래스(메서드)
+
+
+  [ JavaScript의 제어문 ]
+
+  - 조건제어문  : if, (switch)
+  - 반복제어문 : for, while, (do~while)
+  - 분기제어문 : break, continue
+
+  - if
+
+  if (조건식) 
+      수행문장;
+
+  if (조건식) {
+      수행문장;
+      수행문장;
+           :
+  }
+
+  if (조건식) 
+      수행문장;
+  else 
+      수행문장;
+
+  if (조건식) 
+      수행문장;
+  else if (조건식)
+      수행문장;
+  else if (조건식)
+      수행문장;
+  else 
+      수행문장;
+
+  - for
+
+     일반(전통)for    :   for(초기식;조건식;증감식)
+		         반복수행문장
+		for(변수정의와초기화식;반복처리를계속할지결정하는조건식;변수의값을변화시키는식)
+		for(var num=1; num < 11; num+=1)   ---> 10번 반복
+		for(var num=10; num > 0; num-=1) ---> 10번 반복
+		for(var num=10; num < 20; num+=1) ---> 10번 반복
+		for(var num=1; num <= 50; num+=1)   ---> 1부터 50까지의 값을 1씩 증가시키면서 처리하시오.
+		for(var num=1; num <= 50; num+=2)   ---> 1부터 50까지의 값을 2씩 증가시키면서 처리하시오.
+
+     향상된for, for-each, for-in   :  for (변수정의 in 배열 또는 객체)
+			   반복수행문장
+
+		          a = [10,20,30,40,50]  // 배열, array
+
+		          for data in a :
+		                print(data)   --> 10 20 30 40 50 이 행단위로
+
+		          for(var i in a) {
+                                                window.alert(i);  --> 0, 1, 2, 3, 4
+		          }
+                                          for(var i in a) 
+                                                window.alert(a[i]);
+
+  - while
+     while(조건식)
+          반복문장;
+
+     while(true)
+         무한반복문장;
+
+
+  - break :  반복문을 종료해라
+  - continue : 다음 반복으로 계속해서 진행해라.
+
+  for 반복문 : 초기식, 조건식, 증감식으로 구성되는 for문  - for(초기식;조건식;증감식)
+  forin 반복문 : 배열이나 객체를 가지고 반복을 처리하는 for문 - for(인덱스(키)를저장할변수정의 in 배열 또는 객체)		         
+		
+
+ [ 배열(파이썬의 리스트객체와 거의 동일) ]
+ - 여러 데이터들을 하나의 묶음으로 다루고자 할 때 사용
+ - 묶을 수 있는 데이터의 갯수에 제한이 없고, 데이터 타입도 제한이 없다.
+ - 자바스크립트의 배열도 객체로 취급된다.
+ - 배열 생성 방법과 배열 사용 방법
+
+- 배열 생성 방법
+ 
+  (1) 배열 리터럴 방법 - [1,2,3,4,5], ['aaa', 100, true, 3.4], [ ], [ ,,,,,,, ]
+  (2) API를 이용하는 방법 - new Array(1,2,3,4,5), new Array('aaa', 100, true, 3.4)
+                                        new Array(), new Array(8)
+
+- 배열 사용 방법
+   배열의 크기(배열을 구성하는 엘리먼트의 갯수) : 배열객체의 length 라는 속성(변수)의 값을 사용
+   배열의 요소(원소, 엘리먼트)를 접근(l-value, r-value 모두 가능) : [0부터 시작하는 인덱스]
+ 
+  
+[ 함수 : 일급 객체를 만족한다. ]
+- 함수 만드는 방법
+   - 선언적 함수정의(명시적 함수정의)
+   function 함수명([매개변수...]) {
+	함수의 수행 코드들...
+                return 리턴값;
+   }
+   - 함수 표현식(함수 리터럴)
+   var 변수 =  function ([매개변수...]) {
+	함수의 수행 코드들...
+                return 리턴값;
+   }
+
+   (1) 일급객체로 취급된다. 함수를 변수에 담아서 사용(호출)할 수 있고, 함수 호출시 아규먼트로 전달 가능
+        리턴값을 함수를 전달 가능
+   (2) 함수를 호출할 때 함수에 정의된 매개변수만큼 아규먼트를 전달하지 않아도 호출 가능하다.
+   (3) 함수가 값을 리턴하지 않으면 undefined 가 자동으로 리턴된다.
+   (4) 가변인수를 지원한다. 함수 호출시 아규먼트의 갯수에 제한이 없는 함수를 만들 수 있다.
+        ---> 가변인수 함수를 정의할 때는 매개변수 정의를 생략하고 함수 호출시 자동으로 만들어지는 
+                 arguments 라는 배열을 활용한다.
+   (5) 기본값을 갖는 매개변수 정의를 할 수 있다.
+
+- 함수 사용하는 방법 -> 호출, r-value
+
+       함수명([아규먼트...]);
+       var r =  함수명([아규먼트...]);
+
+
+함수명(10);
+함수명([10,20,30]);
+함수명(function () { 
+             .......
+             .......
+          });
+
+function sum() { ..... }
+
+var avg = function() {......}
+
+함수명(sum);
+함수명(avg);
+
+변수 정의 : 
+
+var v1 = 10
+v1 = 100
+
+function f1() {
+     var v2 = 20
+     
+}   
+
+<script src="과장님.js"></script>
+<script src="대리님.js"></script>
+
+ECMA
+
+var, let, const
+
+
+[ 자바스크립트의 객체 생성 방법 ]
+
+(1) 객체리터럴 방법
+(2) 클래스(생성자함수)를 이용하는 방법
+     new Array(), new Date()
+(3) 내장 객체 : 개발자가 객체를 생성하지 않아도 자바스크립트 엔진이 자동으로 생성해주는 객체
+     window, document, navigator, screen, location, DOM객체들...
+
+
+- 객체 리터럴 방법
+
+   배열객체 : [1, 'abc', true, 3.4], [ ]
+   객체 : { 속성명 : 속성값, 속성명 : 속성값, ..... }, {  }
+           속성명 : 자바스크립트의 식별자 규칙(명명규칙), 문자로시작, 문자, 숫자, _ 를 사용할 수 있다.   
+           속성값 : 숫자, 문자열, 논리값, 배열, 객체, 함수(메서드)
+   
+   obj = { 속성명1 : 100, 속성명2 : "둘리", 속성명3 : function() { .... } }
+   obj.속성명1 = 200
+   obj.속성명2 + " 승리"
+   obj.속성명3()
+
+   obj['속성명1'] = 200
+   obj['속성명2'] + " 승리"
+
+
+[ 참고 사이트 ]
+https://htmlcheatsheet.com/js/
+https://htmlcheatsheet.com/css/
+https://htmlcheatsheet.com/
+
+
+
+
+
+[ DOM(Document Object Model) 프로그래밍 ]
+- DOM 객체
+   브라우저가 웹 페이지(HTML)를 해석하고 랜더링할 때 인식된 각각의 태그들을 자바스크립트 객체로
+   생성하며 이 객체들을 DOM 객라고 한다.
+   생성되는 DOM 객체들은 부모 자식 관계를 적용하여 트리구조로 구성한다.
+
+   <body>
+      <h1>....</h1>
+      <ol>
+         <li>....</li>
+         <li>....</li>
+     </ol>
+   </body>
+                               document
+                                   body    
+                            h1              ol
+                            ....       li            li
+                                     ....            ....
+
+- DOM 프로그래밍에서 익혀야 하는것
+   1. 동적인 처리를 하려는 태그의 DOM 객체를 찾는 방법
+      document.getElementsByTagName("태그명")  --> DOM객체배열
+      document.getElementById("id속성값")  --> DOM객체
+      document.getElementsByClassName("class속성값")  --> DOM객체배열
+
+      document.querySelectorAll("CSS선택자")  --> DOM객체배열
+      document.querySelector("CSS선택자")  --> DOM객체
+
+      DOM 객체 타입 : Element 타입, Attribute 타입, Text 타입
+
+   2. 찾은 DOM 객체를 가지고 필요한 동적처리를 구현하는 방법
+      - 컨텐트 변경하기
+         dom.innerHTML = "<p>새로운내용</p>"
+         dom.textContent = "새로운내용"
+      - 스타일 바꾸기
+         dom.style.CSS속성명 = CSS속성값
+         	dom.style.color = "red"
+                dom.style.backgroundColor = "yellow" 
+      - 이벤트 핸들러 등록하기
+         구현방법 : 3가지
+
+         1. 인라인 이벤트 모델(지역적 방식) - 태그마다  속성으로 정의
+            <태그명 on이벤트명="이벤트핸들러코드">
+
+        2. 고전 이벤트 모델(전역적 방식) - <srcipt> 태그 안에 정의
+            DOM 객체를 찾는다.
+            dom.on이벤트명 = function () {     ...........................    }
+
+        3. 표준 이벤트 모델(전역적 방식) - <srcipt> 태그 안에 정의
+            DOM 객체를 찾는다.
+            dom.addEventListener("이벤트명", function () {     ...........................    })
+
+
+
+
+
+PRODOG - https://dklee1129.pythonanywhere.com/first_project/main/#
+
+에러없조 - https://kim672772.pythonanywhere.com/map/mymap/#mytitle
+
+카페 Olleh! - https://nanalyst.pythonanywhere.com/mainapp/home/
+
+Lunch 4 U - https://wnsghd394.pythonanywhere.com/projectapp/index/
+
+꿈꾸는 비행기 - https://4petppo.pythonanywhere.com/
+
+
+http://localhost:8000/edu/jsexam/exercise4_1.html
+
+first.html
+http://localhost:8000/edu/jsexam/first.html
+
+
+
+http://localhost:8000/edu/first.html
+
+
+
+
+   
+
+
+
+
+
+
+
+   a  *  b,  a  -  b, a / b  --> 숫자문자열을 자동으로 숫자로 변경하여 연산한다.
+
+   "100" * 10  --> 1000
+
+  a + b --> 문자열결합과 덧셈
+                  --------
+  "100" + 10  --> "10010"
+  Number("100") + 10 --> 110
+
+IT기반의 개발 - 60%
+R과 파이썬으로 구현하는 데이터 수집, 전처리, 분석, 시각화 - 40%
+융합프로젝트 
+------------------------------------------------
+- 사피, 다른 과정(네이버 부트캠프, SAC, 채용연계, 회사들이...)
+- 대학원
+- 분석 전문 회사에서 신입 채용(데이터 수집, 전처리)
+   :
+
+
+
+
+ jQuery()    --->  $()
+
+ $(document).xxxx()
+ $('CSS선택자').xxxx()
+ $(함수)  : 로드 이벤트 발생시 호출될 함수 등록 ( == $(document).ready(함수))
+ $.xxxx()  // jQuery 객체가 제공하는 클래스메서드
+ $('HTML태그문자열')
+$('CSS선택자', context).xxxx()
+                        DOM객체
+
+ $('button').click(함수)
+
+jQuery --> API 사용 방법이 일관성 있어서 API를 익히기 쉽다.
+
+   html() - innerHTML - 
+   text() - textContent -
+   val() - value -
+
+	html() - 첫번째
+	text() - 모두
+	val() - 첫번째
+                ---------------- getter(값을 읽는다.)
+	html("....")
+	text("....")
+	val("....")
+
+	html(함수)
+	text(함수)
+	val(함수)
+                ---------------- setter(값을 설정한다.)
+
+
+
+   css()	
+   attr()
+	css("CSS속성명")
+	attr("HTML태그속성명")
+	---------------- getter(값을 읽는다.) - 첫번째
+	css("CSS속성명", "CSS속성값")
+	attr("HTML태그속성명", "HTML태그속성값")
+
+	css("CSS속성명", 함수)
+	attr("HTML태그속성명", 함수)
+
+	css(자바스크립트객체)
+	attr(자바스크립트객체)
+	---------------- setter(값을 설정한다.)
+
+- jQuery의 이벤트 핸들러 구현
+
+(1)  $('...').on('이벤트이름', 함수)
+     $('...').on(자바스크립트객체)
+
+     $('...').off() 이벤트 핸들러를 해제
+
+(2) $('...').이벤트이름(함수)
+   
+
+위도: 37.5030042
+경도: 127.0507571
+
+37.5136773
+127.0618982
+
+
+
+
+
+
+
+
+
+
+
+
+빅데이터(C)반 인터페이스개발 평가 일자 : 2월 1일
+
+빅데이터(C)_성이름
+
+
+cd c:\xxx\python_venv\djangovenv\Scripts
+cd c:\xxx\python_venv\djangovenv\Scripts> activate
+
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb5 in position 0: invalid start byte
+
+
+
+
+
+
+http://localhost:8000/welcome/
+http://127.0.0.1:8000/welcome/     ---> firstapp.views.welcome
+http://localhost:8000/secondapp/    ---> views.exam1
+http://localhost:8000/secondapp/exam2/   ---> views.exam2
+http://localhost:8000/secondapp/exam2_1/
+-------------------------------------   URL 문자열
+                                    -------------------   URI
+
+
+HttpRequest - HTTP 프로토콜기반으로 요청이 왔을 때 요청 관련 정보를 제공하는 객체
+(요청처리)          뷰함수가 호출될 때 아규먼트로 전달된다.(장고서버가 객체를 생성한다)
+HttpResponse - HTTP 프로토콜기반으로 온 요청에 대한 응답시 사용하는 객체
+(응답처리)          응답 내용을 담게 된다.(HTML태그문자열, 템플릿을 사용한 랜더객체)
+
+
+[ Query 문자열 ]
+HTTP Client 가 HTTP Server 요청시 서버에서 요청하려는 대상의 URI 가 전달되는데
+이 때 함께 전달될 수 있는 문자열이다.
+- name=value 형식으로 구성되어야 한다.
+- 여러개의 name=value 가 사용될 때는 & 기호로 구분되게 구성해야 한다.
+- 영문과 숫자는 그대로 전달되지만 한글과 특수문자들은 %기호와 16진수 코드값으로 전달된다.(UTF-8)
+- 공백문자는 + 기호 또는 %20 로 전달된다.
+- Query 문자열을 가지고 HTTP Server에게 정보를 요청할 때는
+   두 가지 요청 방식중에서 한 개를 선택할 수 있다.
+   GET : Query 문자열이 외부에 보여진다. 요청 URL 뒤에 ? 기호와 함께 전달되기 때문이다.
+   POST : Query 문자열이 외부에 보여지지 않는다. Query 문자열의 길이에 제한이 없다. 
+
+https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=ABCabc+123%EA%B0%80%EB%82%98%EB%8B%A4
+
+
+
+https://docs.djangoproject.com/en/3.1/
+
+https://docs.djangoproject.com/ko/3.1/ref/templates/builtins/
+
+https://docs.djangoproject.com/ko/3.1/ref/templates/builtins/#std:templatefilter-date
+
+https://docs.djangoproject.com/ko/3.1/
+
+
+GML   ---> SGML    --->  XML - 규격화 시킨 문서를 만들고 싶을 때 사용, 태그명을
+                                                    용도에 맞게 직접 정의하여 사용 가능하다.
+                                         HTML - 페이지제작에 사용되는 전용 마크업언어
+
+
+[ AJAX 프로그래밍 핵심 내용 ]
+
+(1) JSON(XML) 형식으로 응답하는 뷰를 준비해야 한다.
+    (템플릿을 거치지 않고 뷰가 직접응답)
+
+(2) - JavaScript 만 사용해서 AJAX 요청을 구현하는 방법
+
+	var xhr = new XMLHttpRequest()
+                xhr.onload = 함수
+                xhr.open("GET", "대상URL", true)
+                xhr.send()
+
+
+        jQuery API를 사용하여 AJAX 요청을 구현하는 방법
+
+	$.getJSON("대상URL", 함수)
+	$.ajax( { ...................... })
+
+
+(서울시 빅데이터 URL)
+
+http://openapi.seoul.go.kr:8088/796143536a756e69313134667752417a/json/LampScpgmtb/1/100/
+
+http://openapi.seoul.go.kr:8088/796143536a756e69313134667752417a/xml/LampScpgmtb/1/100/
+
+
+$('CSS선택자').each(함수)
+$.each(자바스크립트객체, 함수)
+
+
+http://localhost:8000/edu
+
+
+http://localhost:8000/
+
+
+
+
+
+
+
+
+
+
+
+
+ CRUD - Create Read Update Delete  --> SQL(INSERT, SELECT, UPDATE, DELETE)
+                                                           --> Django API(python)
+
+- Django 가지고 DataBase 를 연동(CRUD)하는 구현 과정
+
+   (1) 모델 클래스를 생성한다. - models.py
+       Model 이라는 클래스를 상속한다.
+       만들려는 DB 테이블의 컬럼 사양에 맞춰서 클래스변수를 정의한다.
+    
+   (2) Django에서 제공하는 명령을 수행시켜서 
+        모델클래스에 알맞는 DB 테이블을 생성한다. 
+
+   (3) 모델클래스를 통해서 CRUD 를 구현한다.
+        
+        C  -  모델클래스의 객체를 생성한 후에 save() 메서드 호출
+        R  -  모델클래스.objects.all()
+                모델클래스.objects.filter(...)
+                모델클래스.objects.order_by(...)
+                모델클래스.objects.first()
+	모델클래스.objects.last()
+	모델클래스.objects.count()
+
+e-ncs.kr 로그인 후에 메인화면 아랫쪽에 시험이 나타남
+이중 [ 필답1 ] 하단에 있는 [ 응시] 버튼을 누르고 평가 진행
+        
+homework2.html  --> 성명.zip 압축해서 수행평가에 첨부 파일로 업로드합니다.
+
+필답시험 모두 끝내고 수행평가 파일을 업로드한 분들은 채팅창을 통해서 강사에게 "완료" 메시지
+보내주세요
+
+RDBMS 에서 테이블 생성시 컬럼단위로 컬럼명과 타입을 설정
+CharField   --> VARCHAR
+
+DELETE FROM thirdapp_emp   --> 쿼리탭
+
+[ 2월 3일 일정 ]
+
+- 9시~12시 : 수업
+- 13시~16시30분 : 팀프로젝
+- 16시30분~17시30분 : 개발계획서 발표
+- 17시30분~17시50분 : 팀프로젝
+
+- 16시까지 강사 메일로 기획안(워드문서), 발표자료(PPT) 전송한다.
+
+
+[ 2월 19일 일정 ]
+
+9시~15시 40분 : 팀 프로젝트
+
+15시 40분까지 : 프로젝트 완료 보고파일(PPT 와 프로젝트 압축소스) --> 강사메일
+
+16시 부터 팀프로젝트 발표 : 팀당 15분~20분
+
+18시까지 ncs 사이트에 프로젝트 포트폴리오(PPT) 개별 제출
+
+2조 -> 3조 -> 5조 -> 6조 -> 4조 -> 1조
+
+
+[ R 구문 학습 내용 ]
+- R로 다룰 수 있는 데이터의 종류 : 자료형(data type)
+- R로 다룰 수 있는 데이터셋의 종류 : 벡터, 행렬(매스릭스), 배열, 데이터프레임, 리스트
+- R에서 사용 가능한 연산자
+- 제어문 : for, while, repeat, if, else if, else, break, next
+- 함수 정의와 활용
+- 파일에 있는 데이터 읽기 : csv, xml, json, xlsx, txt...
+
+
+  파이썬 : True
+  자바스크립트 : true
+  R : TRUE(T)
+
+
+
+
+
+
+
+각 나라마다 그 나라 고유의 코드셋이 있다.
+코드셋이란 컴퓨에서 문자를 표현하기 위해 문자마다 부여한 숫자값이다.
+
+0x00~0x7F  - ASCII 코드값이라고 해서 전세계의 표준이다. - 숫자,영문자대소문자,특수기호
+0xB0A1 ~      - 가~힣
+------------------------> KSC5601, EUC-KR, CP949, 메모장(ansi)
+                                                   영문 1바이트, 한글 2바이트
+
+1990년대부터 전세계의 모든 문자들의 코드값을 단일화시키자 하는 노력이 시작된다.
+------------------------> UNICODE - UTF-8
+0xEAB080                                 1바이트~4바이트
+                                                   영문 1바이트, 한글 3바이트
+                                                   
+
+
+
+
+xxx.csv  : read.csv() - data.frame
+xxx.log : read.table() - data.frame
+xxx.txt : scan() - vector, readLines() - vector
+xxx.xml
+xxx.xlsx
+    :
+
+apply(m, 1, 함수)
+apply(m, 2, 함수)
+sapply(), lapply(), tapply(), mapply()
+
+sapply(v, 함수) : 리턴값 - 가급적 단순한 객체
+lapply(v, 함수) : 리턴값 - list 객체
+
+
+[ABCDEFGHIJKLMNOPQRSTUVWXYZ]  --> [A-Z]
+가각갂간...........                                   --> [가-힣]
+0123456789		         --> [0-9]
+010-1234-5678                              --> [0-9]{3}-[0-9]{3,4}-[0-9]{4}
+
+A*B     --> AB, AAB, AAAB, AAAAB, B,..................
+A+B    --> AB, AAB, AAAB, AAAAB........
+A?B     --> AB, B
+
+
+gsub("찾을문자열", "대체문자열", "대상문자열")
+sub("찾을문자열", "대체문자열", "대상문자열")
+
+
+API : Application Programming Interface
+        자주 사용될 수 있는 기능들을 미리 만들어놓은 프로그램
+        어떠한 언어의 API 인가에 따라서 함수, 클래스....
+        R의 경우에는 대부분 함수다.
+        R에서는 여러 함수들을 묶어놓은 것을 패키지라고 하며 패키지 단위로 관리한다.
+        패키지 설치를 통해서 필요한 함수들을 확장하여 사용 가능하다.
+        R의 패키지들은 CRAN 사이트에서 다운로드하여 설치 가능하다.
+        
+
+C:/Users/campusseven05/Documents/R/win-library/4.0
+
+span.title
+
+.title
+
+
+
+
+
+/wikimedia/projects/project/editions/edition[@language="English"]/text()
+
+//editions/edition[@language="English"]/text()
+
+/editions/edition[@language="English"]/text()
+
+
+//*[@id="main-top01-scroll-in"]/div[1]/div/h4/a
+//*[@id="main-top01-scroll-in"]/div[2]/div/h4/a
+//*[@id="main-top01-scroll-in"]/div[3]/div/h4/a
+
+#main-top01-scroll-in > div.article01.first > div > h4 > a
+
+
+//*[@id="old_content"]/table/tbody/tr[1]/td[2]/text()
+//*[@id="old_content"]/table/tbody/tr[2]/td[2]/text()
+//*[@id="old_content"]/table/tbody/tr[3]/td[2]/text()
+
+
+
+#old_content > table > tbody > tr:nth-child(1) > td.title > a.movie.color_b
+
+
+API : Application Programming Interface
+        함수, 클래스, 객체......
+        미리 개발해놓은 프로그램
+
+OPEN API : 무료이고 공개된 데이터들을 정해진 규격의 URL 문자열을 사용해서 요청하고 수집할 수 있는 스펙
+                   
+                   
+https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=ABC123+%EA%B0%80%EB%82%98%EB%8B%A4
+
+
+(1) cmd 다시 기동한다.
+(2) 디렉토리 이동한다.
+(3) dir
+(4) selenium 서버 기동
+
+
+#cbox_module > div > div.u_cbox_paginate > div > a:nth-child(4) > span
+#cbox_module > div > div.u_cbox_paginate > div > a:nth-child(5) > span
+
+#cbox_module > div > div.u_cbox_paginate > div > a:nth-child(12) > span
+
+
+
+#bestseller_list > li:nth-child(5) > dl > dt.thumb > div > a > img
+
+body > div > div > div.container.ng-scope > div.content > div.hotel_used_review.ng-isolate-scope > div.review_ta.ng-scope > ul > li:nth-child(1) > div.review_desc > p
+body > div > div > div.container.ng-scope > div.content > div.hotel_used_review.ng-isolate-scope > div.review_ta.ng-scope > ul > li:nth-child(2) > div.review_desc > p
+
+
+ a <- xxxx
+
+ b <- f1(a)
+ c <- f2(b)
+ d <- f3(c) 
+
+ d <- f3(f2(f1(a)))
+
+ [ dplyr 패키지 방식으로 코딩 ]
+
+ d <- a %>% f1 %>% f2 %>% f3
+ a %>% f1 %>% f2 %>% f3 -> d
+
+[ linux 명령어 ]
+OS - Operating System - 운영체제 : 컴퓨터 HW 가 실제 컴퓨터의 역할을 할 수 있으려면 운영체에라는 
+                                                         시스템 프로그램이 설치되어 있어야 한다. 
+                                                         windows 10, mac os, android os, ios,  linux, unix
+AWS - 클라우드 환경의 시스템
+           linux
+           ls, rm, cd, pwd, grep, find....
+
+           ls |  more
+         (파이프기호)
+
+           명령1 | 명령2 | 명령3 ...
+
+
+v1, v2, v3
+names(df) <- c('v1','vv', 'v3')
+rename(df, vv=v1)
+
+
+
+
+프로토콜명://서버주소(서버도메인명):포트번호/.....................
+http(https)://www.myhome.co.kr:8000/........
+http(https)://www.myhome.co.kr:80/........
+---> 80 포트 번호일 때는 일반적으로 포트 번호를 생략하고 URL 문자열을 사용함. 
+         http(https)://www.myhome.co.kr/........
+
+[ HTTP Response ]
+
+HTTP Header : 응답상태코드, 응답메세지
+               name : value 로 구성되는 여러 정보들
+                    :
+HTTP Body : HTML 전체 내용
+           <html>
+                <head>
+                    :
+                </head>
+                <body>
+                    :
+                </body>
+           </html>
+
+
+
+
+https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+
+https://htmtopdf.herokuapp.com/ipynbviewer/
+
+
+
+
+
+
+
+
