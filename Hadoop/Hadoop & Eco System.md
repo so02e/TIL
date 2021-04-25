@@ -8,7 +8,7 @@
 
 
 
- 
+
 
 **[ Hadoop Cluster****의 구조 ]**
 

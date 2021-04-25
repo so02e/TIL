@@ -1,0 +1,105 @@
+﻿id,name,address_full,address_city,address_town,fee1,fee2,bus,url,phone_number
+1,광연,"서울 강남구 헌릉로 733, (세곡동, 광일자동차운전학원)",서울,강남구,682000,682000,http://kydriving.co.kr/bus_1.html,http://kydriving.co.kr/index.html#,02-481-6000
+2,삼일,"서울 강남구 헌릉로 736, (세곡동, 삼일자동차운전학원)",서울,강남구,683000,683000,http://www.samilcar.co.kr/company_04.html,http://www.samilcar.co.kr/#,02-451-3131
+3,창동,"서울 도봉구 도봉로136길 61, (창동, 창동운전전문학원)",서울,도봉구,680000,680000,https://hidi.co.kr/bus,https://hidi.co.kr/,02-907-7744
+4,녹천,"서울 노원구 마들로5길 91, (월계동, 녹천자동차운전학원)",서울,노원구,709500,709500,http://www.ncdrive.co.kr/bus/sub_00.php?PHPSESSID=31702b19767fed17159e6210da379359,http://www.ncdrive.co.kr/index.php,02-903-3131
+5,사당,"서울 서초구 과천대로 904-6, (방배동, 사당자동차운전면허학원)",서울,서초구,693000,693000,http://sadangdrive.com/user_dir/popup/1561537005_1.jpg,http://www.sadangdrive.com/,02-591-6300
+6,서울,"서울 강서구 남부순환로 222, (외발산동, 서울자동차학원)",서울,강서구,631400,631400,https://www.seouldriver.co.kr/home/sub01.php?mid=4,https://www.seouldriver.co.kr/home/,02-2665-6961
+7,온수역,"서울 구로구 부일로1가길 18-44, (온수동)",서울,구로구,658900,658900,http://www.carist.kr/sub_01_02,http://www.carist.kr/,02-6971-7800
+8,중랑,"서울 중랑구 상봉로 117, (상봉동, 상봉시외버스터미널)",서울,중랑구,705000,705000,http://www.jndriver.com/m1_3,http://www.jndriver.com/,02-494-3355
+9,양재,"서울 서초구 남부순환로342길 62-26, (양재동, 양재자동차운전학원)",서울,서초구,660000,660000,http://www.yangjaecar.co.kr/bbs/board.php?bo_table=shuttle,http://www.yangjaecar.co.kr/,02-575-9500
+10,신도림,"서울 구로구 신도림로19길 68, (신도림동, 신도림자동차전문학원)",서울,구로구,660000,660000,https://www.sindolim.co.kr/new/?cid=shuttle,https://www.sindolim.co.kr/new/?cid=,02-2672-8500
+11,일신,"인천 부평구 무네미로 521, (구산동)",인천,부평구,640200,640200,,https://isdrive.co.kr/?gclid=CjwKCAiAsOmABhAwEiwAEBR0Zr4eCwHf3gRdoI5koYWCyMJ0VHfOT0FLE2aujBu21Yv8QhbwZ31hGxoCDokQAvD_BwE,032-513-1313
+12,주신,"인천 남구 노적산로 66-36, (학익동, 주신자동차운전학원)",인천,남구,646900,646900,http://zushincar.co.kr/bus_01.htm,http://www.zushincar.co.kr/,032-873-4982
+13,인천,"인천 남구 매소홀로271번길 7, (학익동, 인성산업㈜)",인천,남구,,,,,032-715-6111
+14,기아,"인천 중구 서해대로 261, (항동7가)",인천,중구,640000,640000,http://www.kdschool.co.kr/company_04.html,http://www.kdschool.co.kr/,032-884-6111
+15,효성,"인천 계양구 새풀로8번길 14, (효성동)",인천,계양구,669000,669000,http://www.5517000.com/?sd=1&sc=1_6,http://www.5517000.com/,032-551-7000
+16,대우,"인천 서구 호두산로 18, (경서동)",인천,서구,650800,650800,http://www.dwdrive.kr/s1_4.php,http://www.dwdrive.kr/,031-516-0185
+17,시엘,"인천 남구 소성로 34, (용현동, 씨엘자동차운전학원)",인천,남구,630000,630000,https://clds.modoo.at/?link=98msp3jc,https://clds.modoo.at/,032-867-7070
+18,한성,"인천 서구 중봉대로 266, (석남동, 1동)",인천,서구,644600,644600,http://hansungdrive.com/company_04.html,http://hansungdrive.com/index.html,1588-0892
+19,강화,"인천 강화군 선원면 강화동로 984, (강화자동차학원)",인천,강화군,674300,674300,강화/김포 전지역 셔틀운행,https://www.eganghwa.com/,032-932-2176
+20,연세,"인천 계양구 장제로 988, (박촌동)",인천,계양구,625000,625000,http://m.xn--e42b17tpc71dv52b9sa.com/page/page34,http://m.xn--e42b17tpc71dv52b9sa.com/main,032-507-7900
+21,오렌지,"인천 중구 서해대로 272, (신흥동3가, 오렌지자동차운전전문학원)",인천,중구,636000,636000,http://www.orangedrive.co.kr/m1_4.htm,http://www.orangedrive.co.kr/default.asp,032-8885-114
+22,동아,"인천 남동구 청능대로534번길 39, (고잔동)",인천,남동구,643500,643500,http://www.dongacar.co.kr/%EC%85%94%ED%8B%80%EC%95%88%EB%82%B4,http://www.dongacar.co.kr/,032-446-1100
+23,거성,"인천 계양구 봉오대로894번길 33-12, (서운동)",인천,계양구,634700,634700,http://www.geosungds.co.kr/company_02.html,http://www.geosungds.co.kr/index.html,032-543-3399
+24,성도,"인천 계양구 아나지로 480, (서운동)",인천,계양구,640000,640000,http://www.sungdocar.co.kr/s1_2.php,http://www.sungdocar.co.kr/,1544-8366
+25,서울신진,"인천 계양구 아나지로551번길 15-1, (서운동)",인천,계양구,627000,627000,http://www.drivingok.co.kr/company/com_03.asp,http://www.drivingok.co.kr/,1544-3386
+26,세영,인천 서구 당하 산61-5,인천,서구,592020,592020,http://www.sydrive.co.kr/2017/sub3-1.html,http://www.sydrive.co.kr/,1566-3156
+27,한양,"인천 계양구 장제로 988, (박촌동)",인천,계양구,642400,642400,http://www.hydriver.kr/sub01/sub01_301,http://www.hydriver.kr/,080-507-4900
+28,인기,"인천 남동구 논현고잔로88번길 19, (고잔동)",인천,남동구,642950,642950,http://inchondrive.co.kr/company_04.html,http://inchondrive.co.kr/index.html,032-446-1199
+29,신진,"인천 서구 드림로 285, (백석동)",인천,서구,625000,625000,http://www.sjdrive.co.kr/shu/01.asp,http://www.sjdrive.co.kr/default.asp,1600-9009
+30,안양,"경기 안양시 만안구 안양로 599, (석수동, 안양자동차운전전문학원)",경기,안양시,649000,649000,http://www.aycar.co.kr/bbs/board.php?bo_table=shuttlebus&sca=1%ED%98%B8%EC%B0%A8,http://www.aycar.co.kr/,031-472-3003
+31,수원현대,"경기 수원시 영통구 중부대로 452, (원천동)",경기,수원시,632500,632500,http://www.hddriving.co.kr/bbs/board.php?bo_table=a4,http://www.hddriving.co.kr/,031-211-3431
+32,신삼성,경기 오산 내삼미 275-1,경기,오산시,652300,652300,http://sssdrive.kr/page/info.php#3,http://sssdrive.kr/,1644-7088
+33,평택삼성,"경기 평택시 노루댕이1길 18-5, (장당동)",경기,평택시,628100,628100,http://psdrive.co.kr/company_02.html,http://psdrive.co.kr/,031-665-4770
+34,용인신갈,"경기 용인시 기흥구 백남준로 28-13, (상갈동, 뉴SK운전전문학원)",경기,용인시,625900,625900,http://www.newdrive.co.kr/company_04.html,http://www.newdrive.co.kr/,031-281-6363
+35,안성,경기 안성시 대덕면 안성맞춤대로 1694-12,경기,안성시,638000,638000,http://www.asdrive.co.kr/company_04.html,http://www.asdrive.co.kr/,031-676-5757
+36,송탄역,"경기도 평택시 목천로 72-17, (신장동)",경기,평택시,628100,628100,http://www.drivingacademy.co.kr/company_04.html,http://www.drivingacademy.co.kr/,031-655-0992
+37,이천,"경기 이천시 부발읍 황무로1605번길 109-73, (이천자동차운전전문학원)",경기,이천시,가격문의,,https://6317777.modoo.at/?link=3gws1h5d,https://6317777.modoo.at/,031-631-7777
+38,서부,경기 김포 양촌 석모 892-3,경기,김포시,594000,594000,http://xn--z92bt5bg1eyxhbew0fa914y.kr/s1_2.php,http://xn--z92bt5bg1eyxhbew0fa914y.kr/,031-9899-011
+39,중앙,경기 평택시 울성길 35 (신대동),경기,평택시,628100,628100,http://jadrive.co.kr/sub-1/link_url.asp?ma_url=sub_4,http://jadrive.co.kr/,031-666-0007
+40,장호원,"경기 이천시 장호원읍 장여로 229-33, (장호원자동차학원)",경기,이천시,566500,566500,,http://jhwcar.co.kr/,1600-2956
+41,뉴신진,"경기 여주군 여주읍 여주남로 236, (뉴신진자동차운전전문학원)",경기,여주군,638000,638000,http://www.sjdriving.kr/skin/page/intro03.html,http://www.sjdriving.kr/,1566-3823
+42,단원,"경기 안산시 단원구 대선로 40-5, (대부북동, 안산자동차운전전문학원)",경기,안산시,606000,606000,http://danwondrive.com/company_04.html,http://danwondrive.com/,080-333-6600
+43,신동아,경기 평택시 서탄면 발안로 927,경기,평택시,616000,616000,http://sdonga.com/shu/01.asp,http://sdonga.com/,1588-0636
+44,동양,경기 이천시 부발읍 중부대로 1732-3,경기,이천시,627000,627000,전화 문의,http://www.dyangdrive.co.kr/,031-632-1223
+45,안성신진,"경기 안성시 중리길 30, (중리동, 신진자동차학원)",경기,안성시,618200,618200,http://assdrive.co.kr/company_03.html,http://assdrive.co.kr/,031-674-5454
+46,수원역,"경기 수원시 권선구 평동로 110, (평동)",경기,수원시,632500,632500,http://www.driverschool.co.kr/main/sub.html?pageCode=13,http://www.driverschool.co.kr/,031-296-9696
+47,신분당,"경기 용인시 처인구 모현면 오산로 13-64, (용인신분당자동차운전전문학원)",경기,용인시,572000,572000,http://www.sinbundangcar.com/company_04.html?PHPSESSID=34d2ff0f2c8a1907aa1bc2b93a85ce81,http://www.sinbundangcar.com/,1899-0530
+48,한강,경기 김포시 통진읍 율마로300번길 153,경기,김포시,590700,590700,http://hangangcar.co.kr/company_04.html,http://hangangcar.co.kr/#,1688-7877
+49,아시아,"경기 화성시 경기대로 979, (병점동)",경기,화성시,655600,655600,전화 문의,http://www.asiadrive.kr/,031-239-8477
+50,수지풍덕,"경기 용인시 수지구 수풍로37번길 56, (풍덕천동)",경기,용인시,594000,594000,http://pungdukcar.com/about/about_03.php,http://pungdukcar.com/,031-261-3333
+51,모란,"경기 광주시 절골길 83, (장지동, 모란자동차운전전문학원)",경기,광주시,598400,598400,http://www.mrdrive.kr/s1_2.php,http://www.mrdrive.kr/,031-765-9999
+52,용인,경기 용인시 처인구 양지면 주북로 122,경기,용인시,583000,583000,http://www.yongincar.co.kr/company_04.html,http://www.yongincar.co.kr/#,1600-5045
+53,동부,경기 광주시 오포읍 포은대로 332,경기,광주시,572000,572000,http://dongbucar.com/shuttle_03.html,http://dongbucar.com/index.html,1577-5887
+54,수원원천,"경기 수원시 영통구 중부대로462번길 23, (원천동, 원천자동차운전학원)",경기,수원시,632500,632500,http://www.xn--zo5b1bb54j79ltto.com/%EC%85%94%ED%8B%80%EB%B2%84%EC%8A%A4,http://www.xn--zo5b1bb54j79ltto.com/,031-217-8833
+55,신현대,"경기 의왕시 경수대로 321, (오전동)",경기,의왕시,633600,633600,http://www.shinhyundai.co.kr/edu/0101.asp,http://www.shinhyundai.co.kr/,031-421-5000
+56,e삼성,경기 용인 처인 남동 (e삼성자동차운전전문학원),경기,용인시,594000,594000,http://www.ssdrive.kr/s1_2.php,http://www.ssdrive.kr/,031-335-0900
+57,뉴삼성,"경기 수원시 권선구 매송고색로506번길 18, (오목천동)",경기,수원시,638000,638000,http://www.newsamsung.co.kr/sub_01_02,http://www.newsamsung.co.kr/,031-296-7711
+58,(주)화성본오,경기 화성시 우정읍 3.1만세로 199-17,경기,화성시,630000,630000,http://www.bonodrive.co.kr/sub/sub1-2.php,http://www.bonodrive.co.kr/,031-351-8900
+59,광원,"경기 양평군 양평읍 중앙로 244-26, (광원자동차운전전문학원)",경기,양평군,627000,627000,http://www.xn--e42b76r7yao2bn15ayzc.com/bus_01.html,http://www.xn--e42b76r7yao2bn15ayzc.com/,031-771-7100
+60,대동,경기 평택 팽성 송화 220,경기,평택시,,,http://www.ddrive.kr/company_05.html,http://www.ddrive.kr/?PHPSESSID=199f7244e8cf4105ddc210ef7cd2be04,031-655-5252
+61,서울광명,"경기 광명시 안현로 81, (하안동, 서울광명자동차운전전문학원)",경기,광명시,689700,689700,http://www.sgcar.co.kr/company_03.html,http://www.sgcar.co.kr/,02-894-6000
+62,공도삼성,경기도 안성시 공도읍 봉기길 87,경기,안성시,638000,638000,http://www.gddrive.kr/company_04.html,http://www.gddrive.kr/,031-655-6525
+63,광주제일,"경기 광주시 곤지암읍 평촌길11번길 48, (광주제일자동차운전전문학원)",경기,광주시,700700,700700,http://www.jeildrive.kr/company_04.html,http://www.jeildrive.kr/#,031-761-1400
+64,신진중동,"경기 부천시 원미구 평천로 651, (약대동, 신진중동자동차운전전문학원)",경기,부천시,631400,631400,http://www.sinjindrive.com/bbs/board.php?bo_table=0104,http://www.sinjindrive.com/,032-323-3388
+65,국제,경기 광주시 오포읍 신현로 55-10,경기,광주시,595100,595100,http://www.01033944419.infom.kr/?c=167&idx=2,http://www.01033944419.infom.kr/,031-718-7777
+66,상록수,경기 화성시 비봉면 하저자안로 207,경기,화성시,645500,645500,http://www.ssdriving.co.kr/company_04.html,http://www.ssdriving.co.kr/,1577-1667
+67,유환,"경기 군포시 경수대로 453, (당정동, 유환자동차운전전문학원)",경기,군포시,623700,623700,http://www.yuhwancar.com/default/1004web/bb/b04.php,http://www.yuhwancar.com/default/,031-454-6500
+68,(주)부천,"경기 부천시 오정구 성오로 157, (오정동, 부천자동차운전전문학원)",경기,부천시,633600,633600,http://bcdriver.3458.co.kr/m/system/sub5_1.html,http://bcdriver.3458.co.kr/m/index.html,032-679-3000
+69,명학,"경기 안양시 만안구 덕천로48번길 71, (안양동, 명학자동차운전전문학원)",경기,안양시,649000,649000,http://www.mhdrive.com/index.php?mid=m1_3,http://www.mhdrive.com/,031-468-6800
+70,e현대,"경기 시흥시 서해안로 584-1, (정왕동, e현대자동차운전전문학원)",경기,시흥시,,,http://www.shcardrive.co.kr/company_03.html,http://www.shcardrive.co.kr/,031-433-5577
+71,성남,"경기 광주시 장지9길 140, (장지동, 성남자동차운전전문학원)",경기,광주시,600700,600700,http://www.sndrive.co.kr/company_04.html?PHPSESSID=c0616632896bcd02861f251b710a4aee,http://www.sndrive.co.kr/,031-768-6811
+72,뉴현대,"경기 안산시 단원구 영전로 76, (대부동동, 시화자동차운전전문학)",경기,안산시,715000,715000,http://www.nhddrive.com/company_04.html,http://www.nhddrive.com/#,1566-9013
+73,(주)하남21C,"경기 광주시 회안대로 982, (송정동, 하남21c자동차운전전문학원)",경기,광주시,723000,693000,https://www.hanam21c.co.kr/bbs/page.php?hid=aboutus04,http://www.hanam21c.co.kr/,031-763-2221
+74,(주)안산대일,"경기 안산시 단원구 원포공원로 45, (초지동, 안산대일자동차운전전문학원)",경기,안산시,685000,685000,http://daeildrive.co.kr/,http://daeildrive.co.kr/,031-413-1100
+75,이천제일,"경기 이천시 신둔면 원적로512번길 256-23, (이천제일자동차운전전문학원)",경기,이천시,739800,739800,http://jeildriving.com/company_04.html,http://jeildriving.com/#,031-638-0707
+76,한빛,"경기 시흥시 봉화로 49, (정왕동, 한빛자동차운전전문학원)",경기,시흥시,610000,610000,http://xn--xx3bs6moc81du52boa.com/%EC%85%94%ED%8B%80%EB%B2%84%EC%8A%A4%EB%85%B8%EC%84%A0,http://xn--xx3bs6moc81du52boa.com/,031-433-5500
+77,평택안중,경기도 평택시 안중읍 서동대로 1673-56,경기,평택시,627000,627000,http://www.ptajdrive.co.kr/company_04.html,http://www.ptajdrive.co.kr/?n_media=27758&n_query=%ED%8F%89%ED%83%9D%EC%95%88%EC%A4%91%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_rank=1&n_ad_group=grp-a001-01-000000011568935&n_ad=nad-a001-01-000000066885182&n_keyword_id=nkw-a001-01-000002125846744&n_keyword=%ED%8F%89%ED%83%9D%EC%95%88%EC%A4%91%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_campaign_type=1&n_ad_group_type=1,031-682-1140
+78,동일,"경기 남양주시 경춘로 679-14, (일패동, 동일자동차학원)",경기,남양주시,,,http://www.dongil-car.co.kr/company_04.html,http://www.dongil-car.co.kr/,051-557-3636
+79,신광,"경기 동두천시 벌마들로40번길 24-9, (상패동)",경기,동두천시,,,http://skdrive.co.kr/company_02.html,http://skdrive.co.kr/index.html,031-862-6433
+80,양원,경기 남양주시 진접읍 경복대로샘말길 35-2,경기,남양주시,600000,600000,http://www.ywdrive.com/pc/shuttle/shuttle.html,http://www.ywdrive.com/pc/index.html?NaPm=ct%3Dkkq71614%7Cci%3D0uB7002Hi1Hu%2DcSeFKWW%7Ctr%3Dsa%7Chk%3D8beae5acf359a0056b12ac0467f3153ef5e6519f&OV_REFFER=https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%EC%96%91%EC%9B%90+%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&oquery=%EC%8B%A0%EA%B4%91+%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&tqi=htWdkdprvxsssBjqhkdssssstMl-081094,1544-3499
+81,한미,"경기 양주시 삼숭로129번길 11, (삼숭동)",경기,양주시,,,http://www.hanmidrive.com/ab-4417-9,http://www.hanmidrive.com/,1588-1268
+82,강북삼성,경기 양주시 백석읍 꿈나무로 93,경기,양주시,,,http://www.kbdrive.co.kr/bus_01.html,http://www.kbdrive.co.kr/,1577-4877
+83,우리,"경기 가평군 가평읍 태봉두밀로 34-71, (우리자동차학원)",경기,가평군,560000,560000,http://www.wooridrive.com/company_02.html,http://www.wooridrive.com/?n_media=27758&n_query=%EC%9A%B0%EB%A6%AC%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_rank=1&n_ad_group=grp-m001-01-000000656989956&n_ad=nad-a001-01-000000077900989&n_keyword_id=nkw-m001-01-000000674635643&n_keyword=%EC%9A%B0%EB%A6%AC%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_campaign_type=1&n_ad_group_type=1#,1661-0050
+84,명문,"경기 고양시 일산서구 탄중로275번길 52-35, (탄현동)",경기,고양시,693000,693000,http://www.myungmuncar.co.kr/bus_01.html,http://www.myungmuncar.co.kr/#,031-381-5000
+85,엘씨,"경기 파주시 문산읍 우계로457번길 21, (LC자동차운전전문학원)",경기,파주시,616000,616000,http://www.lccar.kr/shu/01.asp,http://www.lccar.kr/,031-952-6400
+86,신일,"경기 고양시 일산동구 성현로268번길 93, (성석동)",경기,고양시,660000,660000,http://www.shinil-car.co.kr/company_03.html,http://www.shinil-car.co.kr/,031-977-1522
+87,올리브,"경기 파주시 탄현면 장릉로 5-23, (올리브운전전문학원)",경기,파주시,693000,693000,http://www.olivedriving.co.kr/check_04.html,http://www.olivedriving.co.kr/,031-948-8600
+88,뉴대성,"경기도 고양시 일산동구 장대길 160-38, (장항동)",경기,고양시,610000,610000,,,0507-1346-7077
+89,뉴강남,경기도 가평군 설악면 신천중앙로28번길 3-132,경기,가평군,,,http://www.newdriver.co.kr/company_04.html,http://www.newdriver.co.kr/index.html,1800-3233
+90,한수,"경기도 파주시 교하로 507, (동패동, (주)한주자동차운전전문학원)",경기,파주시,649000,649000,http://www.xn--2q1bv3l24f54ebeu1cjxa156go2xya.com/%EC%9D%BC%EC%82%B0%EB%B0%A9%ED%96%A5,http://www.xn--2q1bv3l24f54ebeu1cjxa156go2xya.com/,031-943-0037
+91,신원,"경기 고양시 일산서구 덕산로 167, (가좌동)",경기,고양시,,,,http://www.driveworld.co.kr/,031-923-0997
+92,하예서부,"경기 파주시 파주읍 학당말길 141, (하예서부자동차운전전문학원)",경기,파주시,616000,616000,http://www.hayedrive.com/company_02.html,http://www.hayedrive.com/,1522-3208
+93,정다운파주,경기 파주시 월롱면 정문로293번길 93,경기,파주시,649000,649000,http://www.pajucar.co.kr/sub1.php?num=1_2,http://www.pajucar.co.kr/,031-954-5858
+94,자유로,"경기 파주시 범벅골길 60-6, (다율동, 자유로자동차운전전문학원)",경기,파주시,649000,649000,http://www.jayuway.kr/home/homepage.php?homefile=sub_01_03.html,http://www.jayuway.kr/home/index.php?n_media=27758&n_query=%EC%9E%90%EC%9C%A0%EB%A1%9C%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_rank=1&n_ad_group=grp-m001-01-000001559456389&n_ad=nad-a001-01-000000111890622&n_keyword_id=nkw-m001-01-000001559456443&n_keyword=%EC%9E%90%EC%9C%A0%EB%A1%9C%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_campaign_type=1&n_ad_group_type=1&NaPm=ct%3Dkkqcvmf4%7Cci%3D0zS00008rLHuYyC13L3Q%7Ctr%3Dsa%7Chk%3D2f1f1dab91e602eab99722ebd8bf84eaaa54fafa,031-947-9944
+95,행운,경기 포천시 신북면 중앙로 332-34,경기,포천시,,,http://www.hwolle.co.kr/ab-921,http://www.hwolle.co.kr/,1577-1978
+96,신진,경기도 파주시 월롱면 정문로293번길 95,경기,파주시,649000,649000,http://1644-8677.com/1_3.php,http://1644-8677.com/,1644-8677
+97,연천,경기 연천군 연천읍 통현길 100,경기,연천군,,,http://www.ycdrive.com/page/board.php?su_id=sub0401,http://www.ycdrive.com/?n_media=27758&n_query=%EC%97%B0%EC%B2%9C%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_rank=1&n_ad_group=grp-a001-01-000000000970141&n_ad=nad-a001-01-000000086648818&n_keyword_id=nkw-a001-01-000000163457717&n_keyword=%EC%97%B0%EC%B2%9C%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_campaign_type=1&n_ad_group_type=1,031-834-5800
+98,북부중앙,"경기 양주시 화합로 1221, (회정동)",경기,양주시,,,,https://bbdrive114.modoo.at/,031-858-1555
+99,시티,"경기 의정부시 신흥로 41, (호원동, 시티자동차운전확원)",경기,의정부시,,,http://citydrive.co.kr/new/bbs/content.php?co_id=0103,http://citydrive.co.kr/new/index.php,031-877-1377
+100,대진,경기 포천시 군내면 포천로909번길 31,경기,포천시,747000,747000,http://www.djdrive.kr/company_04.html,http://www.djdrive.kr/,1899-2846
+101,NEW강동,경기 남양주시 진접읍 진건오남로 1048,경기,남양주시,,,http://www.jeil82.com/bbs/content.php?co_id=page0103,http://www.jeil82.com/?n_media=27758&n_query=%EB%89%B4%EA%B0%95%EB%8F%99%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_rank=1&n_ad_group=grp-a001-01-000000001305006&n_ad=nad-a001-01-000000103511067&n_keyword_id=nkw-a001-01-000000231285279&n_keyword=%EB%89%B4%EA%B0%95%EB%8F%99%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%ED%95%99%EC%9B%90&n_campaign_type=1&n_ad_group_type=1,1599-3399
+102,그린,경기 포천시 소흘 223-38,경기,포천시,,,http://www.gdts.co.kr/index.php?mid=page_WAkF18,http://www.gdts.co.kr/,1588-2977
+103,신제일,경기 포천시 영북면 문암길 20-1,경기,포천시,,,http://www.sinjeil87.com/bbs/content.php?co_id=bus,http://www.sinjeil87.com/,080-536-8787
+104,스피드(일반),경기 양주시 청담로 42번길 63-15,경기,양주시,594000,594000,http://www.smartdriving.kr/intro_03.html,http://www.smartdriving.kr/#,070-4576-1400
